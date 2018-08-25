@@ -43,12 +43,14 @@
 .navbar-wagon-link {
   color: #616668;
   font-size: 14px;
+  transition: all 0.4s ease-in-out;
 }
 
 .login {
   border: 1px solid #979797;
   border-radius: 100px;
   padding: 10px 20px;
+  transition: all 0.4s ease-in-out;
   &:hover {
     color: #000000;
     border: 1px solid #000000;
