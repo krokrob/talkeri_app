@@ -217,24 +217,23 @@
   <body class="plain error-page-wrapper background-color background-image">
     <div class="content-container">
   <div class="head-line secondary-text-color">
-    503
+    404
   </div>
   <div class="subheader primary-text-color">
-    Looks like we're having <br>
-    some server issues.
+    Oops, the page you're <br>
+    looking for does not exist.
   </div>
-    <hr>
-    <div class="clearfix"></div>
-    <div class="context primary-text-color">
-
+  <hr>
+  <div class="clearfix"></div>
+  <div class="context primary-text-color">
+    <!-- doesn't use context_content because it's ALWAYS the same thing -->
     <p>
-      Go back to the previous page and try again.
+      You may want to head back to the homepage.<br />
       If you think something is broken, report a problem.
     </p>
-
-
-    </div>
+  </div>
   <div class="buttons-container">
+    <a class="border-button" href="http://www.talkeri.io/" target="_blank">Go To Homepage</a>
     <a class="border-button" href="mailto:hello@talkeri.io" target="_blank">Report A Problem</a>
   </div>
 </div>
@@ -344,7 +343,7 @@
        });
 
      };
-     var ep = new ErrorPage('body', "503", "plain");
+     var ep = new ErrorPage('body', "404", "plain");
      ep.initialize();
 
      // hack to make sure content stays centered >_<
@@ -356,10 +355,10 @@
 
 
       <!-- OneTrust Cookies Consent Notice (statuspage.io, en-GB) start -->
-  <script src="https://cdn.cookielaw.org/consent/0800f092-2124-46ec-b11d-b4f48b677302.js" type="text/javascript" charset="UTF-8"></script>
+<!--   <script src="https://cdn.cookielaw.org/consent/0800f092-2124-46ec-b11d-b4f48b677302.js" type="text/javascript" charset="UTF-8"></script>
   <script type="text/javascript">
     function OptanonWrapper() { }
-  </script>
+  </script> -->
   <!-- OneTrust Cookies Consent Notice (statuspage.io, en-GB) end -->
 
   </body>
