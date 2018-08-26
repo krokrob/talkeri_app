@@ -1,39 +1,96 @@
-<h2>Sign up</h2>
+<div id="wrapper-grey">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :first_name,
-                required: true,
-                autofocus: true ,
-                input_html: { autocomplete: "first_name" }%>
-    <%= f.input :last_name,
-                required: true,
-                autofocus: true ,
-                input_html: { autocomplete: "last_name" }%>
-    <%= f.input :email,
-                required: true,
-                autofocus: true ,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :phone_number,
-                required: true,
-                autofocus: true ,
-                input_html: { autocomplete: "phone_number" }%>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+  <div class="margin-top-large margin-left-huge position-absolute">
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+        <%= image_tag "logo.png"%>
+    <% end %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+  <div class="container flexbox flexbox-justify-center flexbox-align-center center-screen">
+    <div class="card-signup flexbox flexbox-column padding-huge margin-small">
+      <h2 class="font-size-medium font-weight-medium font-family-title margin-top-small margin-bottom-small text-center">
+        Sign up
+      </h2>
+
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs flexbox flexbox-justify-center flexbox-space-between">
+          <div class="basic-info-1">
+            <label class="font-size-normal font-weight-bold font-family-normal margin-bottom-normal" for="user_email">
+              First name
+            </label>
+            <%= f.input :first_name,
+                        label: false,
+                        required: true,
+                        autofocus: true,
+                        placeholder: 'John',
+                        input_html: { autocomplete: "first_name", class: "font-size-normal"}%>
+            <label class="font-size-normal font-weight-bold font-family-normal margin-bottom-normal" for="user_email">
+              Last name
+            </label>
+            <%= f.input :last_name,
+                        label: false,
+                        required: true,
+                        autofocus: true,
+                        placeholder: 'Wright',
+                        input_html: { autocomplete: "last_name", class: "font-size-normal" }%>
+             <label class="font-size-normal font-weight-bold font-family-normal margin-bottom-normal" for="user_email">
+              Profil picture
+            </label>
+            <%= f.input :photo,
+                        label: false %>
+            <%= f.input :photo_cache, as: :hidden %>
+          </div>
+          <div class="basic-info-2">
+            <label class="font-size-normal font-weight-bold font-family-normal margin-bottom-normal" for="user_email">
+              Email
+            </label>
+            <%= f.input :email,
+                        label: false,
+                        required: true,
+                        autofocus: true,
+                        placeholder: 'user@domain.com',
+                        input_html: { autocomplete: "email", class: "font-size-normal" } %>
+            <label class="font-size-normal font-weight-bold font-family-normal margin-bottom-normal" for="user_email">
+              Phone number
+            </label>
+            <%= f.input :phone_number,
+                        label: false,
+                        required: true,
+                        autofocus: true ,
+                        placeholder: '+33 6 65 23 63 34',
+                        input_html: { autocomplete: "phone_number", class: "font-size-normal" }%>
+          </div>
+          <div class="basic-info-3">
+            <label class="font-size-normal font-weight-bold font-family-normal margin-bottom-normal" for="user_email">
+              Password
+            </label>
+            <%= f.input :password,
+                        label: false,
+                        required: true,
+                        placeholder: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password", class: "font-size-normal" } %>
+            <label class="font-size-normal font-weight-bold font-family-normal margin-bottom-normal" for="user_email">
+              Password confirmation
+            </label>
+            <%= f.input :password_confirmation,
+                        label: false,
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
+          </div>
+        </div>
+
+        <div class="form-actions text-center">
+          <%= f.button :submit, "Sign up", class: "button-purple font-size-regular" %>
+        </div>
+
+      <% end %>
+    </div>
+    <div class="font-size-regular text-center margin-top-small link-text-decoration-none">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+
+</div>
