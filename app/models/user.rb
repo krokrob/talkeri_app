@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :user_chatrooms
   has_many :events, through: :user_events
   has_many :chatrooms, through: :user_chatrooms
+  has_many :alerts
+  has_many :alert_solvers
 end
