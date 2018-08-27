@@ -1,0 +1,154 @@
+<div class="flexbox flexbox-column flexbox-space-between" style="height: 3000px; max-width: 375px;">
+
+  <%= cl_image_tag current_user.photo, class: "avatar-very-small" %>
+  <%= cl_image_tag current_user.photo, class: "avatar-small" %>
+  <%= cl_image_tag current_user.photo, class: "avatar-normal" %>
+  <%= cl_image_tag current_user.photo, class: "avatar-normal-clicked" %>
+
+  <!-- Avatar notification -->
+
+  <div class="avatar-normal-notification position-relative" style="width: 70px; height: 75px;">
+    <div class="position-absolute z-index-1">
+      <div class="notification position-relative">
+        <p class="title-small-1 white position-absolute">3</p>
+      </div>
+    </div>
+    <%= cl_image_tag current_user.photo, class: "avatar-normal position-absolute" %>
+  </div>
+
+  <!-- Avatar with name under -->
+
+  <div class="flexbox flexbox-column flexbox-align-center" style="width: 70px; height: 88px;">
+    <%= cl_image_tag current_user.photo, class: "avatar-normal" %>
+    <p class="font-size-small grey-dark">Marc</p>
+  </div>
+
+  <!-- User Avatar speaking  -->
+
+  <div class="position-relative" style="width: 146px; height: 146px;">
+    <div class="speaking position-absolute"></div>
+    <%= cl_image_tag current_user.photo, class: "avatar-big position-absolute z-index-1" %>
+  </div>
+
+  <!-- User Avatar speaking with name -->
+
+  <div class="text-center" style="width: 146px; height: 146px;">
+    <div class="position-relative" style="width: 146px; height: 146px;">
+      <div class="speaking position-absolute"></div>
+      <%= cl_image_tag current_user.photo, class: "avatar-big position-absolute z-index-1" %>
+    </div>
+    <p class="title-small grey-dark margin-top-small">Marc D.</p>
+  </div>
+
+  <!-- Notification  -->
+
+  <div class="notification position-relative">
+    <p class="title-small-1 white position-absolute">3</p>
+  </div>
+
+  <!-- Button Voice Note not active -->
+
+  <div class="position-relative" style="width: 146px; height: 146px;">
+    <div class="button-purple-round position-absolute"></div>
+    <%= image_tag 'voice-note.png', width: 21, height: 28.5, class: 'position-absolute icon-voice-center' %>
+  </div>
+
+  <!-- Button Voice Note active -->
+
+  <div class="position-relative" style="width: 146px; height: 146px;">
+    <div class="button-icon-active position-absolute"></div>
+    <div class="position-absolute button-icon-center">
+      <div class="button-purple-round"></div>
+      <%= image_tag 'voice-note.png', width: 21, height: 28.5, class: 'position-absolute icon-voice-center' %>
+    </div>
+  </div>
+
+  <!-- Button Chat text not active -->
+
+  <div class="position-relative" style="width: 146px; height: 146px;">
+    <div class="button-purple-round position-absolute"></div>
+    <%= image_tag 'chat.png', width: 38, height: 32, class: 'position-absolute icon-chat-center' %>
+  </div>
+
+  <!-- Button Chat text not chosen -->
+
+  <div class="position-relative" style="width: 146px; height: 146px;">
+    <div class="button-icon-active position-absolute"></div>
+    <div class="position-absolute button-icon-center">
+      <div class="button-purple-round"></div>
+      <%= image_tag 'chat.png', width: 38, height: 32, class: 'position-absolute icon-chat-center' %>
+    </div>
+  </div>
+
+  <!-- Button Chat non clicked -->
+
+  <div class="position-relative" style="width: 146px; height: 146px;">
+    <div class="button-purple-round-small position-absolute"></div>
+    <%= image_tag 'chat.png', width: 17.46, height: 15, class: 'position-absolute icon-chat-small-center' %>
+  </div>
+
+  <!-- Button Voice note non clicked -->
+
+  <div class="position-relative" style="width: 146px; height: 146px;">
+    <div class="button-purple-round-small position-absolute"></div>
+    <%= image_tag 'voice-note.png', width: 10.32, height: 14, class: 'position-absolute icon-voice-small-center' %>
+  </div>
+
+  <!-- Button Upload Image note non clicked -->
+
+  <div class="position-relative" style="width: 146px; height: 146px;">
+    <div class="button-purple-round-small position-absolute"></div>
+    <%= image_tag 'image.png', width: 18, height: 14, class: 'position-absolute icon-image-small-center' %>
+  </div>
+
+  <!-- Instruction Card -->
+
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle instruction-card" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      Instructions of the day
+      <span class="caret"></span>
+    </button>
+    <p class="dropdown-menu" aria-labelledby="dropdownMenu1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum blanditiis cupiditate eveniet commodi sed, beatae magnam fuga repellendus sunt sit quod, accusamus facere et quaerat in, eius fugiat harum! Eligendi?</p>
+  </div>
+
+  <!-- Create new alert button -->
+
+  <div class="button-new-alert flexbox flexbox-space-around">
+    <div class="flexbox flexbox-align-center">
+      <%= image_tag 'plus-icon.png', width: 14, height: 14, class:'margin-right-small' %>
+      <p style="color: #9F9F9F;" class="font-size-normal margin-none">Create new alert</p>
+    </div>
+  </div>
+
+  <!-- Alert card non solved -->
+
+  <div class="alert-card position-relative">
+    <div class="position-absolute alert-creator">
+      <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute" %>
+      <%= image_tag 'alert-icon.png', width: 17, height: 15.89, class: "position-absolute icon-alert" %>
+    </div>
+    <div class="position-absolute text-center alert-paragraph">
+      <p class="white font-size-normal font-weight-light">Please somebody go get <br> Mark Zukerberg at the parking ⚠️</p>
+    </div>
+    <div class="position-absolute alert-time">
+      <p class="white font-size-small font-weight-light">1 min ago</p>
+    </div>
+  </div>
+
+  <!-- Alert card solved -->
+
+  <div class="alert-card-solved position-relative">
+    <div class="position-absolute alert-creator">
+      <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute" %>
+      <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute solver-avatar" %>
+      <%= image_tag 'solved-icon.png', width: 17, height: 11.77, class: "position-absolute icon-solved" %>
+    </div>
+    <div class="position-absolute text-center alert-paragraph">
+      <p class="white font-size-normal font-weight-light">Please somebody go get <br> Mark Zukerberg at the parking ⚠️</p>
+    </div>
+    <div class="position-absolute alert-time">
+      <p class="white font-size-small font-weight-light">1 min ago</p>
+    </div>
+  </div>
+</div>
+
