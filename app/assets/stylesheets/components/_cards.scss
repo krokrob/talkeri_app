@@ -11,3 +11,27 @@
   box-shadow: 0 2px 40px 0 rgba(0,0,0,.06);
   border-radius: 4px;
 }
+
+.instruction-card {
+  width: 351px;
+  height: 36px;
+  box-shadow: 0px 0px 4px #ADADAD;
+  border: none;
+  border-radius: 5px;
+}
+
+.alert-card {
+  background-color: #f77676;
+  border-radius: 5px;
+  width: 351px;
+  height: 49px;
+  box-shadow: 0px 0px 4px #000000;
+}
+
+.alert-card-solved {
+  background-color: #69e481;
+  border-radius: 5px;
+  width: 351px;
+  height: 49px;
+  box-shadow: 0px 0px 4px #000000;
+}

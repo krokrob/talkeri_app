@@ -1,0 +1,12 @@
+.notification {
+  background: #f57778;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  border: 2px solid white;
+}
+
+.notification > p {
+  top: 1px;
+  left: 5px;
+}
