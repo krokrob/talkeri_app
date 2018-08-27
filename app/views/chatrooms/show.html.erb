@@ -1,0 +1,20 @@
+<h3><%= @chatroom.name %></h3>
+
+<p><%= @active_alert.first.content %> / Solved <%= @active_alert.first.status %></p>
+
+<ul>
+  <% @messages.each do |message| %>
+    <li>
+      Username: <%= message.user.first_name %> |
+      <%= message.content %>
+    </li>
+  <% end %>
+</ul>
+
+<br>
+<br>
+<br>
+
+<%= @current_user_chatrooms.each do |user| %>
+  <%= user.name %>
+<% end %>

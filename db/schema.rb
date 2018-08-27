@@ -10,21 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_27_134557) do
+ActiveRecord::Schema.define(version: 2018_08_27_160107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "alert_solvers", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "alert_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alert_id"], name: "index_alert_solvers_on_alert_id"
+    t.index ["user_id"], name: "index_alert_solvers_on_user_id"
+  end
+
   create_table "alerts", force: :cascade do |t|
+    t.bigint "user_id"
     t.bigint "chatroom_id"
     t.text "content"
-    t.bigint "creator_id"
-    t.bigint "solver_id"
+    t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["chatroom_id"], name: "index_alerts_on_chatroom_id"
-    t.index ["creator_id"], name: "index_alerts_on_creator_id"
-    t.index ["solver_id"], name: "index_alerts_on_solver_id"
+    t.index ["user_id"], name: "index_alerts_on_user_id"
   end
 
   create_table "chatrooms", force: :cascade do |t|
@@ -91,9 +99,10 @@ ActiveRecord::Schema.define(version: 2018_08_27_134557) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "alert_solvers", "alerts"
+  add_foreign_key "alert_solvers", "users"
   add_foreign_key "alerts", "chatrooms"
-  add_foreign_key "alerts", "users", column: "creator_id"
-  add_foreign_key "alerts", "users", column: "solver_id"
+  add_foreign_key "alerts", "users"
   add_foreign_key "chatrooms", "events"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
