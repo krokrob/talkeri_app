@@ -93,6 +93,7 @@
     </div>
   </div>
 
+
   <div class="messages-current-channel container margin-top-small" style="height: calc(100vh - 150px - 227px); overflow-x: hidden; overflow-y: scroll; ">
     <div class="messages">
       <% @messages.each do |message| %>
@@ -100,14 +101,13 @@
       <% end %>
     </div>
   </div>
-
 </div>
 
 
 <div class="footer-mobile-talkie-mode">
 
-  <div class="position-relative">
 
+  <div class="position-relative">
     <div class="position-absolute" style=" width: 100%; top: -43px;">
       <div class="flexbox flexbox-align-center flexbox-space-around flexbox-justify-center">
 
@@ -141,6 +141,7 @@
 
       <!-- Button Channel clicked -->
 
+
       <div class="flexbox flexbox-column flexbox-align-center" style="width: 70px; height: 90px; margin-right: 5px; margin-left: 1px;">
         <div class="button-channel-active flexbox flexbox-align-center flexbox-justify-center">
           <div class="button-channel-clicked position-relative">
@@ -154,22 +155,16 @@
       <!-- Avatar with name under -->
 
        <% @chatroom.users.select { |u| u != current_user }.each do |user| %>
-          <%= link_to chatrooms_path(user: user, main_chatroom: @chatroom), method: 'post' do %>
+          <%= link_to event_chatrooms_path(@chatroom.event, user_id: user.id, main_chatroom_id: @chatroom.id), method: :post do %>
             <div class="flexbox flexbox-column flexbox-align-center" style="width: 70px; height: 88px;  margin-right: 5px;">
               <%= cl_image_tag user.photo, class: "avatar-normal" %>
               <p class="font-size-small grey-dark"><%= user.first_name %></p>
             </div>
-          <% end %>
         <% end %>
-
     </div>
-
 </div>
 
   <div id="create-message">
     <%= render 'messages/form', message: @message, chatroom: @chatroom %>
   </div>
-
-
-
 

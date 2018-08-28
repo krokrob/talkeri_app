@@ -1,45 +1,61 @@
 class ChatroomsController < ApplicationController
+  include Pundit
+  before_action :set_event, only: [:new, :create]
 
   def show
     @chatroom = Chatroom.find(params[:id])
-
+    authorize @chatroom
     @message = Message.new
-
     @chatroom_users = @chatroom.users
-
     @messages = @chatroom.messages
-
     @current_user_chatrooms = current_user.chatrooms
-
     @alert = Alert.new
-
     @alert_solver = AlertSolver.new
-
-#As a user, I can mark an active alert as solved
     @active_alert = @chatroom.alerts.find_by(status: false)
   end
 
   def create
-    @chatroom = Chatroom.new(chatroom_params)
+    if params[:chatroom].present?
+      @chatroom = Chatroom.new(chatroom_params)
+      @chatroom.event = @event
+      authorize @chatroom
+      if @chatroom.save
+        @chatroom.users << current_user
+        redirect_to event_path(@event) and return
+      else
+        return render :new
+      end
+    end
 
-    @user_chatroom = UserChatroom.new(chatroom_params)
-    # @message.chatroom = @
-    # @message.user = current_user
-    # if @message.save
-    #   redirect_to chatroom_path(@chatroom)
-    # else
-    #   render :new
-    # end
+    @user = User.find(params[:user_id])
+    @chatroom = current_user.chatrooms.where(event: @event, name: nil, id: @user.chatrooms.pluck(:id)).first
+    if @chatroom.nil?
+      @chatroom = Chatroom.new
+      @chatroom.event = @event
+      authorize @chatroom
+      if @chatroom.save
+        @user_chatroom1 = UserChatroom.create(user: @user, chatroom: @chatroom)
+        @user_chatroom1 = UserChatroom.create(user: current_user, chatroom: @chatroom)
+      else
+        redirect_to chatroom_path(params[:main_chatroom_id]) and return
+      end
+    end
+    authorize @chatroom
+    redirect_to chatroom_path(@chatroom)
   end
 
-  def one_on_one_chatroom
-
+  def new
+    @chatroom = Chatroom.new
+    authorize @chatroom
   end
 
   private
 
   def chatroom_params
-    params.require(:chatroom).permit(:user)
+    params.require(:chatroom).permit(:name, :instructions)
   end
 
+  def set_event
+    @event = Event.find(params[:event_id])
+  end
 end
