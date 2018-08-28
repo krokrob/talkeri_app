@@ -15,31 +15,24 @@ class ChatroomsController < ApplicationController
 
     @alert_solver = AlertSolver.new
 
-#As a user, I can mark an active alert as solved
+    #As a user, I can mark an active alert as solved
     @active_alert = @chatroom.alerts.find_by(status: false)
   end
 
   def create
-    @chatroom = Chatroom.new(chatroom_params)
-
-    @user_chatroom = UserChatroom.new(chatroom_params)
-    # @message.chatroom = @
-    # @message.user = current_user
-    # if @message.save
-    #   redirect_to chatroom_path(@chatroom)
-    # else
-    #   render :new
-    # end
+    @event = Event.find(params[:event_id])
+    @user = User.find(params[:user_id])
+    @chatroom = current_user.chatrooms.joins(:user_chatrooms).where(event: @event, name: nil)
+                            .where(user_chatrooms: { user_id: @user.id }).first
+    if @chatroom.nil?
+      @chatroom = Chatroom.new(event: @event)
+      if @chatroom.save
+        @user_chatroom1 = UserChatroom.create(user: @user, chatroom: @chatroom)
+        @user_chatroom1 = UserChatroom.create(user: current_user, chatroom: @chatroom)
+      else
+        redirect_to chatroom_path(params[:main_chatroom_id]) and return
+      end
+    end
+    redirect_to chatroom_path(@chatroom)
   end
-
-  def one_on_one_chatroom
-
-  end
-
-  private
-
-  def chatroom_params
-    params.require(:chatroom).permit(:user)
-  end
-
 end
