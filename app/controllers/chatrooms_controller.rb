@@ -11,8 +11,10 @@ class ChatroomsController < ApplicationController
 
     @current_user_chatrooms = current_user.chatrooms
 
+#Creating a new alert
     @alert = Alert.new
 
+#As a user, I can mark an active alert as solved
     @active_alert = @chatroom.alerts.where(status: false)
   end
 

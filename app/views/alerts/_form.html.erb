@@ -1,0 +1,6 @@
+<%= simple_form_for [chatroom, alert] do |f| %>
+  <%= f.label :your_alert %>:
+  <%= f.text_area :content, class: "form-control", data: {textarea: "alert"} %>
+  <%= f.submit "send", class: "btn btn-primary", style: "display: true", data: {send: "alert"} %>
+<% end %>
+
