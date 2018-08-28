@@ -8,7 +8,6 @@
         </h4>
       </div>
 
-<p><%=@active_alert.content %> / Solved <%= @active_alert.status %></p>
   <%= link_to  "Mark as done",  alert_alert_solvers_path(@active_alert), method: :post %>
 
 <%= render 'alerts/form', chatroom: @chatroom, alert: @alert %>
@@ -20,7 +19,7 @@
       </div>
 
       <div class="chat-alert">
-        <p><%= @active_alert.first.content %> / Solved <%= @active_alert.first.status %></p>
+        <p><%= @active_alert.content %> / Solved <%= @active_alert.status %></p>
       </div>
 
       <div class="messages">
