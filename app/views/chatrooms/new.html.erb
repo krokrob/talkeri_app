@@ -1,6 +1,9 @@
 <div class="container">
-  <%= simple_form_for @event do |f| %>
+  <h3>Add a chatroom</h3>
+  <%= simple_form_for [@event, @chatroom] do |f| %>
     <%= f.input :name %>
-    <%= f.submit "Add chatroom", class: "btn" %>
+    <%= f.input :instructions %>
+    <%= f.submit "Add chatroom", class: "btn-primary" %>
   <% end %>
+  <%= link_to "Back to event", event_path(@event) %>
 </div>

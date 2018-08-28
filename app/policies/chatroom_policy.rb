@@ -1,15 +1,15 @@
 class ChatroomPolicy < ApplicationPolicy
 
   def show?
+    record.users.include?(user)
+  end
+
+  def new?
     true
   end
 
   def create?
-    true
-  end
-
-  def new?
-    create?
+    new?
   end
 
   class Scope < Scope

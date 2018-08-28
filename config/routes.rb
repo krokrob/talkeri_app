@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :events
-  resources :chatrooms do
+  resources :events do
+    resources :chatrooms, only: [:create, :new]
+  end
+  resources :chatrooms, except: [:create, :new] do
     resources :messages
   end
   get '/chatrooms/:chatroom_id/messages', to: 'messages#create', as: :create_message

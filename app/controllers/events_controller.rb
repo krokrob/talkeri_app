@@ -4,9 +4,7 @@ class EventsController < ApplicationController
 
   def index
     skip_policy_scope
-    if current_user.responsability_level == "organizer"
-      @events = current_user.events.order(created_at: :desc)
-    end
+    @events = current_user.events.order(created_at: :desc)
   end
 
   def show
@@ -21,9 +19,9 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.user = current_user
     authorize @event
     if @event.save
-      current_user.responsability_level == "organizer"
       redirect_to event_path(@event)
     else
       render :new

@@ -1,5 +1,6 @@
 class ChatroomsController < ApplicationController
   include Pundit
+  before_action :set_event, only: [:new, :create]
 
   def show
     @chatroom = Chatroom.find(params[:id])
@@ -19,6 +20,7 @@ class ChatroomsController < ApplicationController
 
   def create
     @chatroom = Chatroom.new(chatroom_params)
+    @chatroom.event = @event
     authorize @chatroom
     if @chatroom.save
       redirect_to event_path(@event)
@@ -30,7 +32,11 @@ class ChatroomsController < ApplicationController
   private
 
   def chatroom_params
-    params.require(:event).permit(:name, :instructions)
+    params.require(:chatroom).permit(:name, :instructions)
+  end
+
+  def set_event
+    @event = Event.find(params[:event_id])
   end
 
 end
