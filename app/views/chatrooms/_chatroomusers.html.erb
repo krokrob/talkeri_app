@@ -1,0 +1,5 @@
+<% @chatroom.users.each do |user| %>
+
+  <%= cl_image_tag user.photo, class: "avatar-very-small" %>
+
+<% end %>

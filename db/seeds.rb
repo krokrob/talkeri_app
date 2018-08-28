@@ -12,48 +12,79 @@ User.destroy_all
 
 puts 'Creating Users'
 
-user1 = User.create(
+emilie = User.create(
     first_name: "Emilie",
     last_name: "Deschamps-Wright",
     phone_number: Faker::PhoneNumber.cell_phone,
     email: 'e.wright@hotmail.fr',
     password: '123456'
   )
-user2 = User.create(
+url = "https://avatars1.githubusercontent.com/u/40471401?v=4"
+emilie.remote_photo_url = url
+emilie.save
+
+
+# user2pic = Cloudinary::Uploader.upload("image/dark-vador-250.jpg")
+sami = User.create(
     first_name: "Sami",
     last_name: "Bekas",
     phone_number: Faker::PhoneNumber.cell_phone,
-    email: 'samibekas@gmail.com',
-    password: '123456'
+    email: 'samibekas@'
   )
-user3 = User.create(
+url = "https://avatars0.githubusercontent.com/u/28527656?v=4"
+sami.remote_photo_url = url
+sami.save
+
+
+# user3pic = Cloudinary::Uploader.upload("image/donald-trump-feature-0819181.jpg")
+arthur = User.create(
     first_name: "Arthur",
     last_name: "Fleury",
     phone_number: Faker::PhoneNumber.cell_phone,
     email: 'arth.fleury@gmail.com',
     password: '123456'
   )
-user4 = User.create(
+url = "https://avatars0.githubusercontent.com/u/40490965?v=4"
+arthur.remote_photo_url = url
+arthur.save
+
+
+# user4pic = Cloudinary::Uploader.upload("image/poutine117.jpg")
+matthieu = User.create(
     first_name: "Matthieu",
     last_name: "Rousseau",
     phone_number: Faker::PhoneNumber.cell_phone,
-    email: 'Matthieu.rousseau@gmail.com',
+    email: 'matt@gmail.com',
     password: '123456'
   )
-user5 = User.create(
+url = "https://avatars0.githubusercontent.com/u/16851063?v=4"
+matthieu.remote_photo_url = url
+matthieu.save
+
+# user5pic = Cloudinary::Uploader.upload("image/poutine117.jpg")
+jeremy = User.create(
     first_name: "Jeremy",
     last_name: "Obadia",
     phone_number: Faker::PhoneNumber.cell_phone,
     email: 'jobad@gmail.com',
     password: '123456'
   )
-user6 = User.create(
+url = "https://avatars2.githubusercontent.com/u/40352550?v=4"
+jeremy.remote_photo_url = url
+jeremy.save
+
+# user6pic = Cloudinary::Uploader.upload("image/matt.jpg")
+noemie = User.create(
     first_name: "Noémie",
     last_name: "Rauturier",
     phone_number: Faker::PhoneNumber.cell_phone,
     email: 'noemrtr@gmail.com',
-    password: '123456'
+    password: '123456',
+    photo: "38657615"
   )
+url = "https://avatars3.githubusercontent.com/u/37242839?v=4"
+noemie.remote_photo_url = url
+noemie.save
 
 
 puts 'Creating Events'
@@ -69,90 +100,90 @@ puts 'Creating Chatrooms'
 secu_chat = Chatroom.create(
     name: "security",
     instructions: "Event starts at 5pm, be there at 4. Wear black clothes.",
-    event_id: Event.find_by(name: 'Vivatech').id
+    event: event1
   )
 catering_chat = Chatroom.create(
     name: "catering",
     instructions: "Event starts at 5pm, food must be ready by 4.",
-    event_id: Event.find_by(name: 'Vivatech').id
-    )
+    event: event1
+  )
 
 
 puts 'Creating UserEvents'
 
 user_event1 = UserEvent.create(
-  user_id: User.find_by(first_name: 'Emilie').id,
-  event_id: Event.find_by(name: 'Vivatech').id
+  user: emilie,
+  event: event1
   )
 user_event2 = UserEvent.create(
-  user_id: User.find_by(first_name: 'Sami').id,
-  event_id: Event.find_by(name: 'Vivatech').id,
+  user: sami,
+  event: event1
   )
 user_event3 = UserEvent.create(
-  user_id: User.find_by(first_name: 'Arthur').id,
-  event_id: Event.find_by(name: 'Vivatech').id,
+  user: arthur,
+  event: event1
   )
 user_event4 = UserEvent.create(
-  user_id: User.find_by(first_name: 'Matthieu').id,
-  event_id: Event.find_by(name: 'Vivatech').id,
+  user: matthieu,
+  event: event1
   )
 user_event5 = UserEvent.create(
-  user_id: User.find_by(first_name: 'Jeremy').id,
-  event_id: Event.find_by(name: 'Vivatech').id,
+  user: jeremy,
+  event: event1
   )
 user_event6 = UserEvent.create(
-  user_id: User.find_by(first_name: 'Noémie').id,
-  event_id: Event.find_by(name: 'Vivatech').id,
+  user: noemie,
+  event: event1
   )
 
 puts 'Creating User Chatroom'
 
 user_chatroom1 = UserChatroom.create(
-  user_id: User.find_by(first_name: 'Emilie').id,
-  chatroom_id: Chatroom.find_by(name: 'security').id,
+  user: emilie,
+  chatroom: secu_chat
   )
 user_chatroom2 = UserChatroom.create(
-  user_id: User.find_by(first_name: 'Sami').id,
-  chatroom_id: Chatroom.find_by(name: 'security').id,
+  user: sami,
+  chatroom: secu_chat
   )
 user_chatroom3 = UserChatroom.create(
-  user_id: User.find_by(first_name: 'Arthur').id,
-  chatroom_id: Chatroom.find_by(name: 'catering').id,
+  user: arthur,
+  chatroom: catering_chat
   )
 user_chatroom4 = UserChatroom.create(
-  user_id: User.find_by(first_name: 'Matthieu').id,
-  chatroom_id: Chatroom.find_by(name: 'catering').id,
+  user: matthieu,
+  chatroom: catering_chat
   )
 user_chatroom5 = UserChatroom.create(
-  user_id: User.find_by(first_name: 'Jeremy').id,
-  chatroom_id: Chatroom.find_by(name: 'catering').id,
+  user: jeremy,
+  chatroom: catering_chat
   )
 user_chatroom6 = UserChatroom.create(
-  user_id: User.find_by(first_name: 'Noémie').id,
-  chatroom_id: Chatroom.find_by(name: 'security').id,
+  user: noemie,
+  chatroom: catering_chat
   )
 
 
 puts 'Creating Messages'
 
 message1 = Message.create(
-  user_id: User.find_by(first_name: 'Emilie').id,
-  chatroom_id: Chatroom.find_by(name: 'security').id,
+  user: emilie,
+  chatroom: secu_chat,
   content: Faker::Lorem.sentence,
   )
 message2 = Message.create(
-  user_id: User.find_by(first_name: 'Sami').id,
-  chatroom_id: Chatroom.find_by(name: 'security').id,
+  user: sami,
+  chatroom: secu_chat,
   content: Faker::Lorem.sentence,
   )
 message3 = Message.create(
-  user_id: User.find_by(first_name: 'Arthur').id,
-  chatroom_id: Chatroom.find_by(name: 'catering').id,
+  user: arthur,
+  chatroom: catering_chat,
   content: Faker::Lorem.sentence,
   )
 message4 = Message.create(
-  user_id: User.find_by(first_name: 'Matthieu').id,
-  chatroom_id: Chatroom.find_by(name: 'catering').id,
+  user: matthieu,
+  chatroom: catering_chat,
   content: Faker::Lorem.sentence,
   )
 
@@ -160,12 +191,14 @@ message4 = Message.create(
 puts 'Creating Alerts'
 
 alert1 = Alert.create(
-  chatroom_id: Chatroom.find_by(name: 'security').id,
-  user_id: User.find_by(first_name: 'Sami').id,
-  content: "fight at main entrance"
+  chatroom: secu_chat,
+  user: sami,
+  content: "fight at main entrance",
+  status: false
   )
 alert2 = Alert.create(
-  chatroom_id: Chatroom.find_by(name: 'catering').id,
-  user_id: User.find_by(first_name: 'Arthur').id,
-  content: "Guest arriving"
+  chatroom: catering_chat,
+  user: arthur,
+  content: "Guest arriving",
+  status: false
   )

@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.chatroom = @chatroom
+    @message.user = current_user
     if @message.save
       redirect_to chatroom_path(@chatroom)
     else
@@ -14,7 +15,7 @@ class MessagesController < ApplicationController
   private
 
   def set_chatroom
-    @chatroom = Chatroom.find(params[chatroom_id])
+    @chatroom = Chatroom.find(params[:chatroom_id])
   end
 
   def message_params
