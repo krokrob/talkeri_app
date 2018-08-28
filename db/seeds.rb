@@ -29,7 +29,8 @@ sami = User.create(
     first_name: "Sami",
     last_name: "Bekas",
     phone_number: Faker::PhoneNumber.cell_phone,
-    email: 'samibekas@'
+    email: 'samibekas@gmail.com',
+    password: '123456'
   )
 url = "https://avatars0.githubusercontent.com/u/28527656?v=4"
 sami.remote_photo_url = url
