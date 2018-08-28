@@ -1,0 +1,9 @@
+<h1 class="text-center">Edit event</h1>
+<div class="container">
+  <%= simple_form_for @event do |f| %>
+    <%= f.input :name %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.submit "Edit event", class: "btn" %>
+  <% end %>
+</div>

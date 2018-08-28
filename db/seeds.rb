@@ -82,27 +82,33 @@ puts 'Creating UserEvents'
 
 user_event1 = UserEvent.create(
   user_id: User.find_by(first_name: 'Emilie').id,
-  event_id: Event.find_by(name: 'Vivatech').id
+  event_id: Event.find_by(name: 'Vivatech').id,
+  responsability: 'team leader'
   )
 user_event2 = UserEvent.create(
   user_id: User.find_by(first_name: 'Sami').id,
   event_id: Event.find_by(name: 'Vivatech').id,
+  responsability: 'organizer'
   )
 user_event3 = UserEvent.create(
   user_id: User.find_by(first_name: 'Arthur').id,
   event_id: Event.find_by(name: 'Vivatech').id,
+  responsability: 'team leader'
   )
 user_event4 = UserEvent.create(
   user_id: User.find_by(first_name: 'Matthieu').id,
   event_id: Event.find_by(name: 'Vivatech').id,
+  responsability: 'staff'
   )
 user_event5 = UserEvent.create(
   user_id: User.find_by(first_name: 'Jeremy').id,
   event_id: Event.find_by(name: 'Vivatech').id,
+  responsability: 'staff'
   )
 user_event6 = UserEvent.create(
   user_id: User.find_by(first_name: 'Noémie').id,
   event_id: Event.find_by(name: 'Vivatech').id,
+  responsability: 'staff'
   )
 
 puts 'Creating User Chatroom'
@@ -130,6 +136,10 @@ user_chatroom5 = UserChatroom.create(
 user_chatroom6 = UserChatroom.create(
   user_id: User.find_by(first_name: 'Noémie').id,
   chatroom_id: Chatroom.find_by(name: 'security').id,
+  )
+user_chatroom7 = UserChatroom.create(
+  user_id: User.find_by(first_name: 'Sami').id,
+  chatroom_id: Chatroom.find_by(name: 'catering').id,
   )
 
 

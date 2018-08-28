@@ -1,0 +1,15 @@
+<h1><%= @event.name %></h1>
+
+<% @event.chatrooms.each do |chatroom| %>
+  <ul>
+    <li><%= chatroom.name %>
+      <% chatroom.users.each do |user|%>
+        <%= user.first_name %> <%=user.last_name %>
+      <% end %>
+    </li>
+  </ul>
+<% end %>
+
+<%= link_to "Add a new chatroom", new_chatroom_path %>
+<br>
+<%= link_to "Back to your events", events_path %>
