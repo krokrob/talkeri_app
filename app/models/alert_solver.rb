@@ -5,8 +5,8 @@ class AlertSolver < ApplicationRecord
 
   private
 
-  def update_alert_status(alert_solver)
-    alert_solver.alert.status = true
+  def update_alert_status
+    self.alert.update(status: true)
   end
 
 end
