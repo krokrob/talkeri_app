@@ -6,6 +6,10 @@
     margin-bottom: 11px;
 }
 
+.margin-bottom-22 {
+    margin-bottom: 22px;
+}
+
 .margin-bottom-largest {
     margin-bottom: 40px;
 }
@@ -22,16 +26,28 @@
     margin-top: 20px;
 }
 
+.margin-top-35 {
+    margin-top: 35px;
+}
+
 .margin-top-huge {
     margin-top: 50px;
 }
 
+.margin-right--12 {
+  margin-right: -12px;
+}
+
 .margin-right-small {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
 .margin-right-larger {
     margin-right: 24px;
+}
+
+.margin-right-huge {
+    margin-right: 50px;
 }
 
 .margin-left-small {
@@ -48,4 +64,12 @@
 
 .margin-none {
   margin: 0px;
+}
+
+.margin-large {
+  margin: 20px
+}
+
+.margin-auto {
+  margin: 8px auto;
 }
