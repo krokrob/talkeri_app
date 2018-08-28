@@ -1,4 +1,5 @@
 <div class="message <%= false ? "right" : "" %>">
-  <%= cl_image_tag message.user.photo, class: "avatar" %>
+  <div class="message-time"><%= message.created_at.strftime("%H:%M") %></div>
+  <%= cl_image_tag message.user.photo, class: "avatar-very-small" %>
   <div class="message-content"><%= message.content %></div>
 </div>
