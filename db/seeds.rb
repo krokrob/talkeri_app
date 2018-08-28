@@ -12,7 +12,7 @@ User.destroy_all
 
 puts 'Creating Users'
 
-emilie = User.create(
+emilie = User.create!(
     first_name: "Emilie",
     last_name: "Deschamps-Wright",
     phone_number: Faker::PhoneNumber.cell_phone,
@@ -25,7 +25,7 @@ emilie.save
 
 
 # user2pic = Cloudinary::Uploader.upload("image/dark-vador-250.jpg")
-sami = User.create(
+sami = User.create!(
     first_name: "Sami",
     last_name: "Bekas",
     phone_number: Faker::PhoneNumber.cell_phone,
@@ -38,7 +38,7 @@ sami.save
 
 
 # user3pic = Cloudinary::Uploader.upload("image/donald-trump-feature-0819181.jpg")
-arthur = User.create(
+arthur = User.create!(
     first_name: "Arthur",
     last_name: "Fleury",
     phone_number: Faker::PhoneNumber.cell_phone,
@@ -51,7 +51,7 @@ arthur.save
 
 
 # user4pic = Cloudinary::Uploader.upload("image/poutine117.jpg")
-matthieu = User.create(
+matthieu = User.create!(
     first_name: "Matthieu",
     last_name: "Rousseau",
     phone_number: Faker::PhoneNumber.cell_phone,
@@ -63,7 +63,7 @@ matthieu.remote_photo_url = url
 matthieu.save
 
 # user5pic = Cloudinary::Uploader.upload("image/poutine117.jpg")
-jeremy = User.create(
+jeremy = User.create!(
     first_name: "Jeremy",
     last_name: "Obadia",
     phone_number: Faker::PhoneNumber.cell_phone,
@@ -75,7 +75,7 @@ jeremy.remote_photo_url = url
 jeremy.save
 
 # user6pic = Cloudinary::Uploader.upload("image/matt.jpg")
-noemie = User.create(
+noemie = User.create!(
     first_name: "Noémie",
     last_name: "Rauturier",
     phone_number: Faker::PhoneNumber.cell_phone,
@@ -90,20 +90,21 @@ noemie.save
 
 puts 'Creating Events'
 
-event1 = Event.create(
+event1 = Event.create!(
   name: "Vivatech",
   start_date: "2018-09-25",
-  end_date: "2018-09-28"
+  end_date: "2018-09-28",
+  user: emilie
 )
 
 puts 'Creating Chatrooms'
 
-secu_chat = Chatroom.create(
+secu_chat = Chatroom.create!(
     name: "security",
     instructions: "Event starts at 5pm, be there at 4. Wear black clothes.",
     event: event1
   )
-catering_chat = Chatroom.create(
+catering_chat = Chatroom.create!(
     name: "catering",
     instructions: "Event starts at 5pm, food must be ready by 4.",
     event: event1
@@ -112,77 +113,81 @@ catering_chat = Chatroom.create(
 
 puts 'Creating UserEvents'
 
-user_event1 = UserEvent.create(
+user_event1 = UserEvent.create!(
   user: emilie,
   event: event1
   )
-user_event2 = UserEvent.create(
+user_event2 = UserEvent.create!(
   user: sami,
   event: event1
   )
-user_event3 = UserEvent.create(
+user_event3 = UserEvent.create!(
   user: arthur,
   event: event1
   )
-user_event4 = UserEvent.create(
+user_event4 = UserEvent.create!(
   user: matthieu,
   event: event1
   )
-user_event5 = UserEvent.create(
+user_event5 = UserEvent.create!(
   user: jeremy,
   event: event1
   )
-user_event6 = UserEvent.create(
+user_event6 = UserEvent.create!(
   user: noemie,
   event: event1
   )
 
 puts 'Creating User Chatroom'
 
-user_chatroom1 = UserChatroom.create(
+user_chatroom1 = UserChatroom.create!(
   user: emilie,
   chatroom: secu_chat
   )
-user_chatroom2 = UserChatroom.create(
+user_chatroom2 = UserChatroom.create!(
   user: sami,
   chatroom: secu_chat
   )
-user_chatroom3 = UserChatroom.create(
+user_chatroom3 = UserChatroom.create!(
   user: arthur,
   chatroom: catering_chat
   )
-user_chatroom4 = UserChatroom.create(
+user_chatroom4 = UserChatroom.create!(
   user: matthieu,
   chatroom: catering_chat
   )
-user_chatroom5 = UserChatroom.create(
+user_chatroom5 = UserChatroom.create!(
   user: jeremy,
   chatroom: catering_chat
   )
-user_chatroom6 = UserChatroom.create(
+user_chatroom6 = UserChatroom.create!(
   user: noemie,
   chatroom: catering_chat
+  )
+user_chatroom7 = UserChatroom.create!(
+  user_id: User.find_by(first_name: 'Sami').id,
+  chatroom_id: Chatroom.find_by(name: 'catering').id,
   )
 
 
 puts 'Creating Messages'
 
-message1 = Message.create(
+message1 = Message.create!(
   user: emilie,
   chatroom: secu_chat,
   content: Faker::Lorem.sentence,
   )
-message2 = Message.create(
+message2 = Message.create!(
   user: sami,
   chatroom: secu_chat,
   content: Faker::Lorem.sentence,
   )
-message3 = Message.create(
+message3 = Message.create!(
   user: arthur,
   chatroom: catering_chat,
   content: Faker::Lorem.sentence,
   )
-message4 = Message.create(
+message4 = Message.create!(
   user: matthieu,
   chatroom: catering_chat,
   content: Faker::Lorem.sentence,
@@ -191,13 +196,13 @@ message4 = Message.create(
 
 puts 'Creating Alerts'
 
-alert1 = Alert.create(
+alert1 = Alert.create!(
   chatroom: secu_chat,
   user: sami,
   content: "fight at main entrance",
   status: false
   )
-alert2 = Alert.create(
+alert2 = Alert.create!(
   chatroom: catering_chat,
   user: arthur,
   content: "Guest arriving",

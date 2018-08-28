@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :chatrooms, only: [:show, :create] do
+
+  resources :events do
+    resources :chatrooms, only: [:create, :new]
+  end
+  resources :chatrooms, only: [:show] do
     resources :messages, only: [:create]
     resources :alerts, only: [:create]
   end

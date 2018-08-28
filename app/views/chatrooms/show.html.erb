@@ -8,7 +8,7 @@
         </h4>
       </div>
 
-  <%= link_to  "Mark as done",  alert_alert_solvers_path(@active_alert), method: :post %>
+  <%#= link_to  "Mark as done",  alert_alert_solvers_path(@active_alert), method: :post %>
 
 <%= render 'alerts/form', chatroom: @chatroom, alert: @alert %>
 
@@ -19,7 +19,7 @@
       </div>
 
       <div class="chat-alert">
-        <p><%= @active_alert.content %> / Solved <%= @active_alert.status %></p>
+        <p><%#= @active_alert.content %> / Solved <%#= @active_alert.status %></p>
       </div>
 
       <div class="messages">
@@ -34,7 +34,7 @@
 
       <div id="chatroom-users">
         <% @chatroom.users.select { |u| u != current_user }.each do |user| %>
-          <%= link_to chatrooms_path(user_id: user.id, event_id: @chatroom.event.id, main_chatroom_id: @chatroom.id), method: :post do %>
+          <%= link_to event_chatrooms_path(@chatroom.event, user_id: user.id, main_chatroom_id: @chatroom.id), method: :post do %>
             <%= cl_image_tag user.photo, class: "avatar-normal" %>
           <% end %>
         <% end %>
@@ -45,19 +45,6 @@
 
 </div>
 
-
-<%=  %>
-
-<br>
-<br>
-<br>
-
-<ul>
-  <% @current_user_chatrooms.each do |chatroom| %>
-    <li><%= chatroom.name %></li>
-  <% end %>
-</ul>
-
-
-
-
+<% @current_user_chatrooms.each do |user| %>
+  <%= user.name %>
+<% end %>
