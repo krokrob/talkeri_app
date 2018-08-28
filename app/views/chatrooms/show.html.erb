@@ -76,7 +76,7 @@
           <h4 class="modal-title font-size-normal text-center grey-dark" id="myModalLabel">
             Don’t forget, an alert can be <br>
           set only ones until it is solved!
-        </h4>
+          </h4>
         </div>
         <div class="modal-body">
           <div class="form-group margin-top-small">
@@ -160,11 +160,14 @@
               <%= cl_image_tag user.photo, class: "avatar-normal" %>
               <p class="font-size-small grey-dark"><%= user.first_name %></p>
             </div>
-        <% end %>
+          <% end %>
+      <% end %>
     </div>
 </div>
+
 
   <div id="create-message">
     <%= render 'messages/form', message: @message, chatroom: @chatroom %>
   </div>
+
 

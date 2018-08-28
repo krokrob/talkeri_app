@@ -1,8 +1,10 @@
 class AlertSolversController < ApplicationController
+  include Pundit
 
   def create
     @alert = Alert.find(params[:alert_id])
     @alert_solver = AlertSolver.new
+    authorize @alert_solver
     @alert_solver.alert = @alert
     @alert_solver.user = current_user
     if @alert_solver.save
