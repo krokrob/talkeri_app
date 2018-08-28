@@ -14,20 +14,39 @@ class ChatroomsController < ApplicationController
     @active_alert = @chatroom.alerts.find_by(status: false)
   end
 
+  def create
+    if params[:chatroom].present?
+      @chatroom = Chatroom.new(chatroom_params)
+      @chatroom.event = @event
+      authorize @chatroom
+      if @chatroom.save
+        @chatroom.users << current_user
+        redirect_to event_path(@event) and return
+      else
+        return render :new
+      end
+    end
+
+    @user = User.find(params[:user_id])
+    @chatroom = current_user.chatrooms.where(event: @event, name: nil, id: @user.chatrooms.pluck(:id)).first
+    if @chatroom.nil?
+      @chatroom = Chatroom.new
+      @chatroom.event = @event
+      authorize @chatroom
+      if @chatroom.save
+        @user_chatroom1 = UserChatroom.create(user: @user, chatroom: @chatroom)
+        @user_chatroom1 = UserChatroom.create(user: current_user, chatroom: @chatroom)
+      else
+        redirect_to chatroom_path(params[:main_chatroom_id]) and return
+      end
+    end
+    authorize @chatroom
+    redirect_to chatroom_path(@chatroom)
+  end
+
   def new
     @chatroom = Chatroom.new
     authorize @chatroom
-  end
-
-  def create
-    @chatroom = Chatroom.new(chatroom_params)
-    @chatroom.event = @event
-    authorize @chatroom
-    if @chatroom.save
-      redirect_to event_path(@event)
-    else
-      render :new
-    end
   end
 
   private

@@ -4,16 +4,18 @@
   <ul>
     <li> <h4><%= chatroom.name.capitalize %></h4>
       <h5 style="font-weight: bold">Team Leaders</h5>
+      <!-- TODO  move this to eventscontroller-->
       <% team_leaders = chatroom.users.map do |user|%>
-        <% user if UserEvent.find_by(user: user, event: chatroom.event).responsability == "team leader" %>
+        <% user if UserEvent.find_by(user: user, event: chatroom.event)&.responsability == "team leader" %>
       <% end %>
       <% team_leaders.compact.each do |staff| %>
         <div><%= staff.full_name %></div>
       <% end %>
       <br>
       <h5 style="font-weight: bold">Staff</h5>
+      <!-- TODO  move this to eventscontroller-->
       <% staff = chatroom.users.map do |user|%>
-        <% user if UserEvent.find_by(user: user, event: chatroom.event).responsability == "staff" %>
+        <% user if UserEvent.find_by(user: user, event: chatroom.event)&.responsability == "staff" %>
       <% end %>
       <% staff.compact.each do |staff| %>
         <div><%= staff.full_name %></div>
