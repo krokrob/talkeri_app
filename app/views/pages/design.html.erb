@@ -1,9 +1,15 @@
-<div class="flexbox flexbox-column flexbox-space-between" style="height: 3000px; max-width: 375px;">
+<div class="flexbox flexbox-column flexbox-space-between flexbox-align-center" style="height: 4000px; max-width: 375px;">
 
   <%= cl_image_tag current_user.photo, class: "avatar-very-small" %>
   <%= cl_image_tag current_user.photo, class: "avatar-small" %>
   <%= cl_image_tag current_user.photo, class: "avatar-normal" %>
-  <%= cl_image_tag current_user.photo, class: "avatar-normal-clicked" %>
+
+
+  <!-- Avatar channel clicked -->
+
+  <div class="button-channel-active flexbox flexbox-align-center flexbox-justify-center">
+    <%= cl_image_tag current_user.photo, class: "avatar-normal-clicked" %>
+  </div>
 
   <!-- Avatar notification -->
 
@@ -18,7 +24,7 @@
 
   <!-- Avatar with name under -->
 
-  <div class="flexbox flexbox-column flexbox-align-center" style="width: 70px; height: 88px;">
+  <div class="flexbox flexbox-column flexbox-align-center" style="width: 70px; height: 88px; margin-right: 5px;">
     <%= cl_image_tag current_user.photo, class: "avatar-normal" %>
     <p class="font-size-small grey-dark">Marc</p>
   </div>
@@ -27,7 +33,7 @@
 
   <div class="position-relative" style="width: 146px; height: 146px;">
     <div class="speaking position-absolute"></div>
-    <%= cl_image_tag current_user.photo, class: "avatar-big position-absolute z-index-1" %>
+    <%= cl_image_tag current_user.photo_url(:thumnail), class: "avatar-big position-absolute z-index-1" %>
   </div>
 
   <!-- User Avatar speaking with name -->
@@ -35,7 +41,7 @@
   <div class="text-center" style="width: 146px; height: 146px;">
     <div class="position-relative" style="width: 146px; height: 146px;">
       <div class="speaking position-absolute"></div>
-      <%= cl_image_tag current_user.photo, class: "avatar-big position-absolute z-index-1" %>
+      <%= cl_image_tag current_user.photo_url(:thumnail), class: "avatar-big position-absolute z-index-1" %>
     </div>
     <p class="title-small grey-dark margin-top-small">Marc D.</p>
   </div>
@@ -113,25 +119,79 @@
 
   <!-- Create new alert button -->
 
-  <div class="button-new-alert flexbox flexbox-space-around">
+  <div class="button-new-alert flexbox flexbox-space-around" data-toggle="modal" data-target="#myModal">
     <div class="flexbox flexbox-align-center">
       <%= image_tag 'plus-icon.png', width: 14, height: 14, class:'margin-right-small' %>
       <p style="color: #9F9F9F;" class="font-size-normal margin-none">Create new alert</p>
     </div>
   </div>
 
+  <!-- Modal Create new alert button-->
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog center-screen text-center" role="document">
+      <div class="modal-content modal-alert">
+        <div class="modal-header modal-alert-header text-center">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= image_tag 'alert-smiley.png', width: 77, height: 80, class: "margin-bottom-22 margin-top-35 margin-right--12" %>
+          <h4 class="modal-title font-size-normal text-center grey-dark" id="myModalLabel">
+            Don’t forget, an alert can be <br>
+          set only ones until it is solved!
+        </h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group margin-top-small">
+              <label for="exampleInputEmail1">
+                <p class="font-size-normal grey-dark margin-none font-weight-regular ">
+                  Description
+                  <span class="font-size-normal font-weight-light grey-light">(should be concise)</span>
+                </p>
+              </label>
+              <input type="email" class="form-control input-alert-round margin-none" id="exampleInputEmail1">
+            </div>
+            <button type="submit" class="button-pink white font-size-regular font-weight-regular button-border-none padding-height-small padding-sides-huge margin-top-small">Set Alert</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Alert card non solved -->
 
-  <div class="alert-card position-relative">
+  <div class="alert-card position-relative" data-toggle="modal" data-target="#myModal2">
     <div class="position-absolute alert-creator">
       <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute" %>
       <%= image_tag 'alert-icon.png', width: 17, height: 15.89, class: "position-absolute icon-alert" %>
     </div>
     <div class="position-absolute text-center alert-paragraph">
-      <p class="white font-size-normal font-weight-light">Please somebody go get <br> Mark Zukerberg at the parking ⚠️</p>
+      <p class="white font-size-normal font-weight-light margin-none">Please somebody go get <br> Mark Zukerberg at the parking ⚠️</p>
     </div>
     <div class="position-absolute alert-time">
       <p class="white font-size-small font-weight-light">1 min ago</p>
+    </div>
+  </div>
+
+  <!-- Modal Mark alert as solved-->
+
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog center-screen text-center" role="document">
+      <div class="modal-content modal-alert-success flexbox flexbox-column flexbox-align-center flexbox-justify-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="modal-header modal-alert-header text-center">
+          <h4 class="modal-title font-size-normal text-center grey-dark margin-top-large margin-bottom-normal" id="myModalLabel">
+            Confirm alert was solved
+        </h4>
+        </div>
+        <div class="modal-footer button-border-none">
+          <button type="button" class="btn button-green padding-height-small padding-sides-huge white">Yes</button>
+          <button type="button" class="btn button-red-light padding-height-small padding-sides-huge white" data-dismiss="modal">No</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -144,11 +204,33 @@
       <%= image_tag 'solved-icon.png', width: 17, height: 11.77, class: "position-absolute icon-solved" %>
     </div>
     <div class="position-absolute text-center alert-paragraph">
-      <p class="white font-size-normal font-weight-light">Please somebody go get <br> Mark Zukerberg at the parking ⚠️</p>
+      <p class="white font-size-normal font-weight-light margin-none">Please somebody go get <br> Mark Zukerberg at the parking ⚠️</p>
     </div>
     <div class="position-absolute alert-time">
       <p class="white font-size-small font-weight-light">1 min ago</p>
     </div>
   </div>
+
+  <!-- Button Channel non clicked -->
+
+  <div class="flexbox flexbox-column flexbox-align-center" style="width: 70px; height: 90px;">
+    <div class="button-channel position-relative">
+      <p class="white position-absolute font-size-large font-weight-light channel-letter">S</p>
+    </div>
+     <p class="font-size-small grey-dark">Channel</p>
+   </div>
+
+   <!-- Button Channel clicked -->
+
+  <div class="flexbox flexbox-column flexbox-align-center" style="width: 70px; height: 90px;">
+    <div class="button-channel-active flexbox flexbox-align-center flexbox-justify-center">
+      <div class="button-channel-clicked position-relative">
+        <p class="white position-absolute font-size-large font-weight-light channel-letter">S</p>
+      </div>
+    </div>
+     <p class="font-size-small grey-dark">Channel</p>
+   </div>
+
+
 </div>
 

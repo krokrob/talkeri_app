@@ -10,7 +10,8 @@ class ChatroomsController < ApplicationController
     @messages = @chatroom.messages
     @current_user_chatrooms = current_user.chatrooms
     @alert = Alert.new
-    @active_alert = @chatroom.alerts.where(status: false)
+    @alert_solver = AlertSolver.new
+    @active_alert = @chatroom.alerts.find_by(status: false)
   end
 
   def new
@@ -38,5 +39,4 @@ class ChatroomsController < ApplicationController
   def set_event
     @event = Event.find(params[:event_id])
   end
-
 end

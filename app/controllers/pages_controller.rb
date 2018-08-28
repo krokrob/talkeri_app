@@ -6,4 +6,7 @@ class PagesController < ApplicationController
 
   def design
   end
+
+  def designshow
+  end
 end
