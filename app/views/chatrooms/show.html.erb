@@ -45,19 +45,6 @@
 
 </div>
 
-
-<%=  %>
-
-<br>
-<br>
-<br>
-
-<ul>
-  <% @current_user_chatrooms.each do |chatroom| %>
-    <li><%= chatroom.name %></li>
-  <% end %>
-</ul>
-
-
-
-
+<% @current_user_chatrooms.each do |user| %>
+  <%= user.name %>
+<% end %>
