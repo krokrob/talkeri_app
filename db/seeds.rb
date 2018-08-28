@@ -17,42 +17,48 @@ user1 = User.create(
     last_name: "Deschamps-Wright",
     phone_number: Faker::PhoneNumber.cell_phone,
     email: 'e.wright@hotmail.fr',
-    password: '123456'
+    password: '123456',
+    photo: 'image/upload/v1535389744/aowv0vfryc5i5z6g3owc.jpg'
   )
 user2 = User.create(
     first_name: "Sami",
     last_name: "Bekas",
     phone_number: Faker::PhoneNumber.cell_phone,
     email: 'samibekas@gmail.com',
-    password: '123456'
+    password: '123456',
+    photo: 'image/upload/v1535389744/aowv0vfryc5i5z6g3owc.jpg'
   )
 user3 = User.create(
     first_name: "Arthur",
     last_name: "Fleury",
     phone_number: Faker::PhoneNumber.cell_phone,
     email: 'arth.fleury@gmail.com',
-    password: '123456'
+    password: '123456',
+    photo: 'image/upload/v1535389744/aowv0vfryc5i5z6g3owc.jpg'
   )
 user4 = User.create(
     first_name: "Matthieu",
     last_name: "Rousseau",
     phone_number: Faker::PhoneNumber.cell_phone,
     email: 'Matthieu.rousseau@gmail.com',
-    password: '123456'
+    password: '123456',
+    photo: 'image/upload/v1535389744/aowv0vfryc5i5z6g3owc.jpg'
   )
 user5 = User.create(
     first_name: "Jeremy",
     last_name: "Obadia",
     phone_number: Faker::PhoneNumber.cell_phone,
     email: 'jobad@gmail.com',
-    password: '123456'
+    password: '123456',
+    photo: 'image/upload/v1535389744/aowv0vfryc5i5z6g3owc.jpg'
   )
 user6 = User.create(
     first_name: "Noémie",
     last_name: "Rauturier",
     phone_number: Faker::PhoneNumber.cell_phone,
     email: 'noemrtr@gmail.com',
-    password: '123456'
+    password: '123456',
+    photo: 'image/upload/v1535389744/aowv0vfryc5i5z6g3owc.jpg'
   )
 
 

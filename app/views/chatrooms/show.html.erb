@@ -5,16 +5,21 @@
 <ul>
   <% @messages.each do |message| %>
     <li>
-      Username: <%= message.user.first_name %> |
-      <%= message.content %>
+      Username: <%= message.user.first_name %>
+      <%= render 'messages/message', message: message %>
     </li>
   <% end %>
 </ul>
 
 <br>
+<%= render 'messages/form', chatroom: @chatroom, message: @message %>
 <br>
 <br>
 
-<%= @current_user_chatrooms.each do |user| %>
+<% @current_user_chatrooms.each do |user| %>
   <%= user.name %>
 <% end %>
+
+
+
+
