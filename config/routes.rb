@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :chatrooms do
     resources :messages
+    resources :alerts
   end
   get '/design', to: 'pages#design'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,6 +1,10 @@
 <h3><%= @chatroom.name %></h3>
 
-<p><%= @active_alert.first.content %> / Solved <%= @active_alert.first.status %></p>
+<p><%=@active_alert.first.content %> / Solved <%= @active_alert.first.status %></p>
+
+
+<%= render 'alerts/form', chatroom: @chatroom, alert: @alert %>
+
 
 <ul>
   <% @messages.each do |message| %>
