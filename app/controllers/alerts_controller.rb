@@ -1,10 +1,6 @@
 class AlertsController < ApplicationController
     before_action :set_chatroom
 
-  def new
-    @alert = Alert.new
-  end
-
   def create
   @alert = Alert.new(alert_params)
   @alert.chatroom = @chatroom
@@ -14,10 +10,6 @@ class AlertsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def update
-    update_alert_status
   end
 
   private

@@ -1,7 +1,7 @@
 <h3><%= @chatroom.name %></h3>
 
-<p><%=@active_alert.first.content %> / Solved <%= @active_alert.first.status %></p>
-
+<p><%=@active_alert.content %> / Solved <%= @active_alert.status %></p>
+  <%= link_to  "Mark as done",  alert_alert_solvers_path(@active_alert), method: :post %>
 
 <%= render 'alerts/form', chatroom: @chatroom, alert: @alert %>
 
