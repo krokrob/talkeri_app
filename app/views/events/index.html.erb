@@ -1,14 +1,36 @@
-<h1>My Events</h1>
+<div class="container">
+  <h1>My Events</h1>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Create an event
+  </button>
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <%= render 'events/new' %>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <% @events.each do |event| %>
+    <div class="col-xs-4">
+      <div class="card", style="background-color: #F2F2F2">
+        <div class="card-description">
+          <h4 style="font-weight: bold"><%= event.name %></h4>
+          <p>Start date: <%= event.start_date %></p>
+          <p>End date: <%= event.end_date %></p>
+          <p>Main organizers <%= cl_image_tag event.user.photo, class: "avatar-very-small position-absolute"%></p>
+          <p><%= event.user_events.where(responsability: "Team leader").count
+ %> team leaders - <%= event.user_events.where(responsability: "Staff").count
+ %> staff members</p>
+          <p><%= link_to "View details", event_path(event) %></p>
+          <p><%= link_to "Edit event", edit_event_path(event) %></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+</div>
 
-<% @events.each do |event| %>
-<ul>
-  <li><%= event.name %>
-  <h6>Start date: <%= event.start_date %></h6>
-  <h6>End date: <%= event.end_date %></h6>
-  <h6><%= link_to "View details", event_path(event) %></h6>
-  <h6><%= link_to "Edit event", edit_event_path(event) %></h6>
-  </li>
-</ul>
-<% end %>
-
-<h5><%= link_to "Create a new event", new_event_path %></h5>
