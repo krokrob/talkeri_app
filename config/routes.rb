@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :events do
+    resources :user_events, only: :create
     resources :chatrooms, only: [:create, :new]
+    resources :user_chatrooms, only: :create
   end
   resources :chatrooms, only: [:show] do
     resources :messages, only: [:create]

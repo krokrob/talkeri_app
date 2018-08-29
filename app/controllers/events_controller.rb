@@ -10,6 +10,10 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     authorize @event
+    @userevent = UserEvent.new
+    @userchatroom = UserChatroom.new
+    @users = User.all - @event.users
+    @chatroomusers = @event.users
   end
 
   def new
@@ -22,6 +26,7 @@ class EventsController < ApplicationController
     @event.user = current_user
     authorize @event
     if @event.save
+      UserEvent.create(user: current_user, event: @event, responsability: "Organizer")
       redirect_to event_path(@event)
     else
       render :new
