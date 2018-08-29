@@ -1,8 +1,10 @@
 class MessagesController < ApplicationController
   before_action :set_chatroom
+  include Pundit
 
   def create
     @message = Message.new(message_params)
+    authorize @message
     @message.chatroom = @chatroom
     @message.user = current_user
     if @message.save
