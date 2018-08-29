@@ -1,4 +1,5 @@
 import "bootstrap";
+
 import { audioPlayer } from '../components/audioplayer';
 audioPlayer();
 
@@ -10,3 +11,7 @@ toggleFooter();
 
 import { scrollMessages } from '../components/messagescrolldown';
 scrollMessages();
+
+import {hideSidebar} from 'components/sidebar';
+hideSidebar();
+
