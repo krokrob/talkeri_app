@@ -6,3 +6,15 @@
   position: fixed;
   bottom: 0;
 }
+
+#chat.item-selected, #talkie.item-selected {
+  display: block;
+}
+
+#chat {
+  display: none;
+}
+
+#talkie {
+  display: none;
+}
