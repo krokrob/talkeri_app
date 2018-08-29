@@ -7,7 +7,7 @@ class UserChatroomsController < ApplicationController
       if @userchatroom.save
         redirect_to event_path(@event)
       else
-      render 'events/show'
+        render 'events/show'
       end
   end
 
