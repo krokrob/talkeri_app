@@ -3,6 +3,7 @@ require 'faker'
 
 UserChatroom.destroy_all
 UserEvent.destroy_all
+AlertSolver.destroy_all
 Alert.destroy_all
 Message.destroy_all
 Chatroom.destroy_all
