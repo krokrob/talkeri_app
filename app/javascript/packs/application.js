@@ -20,3 +20,6 @@ audioMicRecorder();
 
 import { sendText } from '../components/sendbtn';
 sendText();
+
+import { photoBtn } from '../components/photobtn';
+photoBtn();
