@@ -9,7 +9,7 @@ function audioMicRecorder(){
         audioBitsPerSecond : 128000
       }
       const mediaRecorder = new MediaRecorder(stream, options);
-      const recbutton = document.getElementById('open-talkie');
+      const recbutton = document.getElementById('talkie-btn');
       // console.log(mediaRecorder.mimeType)
       // const stop = document.getElementById('talkie-btn');
       if (recbutton) {
@@ -17,7 +17,7 @@ function audioMicRecorder(){
           if (event.currentTarget.classList.contains('record')) {
             mediaRecorder.stop();
             event.currentTarget.classList.remove('record');
-          } else {
+          } else if (event.currentTarget.classList.contains('button-purple-round')){
             mediaRecorder.start();
             event.currentTarget.classList.add('record');
           }
@@ -43,11 +43,5 @@ function audioMicRecorder(){
       console.log(error);
     });
   }
-
-
-
-
-
-
 
 export { audioMicRecorder }
