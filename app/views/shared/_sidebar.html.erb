@@ -1,4 +1,4 @@
-<% if user_signed_in? %>
+<!-- <%# if user_signed_in? %>
   <div class="sidebar-collapse" id="sidebar">
   <div class="container">
     <div class="row">
@@ -7,9 +7,9 @@
       </div>
       <br>
       <div class="col-xs-3" >
-        <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute"%>
+        <%#= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute"%>
         <div class="text-center">
-          <%= current_user.full_name %>
+          <%#= current_user.full_name %>
         </div>
       </div>
   </div>
@@ -23,13 +23,14 @@
 
       <h3>CHANNELS</h3>
       <div class="container">
-          <% @channels = current_user.chatrooms.where(event_id: 1) %>
-          <%@channels.each do |channel| %>
+          <%# @channels = current_user.chatrooms.where(event_id: 1) %>
+          <%#@channels.each do |channel| %>
           <p class="font-size-regular font-weight-medium grey link-text-decoration-none"><#%= link_to "#{channel.name}", chatroom_path(channel) %><p>
-          <% end %>
+          <%# end %>
       </div>
 
       <h3>DIRECT CHANNELS</h3>
       </div>
   </div>
-<% end %>
+<%# end %>
+ -->
