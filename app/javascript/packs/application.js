@@ -1,5 +1,5 @@
 import "bootstrap";
-
+window.scrollTo(0,1);
 import { audioPlayer } from '../components/audioplayer';
 audioPlayer();
 
@@ -12,8 +12,8 @@ toggleFooter();
 import { scrollMessages } from '../components/messagescrolldown';
 scrollMessages();
 
-// import {hideSidebar} from 'components/sidebar';
-// hideSidebar();
+import {hideSidebar} from '../components/sidebar';
+hideSidebar();
 
 import { audioMicRecorder } from 'components/recorder';
 audioMicRecorder();

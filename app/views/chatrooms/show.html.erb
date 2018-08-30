@@ -41,7 +41,7 @@
 <div id="wrapper-grey-light">
   <!-- Instruction Card -->
 
-  <div class="dropdown flexbox flexbox-align-center flexbox-justify-center margin-top-small position-fixed z-index-1" style="width:100%; top: 69px;">
+  <div class="dropdown flexbox flexbox-align-center flexbox-justify-center margin-top-small">
     <button class="btn btn-default dropdown-toggle instruction-card" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       Instructions of the day
       <span class="caret"></span>
@@ -90,7 +90,7 @@
     </div>
   <% end %>
 
-  <div class="messages-current-channel container margin-top-small" style="height: calc(100vh - 114px - 140px); overflow-x: hidden; overflow-y: scroll; ">
+  <div class="messages-current-channel container margin-top-small" style="height: calc(100vh - 72px - 44px - 130px);overflow: scroll;padding-bottom: 40px;">
     <div class="messages">
       <% @messages.each do |message| %>
         <%= render 'messages/message', message: message %>
