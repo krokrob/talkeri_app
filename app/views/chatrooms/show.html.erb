@@ -124,16 +124,16 @@
 
         <!-- Button Voice Note not active -->
         <button class="padding-none margin-none" id="open-talkie" style=" margin: 0px -47px;">
-          <div class="position-relative" style="width: 83px; height: 83px">
-            <div class="button-purple-round position-absolute"></div>
+          <div class="position-relative" id="talkie-btn" style="width: 83px; height: 83px">
+            <div class="position-absolute"></div>
             <%= image_tag 'voice-note.png', width: 21, height: 28.5, class: 'position-absolute icon-voice-center' %>
           </div>
         </button>
 
         <!-- Button Chat non clicked -->
         <button class="padding-none margin-none" id="open-chat">
-          <div class="position-relative" style="width: 40px; height: 40px;">
-            <div class="button-purple-round-small position-absolute"></div>
+          <div class="position-relative" style="width: 40px; height: 40px;" id="chat-btn">
+            <div class="position-absolute"></div>
             <%= image_tag 'chat.png', width: 17.46, height: 15, class: 'position-absolute icon-chat-small-center' %>
           </div>
         </button>
