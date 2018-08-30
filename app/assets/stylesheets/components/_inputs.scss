@@ -10,4 +10,11 @@
 .message-input {
   border: none;
   box-shadow: none;
+  outline: none !important;
+}
+
+.form-control:focus {
+    border-color: none;
+    outline: 0;
+    box-shadow: none !important;
 }

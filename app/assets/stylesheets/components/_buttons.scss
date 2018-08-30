@@ -54,6 +54,13 @@
   border-radius: 50%;
 }
 
+.button-purple-dark-round-small {
+  width: 40px;
+  height: 40px;
+  background: #724CF9;
+  border-radius: 50%;
+}
+
 .button-icon-active {
   width: 105px;
   height: 105px;
@@ -129,4 +136,10 @@
   border-radius: 50%;
   opacity: 0.16;
   background: #724CF9;
+}
+
+#submit-text {
+  position: absolute;
+  right: 25px;
+  bottom: 41px;
 }
