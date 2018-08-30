@@ -12,8 +12,8 @@ toggleFooter();
 import { scrollMessages } from '../components/messagescrolldown';
 scrollMessages();
 
-// import {hideSidebar} from 'components/sidebar';
-// hideSidebar();
+import {hideSidebar} from '../components/sidebar';
+hideSidebar();
 
 import { audioMicRecorder } from 'components/recorder';
 audioMicRecorder();
