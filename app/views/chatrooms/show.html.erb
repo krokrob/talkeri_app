@@ -1,8 +1,39 @@
 <div class="navbar-mobile-talkie-mode position-relative">
   <%= image_tag 'talkeri-icon.png', width: 30, height: 35, class:"margin-large position-absolute", id:"logo" %>
   <p class="font-size-regular font-weight-medium position-absolute channel-title-position ">#<%= @chatroom.name %></p>
+  <div class="margin-large position-absolute create-alert-icon" data-toggle="modal" data-target="#myModal">
+    <%= image_tag 'create-alert-icon.png',  width: 25, height: 28 %>
+  </div>
 </div>
 
+<!-- Modal Create new alert button-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog center-screen text-center" role="document">
+    <div class="modal-content modal-alert">
+      <div class="modal-header modal-alert-header text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%= image_tag 'alert-smiley.png', width: 77, height: 80, class: "margin-bottom-22 margin-top-35 margin-right--12" %>
+        <h4 class="modal-title font-size-normal text-center grey-dark" id="myModalLabel">
+          Don’t forget, an alert can be <br>
+        set only ones until it is solved!
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group margin-top-small">
+          <label for="exampleInputEmail1">
+            <p class="font-size-normal grey-dark margin-none font-weight-regular ">
+              Description
+              <span class="font-size-normal font-weight-light grey-light">(should be concise)</span>
+            </p>
+          </label>
+          <%= render 'alerts/form', chatroom: @chatroom, alert: @alert %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div id="wrapper-grey-light">
   <!-- Instruction Card -->
@@ -55,48 +86,9 @@
         </div>
       </div>
     </div>
-
-  <% else %>
-    <!-- Create new alert button -->
-    <div class="button-new-alert flexbox flexbox-align-center flexbox-justify-center margin-auto" data-toggle="modal" data-target="#myModal">
-      <div class="flexbox flexbox-align-center">
-        <%= image_tag 'plus-icon.png', width: 14, height: 14, class:'margin-right-small' %>
-        <p style="color: #9F9F9F;" class="font-size-normal margin-none">Create new alert</p>
-      </div>
-    </div>
   <% end %>
 
-  <!-- Modal Create new alert button-->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog center-screen text-center" role="document">
-      <div class="modal-content modal-alert">
-        <div class="modal-header modal-alert-header text-center">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <%= image_tag 'alert-smiley.png', width: 77, height: 80, class: "margin-bottom-22 margin-top-35 margin-right--12" %>
-          <h4 class="modal-title font-size-normal text-center grey-dark" id="myModalLabel">
-            Don’t forget, an alert can be <br>
-          set only ones until it is solved!
-          </h4>
-        </div>
-        <div class="modal-body">
-          <div class="form-group margin-top-small">
-            <label for="exampleInputEmail1">
-              <p class="font-size-normal grey-dark margin-none font-weight-regular ">
-                Description
-                <span class="font-size-normal font-weight-light grey-light">(should be concise)</span>
-              </p>
-            </label>
-            <%= render 'alerts/form', chatroom: @chatroom, alert: @alert %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="messages-current-channel container margin-top-small" style="height: calc(100vh - 150px - 227px); overflow-x: hidden; overflow-y: scroll; ">
+  <div class="messages-current-channel container margin-top-small" style="height: calc(100vh - 150px - 174px); overflow-x: hidden; overflow-y: scroll; ">
     <div class="messages">
       <% @messages.each do |message| %>
         <%= render 'messages/message', message: message %>
