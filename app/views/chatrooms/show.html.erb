@@ -1,8 +1,11 @@
-<div class="navbar-mobile-talkie-mode position-relative">
-  <%= image_tag 'talkeri-icon.png', width: 30, height: 35, class:"margin-large position-absolute", id:"logo" %>
-  <p class="font-size-regular font-weight-medium position-absolute channel-title-position ">#<%= @chatroom.name %></p>
-  <div class="margin-large position-absolute create-alert-icon" data-toggle="modal" data-target="#myModal">
-    <%= image_tag 'create-alert-icon.png',  width: 25, height: 28 %>
+
+<div class="navbar-mobile-talkie-mode">
+  <div class="position-relative">
+    <%= image_tag 'talkeri-icon.png', width: 30, height: 35, class:"margin-large position-absolute", id:"logo" %>
+    <p class="font-size-regular font-weight-medium position-absolute channel-title-position ">#<%= @chatroom.name %></p>
+    <div class="margin-large position-absolute create-alert-icon" data-toggle="modal" data-target="#myModal">
+      <%= image_tag 'create-alert-icon.png',  width: 25, height: 28 %>
+    </div>
   </div>
 </div>
 
@@ -36,8 +39,8 @@
 </div>
 
 <div id="wrapper-grey-light">
-  <!-- Instruction Card -->
 
+  <!-- Instruction Card -->
 
   <div class="dropdown flexbox flexbox-align-center flexbox-justify-center margin-top-small">
     <button class="btn btn-default dropdown-toggle instruction-card" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -104,31 +107,31 @@
 
   <div class="position-relative">
     <div class="position-absolute" style=" width: 100%; top: -43px;">
-      <div class="flexbox flexbox-align-center flexbox-space-around flexbox-justify-center tabs">
+      <div class="flexbox flexbox-align-center flexbox-space-around flexbox-justify-center">
 
         <!-- Button Upload Image note non clicked -->
-        <button class="padding-none margin-none">
+        <a class="btn padding-none margin-none border-round ">
           <div class="position-relative" style="width: 40px; height: 40px;">
             <div class="button-purple-round-small position-absolute"></div>
             <%= image_tag 'image.png', width: 18, height: 14, class: 'position-absolute icon-image-small-center' %>
           </div>
-        </button>
+        </a>
 
         <!-- Button Voice Note not active -->
-        <button class="padding-none margin-none" id="open-talkie" style=" margin: 0px -47px;">
+        <a class="btn padding-none margin-none border-round " id="open-talkie" style=" margin: 0px -47px;">
           <div class="position-relative" id="talkie-btn" style="width: 83px; height: 83px">
             <div class="position-absolute"></div>
             <%= image_tag 'voice-note.png', width: 21, height: 28.5, class: 'position-absolute icon-voice-center' %>
           </div>
-        </button>
+        </a>
 
         <!-- Button Chat non clicked -->
-        <button class="padding-none margin-none" id="open-chat">
+        <a class="btn padding-none margin-none border-round " id="open-chat">
           <div class="position-relative" style="width: 40px; height: 40px;" id="chat-btn">
             <div class="position-absolute"></div>
             <%= image_tag 'chat.png', width: 17.46, height: 15, class: 'position-absolute icon-chat-small-center' %>
           </div>
-        </button>
+        </a>
 
       </div>
     </div>
