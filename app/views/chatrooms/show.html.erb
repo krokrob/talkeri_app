@@ -175,6 +175,7 @@
     <div class="new-message flexbox flexbox-justify-center flexbox-space-around flexbox-align-center margin-auto-margin-top">
       <%= simple_form_for [@chatroom, @message] do |f| %>
         <%= f.text_area :content, class: "form-control text-center message-input", placeholder: 'Type something here',data: {textarea: "message"} %>
+        <%= f.input :audio, as: :hidden %>
         <%= f.submit "send", class: "btn btn-primary", style: "display: true", data: {send: "message"}, id: "submit-text" %>
       <% end %>
     </div>

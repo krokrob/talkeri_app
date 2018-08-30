@@ -4,10 +4,10 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
+    @message.audio = params[:blob]
     authorize @message
     @message.chatroom = @chatroom
     @message.user = current_user
-    @message.remote_audio_url = "https://res.cloudinary.com/bebskasse/video/upload/v1535532312/charlie-puth-attention-voice-note.mp3"
     if @message.save
       redirect_to chatroom_path(@chatroom)
     else
