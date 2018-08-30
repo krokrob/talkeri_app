@@ -17,3 +17,6 @@ hideSidebar();
 
 import { audioMicRecorder } from 'components/recorder';
 audioMicRecorder();
+
+import { sendText } from '../components/sendbtn';
+sendText();
