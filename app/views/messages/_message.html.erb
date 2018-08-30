@@ -2,6 +2,6 @@
   <div class="message-time"><%= message.created_at.strftime("%H:%M") %></div>
   <%= cl_image_tag message.user.photo, class: "avatar-very-small" %>
   <div class="message-content"><%= message.content %></div>
-  <audio class="player" controls src="<%= cloudinary_url message.audio, resource_type: :video %>">
+  <audio class="player" controls src="<%= cloudinary_url message.audio, resource_type: :video, secure: true %>">
   </audio>
 </div>
