@@ -1,5 +1,5 @@
 import "bootstrap";
-
+window.scrollTo(0,1);
 import { audioPlayer } from '../components/audioplayer';
 audioPlayer();
 
