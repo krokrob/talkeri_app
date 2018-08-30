@@ -12,24 +12,24 @@
           <%= current_user.full_name %>
         </div>
       </div>
-  </div>
+    </div>
 
-      <h3>SERVICES</h3>
-      <div class="container font-size-regular font-weight-medium">
-        <%= link_to "My events", events_path %>
-        <p>My staff</p>
-        <p>My setting</p>
-      </div>
+    <h3>SERVICES</h3>
+    <div class="container font-size-regular font-weight-medium">
+      <%= link_to "My events", events_path %>
+      <p>My staff</p>
+      <p>My setting</p>
+    </div>
 
-      <h3>CHANNELS</h3>
-      <div class="container">
-          <% @channels = current_user.chatrooms.where(event_id: 4) %>
-          <%@channels.each do |channel| %>
-          <p class="font-size-regular font-weight-medium grey link-text-decoration-none"><%= link_to "#{channel.name}", chatroom_path(channel) %><p>
-          <% end %>
-      </div>
+    <h3>CHANNELS</h3>
+    <div class="container">
+      <% @channels = current_user.chatrooms.where(event_id: 4) %>
+      <% @channels.each do |channel| %>
+      <p class="font-size-regular font-weight-medium grey link-text-decoration-none"><%= link_to "#{channel.name}", chatroom_path(channel) %><p>
+      <% end %>
+    </div>
 
-      <h3>DIRECT CHANNELS</h3>
+    <h3>DIRECT CHANNELS</h3>
       </div>
   </div>
 <% end %>
