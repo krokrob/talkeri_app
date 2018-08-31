@@ -23,3 +23,4 @@ sendText();
 
 import { photoBtn } from '../components/photobtn';
 photoBtn();
+
