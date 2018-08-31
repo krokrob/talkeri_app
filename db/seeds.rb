@@ -151,49 +151,45 @@ user_chatroom2 = UserChatroom.create!(
   )
 user_chatroom3 = UserChatroom.create!(
   user: arthur,
-  chatroom: catering_chat
+  chatroom: secu_chat
   )
 user_chatroom4 = UserChatroom.create!(
   user: matthieu,
-  chatroom: catering_chat
+  chatroom: secu_chat
   )
 user_chatroom5 = UserChatroom.create!(
   user: jeremy,
-  chatroom: catering_chat
+  chatroom: secu_chat
   )
 user_chatroom6 = UserChatroom.create!(
   user: noemie,
+  chatroom: secu_chat
+  )
+
+user_chatroom7 = UserChatroom.create!(
+  user: emilie,
   chatroom: catering_chat
   )
-user_chatroom7 = UserChatroom.create!(
-  user_id: User.find_by(first_name: 'Sami').id,
-  chatroom_id: Chatroom.find_by(name: 'catering').id,
-  )
-
-
-puts 'Creating Messages'
-
-message1 = Message.create!(
-  user: emilie,
-  chatroom: secu_chat,
-  content: Faker::Lorem.sentence,
-  )
-message2 = Message.create!(
+user_chatroom8 = UserChatroom.create!(
   user: sami,
-  chatroom: secu_chat,
-  content: Faker::Lorem.sentence,
+  chatroom: catering_chat
   )
-message3 = Message.create!(
+user_chatroom9 = UserChatroom.create!(
   user: arthur,
-  chatroom: catering_chat,
-  content: Faker::Lorem.sentence,
+  chatroom: catering_chat
   )
-message4 = Message.create!(
+user_chatroom10 = UserChatroom.create!(
   user: matthieu,
-  chatroom: catering_chat,
-  content: Faker::Lorem.sentence,
+  chatroom: catering_chat
   )
-
+user_chatroom11 = UserChatroom.create!(
+  user: jeremy,
+  chatroom: catering_chat
+  )
+user_chatroom12 = UserChatroom.create!(
+  user: noemie,
+  chatroom: catering_chat
+  )
 
 puts 'Creating Alerts'
 

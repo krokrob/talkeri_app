@@ -24,5 +24,5 @@ sendText();
 import { photoBtn } from '../components/photobtn';
 photoBtn();
 
-
 window.scrollMessages = scrollMessages
+

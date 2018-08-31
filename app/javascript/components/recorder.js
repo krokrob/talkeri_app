@@ -2,7 +2,6 @@ function audioMicRecorder(){
 
   const constraints = { audio: true };
 
-
   navigator.mediaDevices.getUserMedia(constraints)
     .then((stream) => {
       const options = {
@@ -14,12 +13,27 @@ function audioMicRecorder(){
       // const stop = document.getElementById('talkie-btn');
       if (recbutton) {
         recbutton.addEventListener('click', (event) => {
-          if (event.currentTarget.classList.contains('record')) {
-            mediaRecorder.stop();
-            event.currentTarget.classList.remove('record');
+          const onChatBtn = document.getElementById('chat-btn').classList.contains('grow-button');
+          // si je suis pas sur le chat
+          if (!onChatBtn) {
+            // si je suis en train d'enregistrer
+            if (event.currentTarget.classList.contains('record')) {
+              // je veux arreter l'enregistrement
+              mediaRecorder.stop();
+              event.currentTarget.classList.remove('record');
+            } else {
+              // sinon
+                // je veux record et ajouter la class record
+              mediaRecorder.start();
+              event.currentTarget.classList.add('record');
+            }
           } else {
-            mediaRecorder.start();
-            event.currentTarget.classList.add('record');
+            // sinon
+              // et toggle footer
+              document.getElementById('talkie').classList.add('item-selected')
+              document.getElementById('talkie-btn').classList.remove('small-button')
+              // et enlever growbutton sur chat
+              document.getElementById('chat-btn').classList.remove('grow-button')
           }
         });
       }
@@ -50,11 +64,5 @@ function audioMicRecorder(){
       console.log(error);
     });
   }
-
-
-
-
-
-
 
 export { audioMicRecorder }
