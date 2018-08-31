@@ -27,6 +27,15 @@ class MessagesController < ApplicationController
       end
     end
 
+    unless @message.photo == ""
+      if @message.save
+        respond_to do |format|
+          format.html { render 'chatrooms/show' }
+          format.js  # <-- idem
+        end
+      end
+    end
+
   end
 
   private
