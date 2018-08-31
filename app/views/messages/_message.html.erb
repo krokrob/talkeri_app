@@ -1,8 +1,23 @@
 <div class="message <%= false ? "right" : "" %>">
-  <div class="message-time"><%= message.created_at.strftime("%H:%M") %></div>
-  <%= cl_image_tag message.user.photo, class: "avatar-very-small" %>
-  <div class="message-content"><%= message.content %></div>
-  <audio class="player" controls src="<%= cloudinary_url message.audio, resource_type: :video, secure: true %>">
-  </audio>
-  <div class="message-photo"><%= cl_image_tag message.photo, class: "avatar" %></div>
+  <div class="message-block">
+    <div class="sender-info flexbox flexbox-align-center">
+      <div class="font-size-regular font-weight-bold grey-dark"><%= message.user.first_name %></div>
+      <div class="font-size-normal font-weight-light grey-light margin-left-small"><%= message.created_at.strftime("%H:%M") %></div>
+      <%#= cl_image_tag message.user.photo, class: "avatar-very-small" %>
+    </div>
+    <div class="margin-top-small margin-right-small">
+      <% if message.content != nil %>
+        <div class="message-text flexbox flexbox-align-center flexbox-justify-center">
+          <p class="grey font-size-regular margin-auto"><%= message.content %></p>
+        </div>
+      <% end %>
+      <% if message.audio.url != nil %>
+        <audio class="player" controls src="<%= cloudinary_url message.audio, resource_type: :video, secure: true %>">
+        </audio>
+      <% end %>
+      <% if message.photo.url != nil %>
+        <div class="message-photo"><%= cl_image_tag message.photo, class: "card-photo-msg" %></div>
+      <% end %>
+    </div>
+  </div>
 </div>
