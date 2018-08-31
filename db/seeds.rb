@@ -191,30 +191,6 @@ user_chatroom12 = UserChatroom.create!(
   chatroom: catering_chat
   )
 
-puts 'Creating Messages'
-
-message1 = Message.create!(
-  user: emilie,
-  chatroom: secu_chat,
-  content: Faker::Lorem.sentence,
-  )
-message2 = Message.create!(
-  user: sami,
-  chatroom: secu_chat,
-  content: Faker::Lorem.sentence,
-  )
-message3 = Message.create!(
-  user: arthur,
-  chatroom: catering_chat,
-  content: Faker::Lorem.sentence,
-  )
-message4 = Message.create!(
-  user: matthieu,
-  chatroom: catering_chat,
-  content: Faker::Lorem.sentence,
-  )
-
-
 puts 'Creating Alerts'
 
 alert1 = Alert.create!(
