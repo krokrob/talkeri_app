@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
 
     unless @message.audio.file.nil?
       if @message.save
-        render partial: "message", locals: { message: @message.reload }
+        return render partial: "message", locals: { message: @message.reload }
       else
         render "problem"
       end
@@ -21,14 +21,15 @@ class MessagesController < ApplicationController
     unless @message.content == ""
       if @message.save
         respond_to do |format|
-          format.html { render 'chatrooms/show' }
+          format.html { return render 'chatrooms/show' }
           format.js  # <-- idem
         end
       end
     end
 
-    unless @message.photo == ""
+    unless @message.photo.file.nil?
       if @message.save
+        @message = @message.reload
         respond_to do |format|
           format.html { render 'chatrooms/show' }
           format.js  # <-- idem
