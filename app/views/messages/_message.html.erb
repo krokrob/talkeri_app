@@ -4,4 +4,5 @@
   <div class="message-content"><%= message.content %></div>
   <audio class="player" controls src="<%= cloudinary_url message.audio, resource_type: :video, secure: true %>">
   </audio>
+  <div class="message-photo"><%= cl_image_tag message.photo, class: "avatar" %></div>
 </div>
