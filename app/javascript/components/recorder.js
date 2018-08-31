@@ -43,13 +43,20 @@ function audioMicRecorder(){
           const form = document.getElementById('new_message');
           const formData = new FormData(form);
           formData.append("blob",blob, 'test');
+
           fetch(form.action, {
+            'Content-Type': 'text/html',
             method: 'post',
             body: formData
           })
-          .then(response => response.json())
+          .then(response => response.text())
           .catch(error => console.error('Error:', error))
-          .then(response => console.log('Success:', JSON.stringify(response)));
+          .then((messageHTML) => {
+            const messages = document.getElementById('msg-list');
+            messages.insertAdjacentHTML('beforeend', messageHTML);
+          });
+
+
         }
       });
     })

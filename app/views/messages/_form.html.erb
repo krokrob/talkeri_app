@@ -1,6 +1,0 @@
-
-<%= simple_form_for [chatroom, message] do |f| %>
-  <%= f.label :your_message %>:
-  <%= f.text_area :content, class: "form-control", data: {textarea: "message"} %>
-  <%= f.submit "send", class: "btn btn-primary", style: "display: true", data: {send: "message"} %>
-<% end %>

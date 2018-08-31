@@ -95,7 +95,7 @@
   <% end %>
 
   <div class="messages-current-channel margin-top-small" style="height: calc(100vh - 72px - 44px - 130px);overflow: scroll;padding-bottom: 40px; width: 94%; margin: auto;">
-    <div class="messages">
+    <div class="messages", id="msg-list">
       <% @messages.each do |message| %>
         <%= render 'messages/message', message: message %>
       <% end %>
@@ -171,7 +171,7 @@
 
   <div id="chat">
     <div class="new-message flexbox flexbox-justify-center flexbox-space-around flexbox-align-center margin-auto-margin-top">
-      <%= simple_form_for [@chatroom, @message] do |f| %>
+      <%= simple_form_for [@chatroom, @message], remote: true do |f| %>
         <%= f.text_area :content, class: "form-control text-center message-input", placeholder: 'Type something here',data: {textarea: "message"} %>
         <%= f.input :audio, as: :hidden %>
         <div class="display-none">

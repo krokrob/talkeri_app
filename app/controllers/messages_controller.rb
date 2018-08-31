@@ -8,11 +8,25 @@ class MessagesController < ApplicationController
     authorize @message
     @message.chatroom = @chatroom
     @message.user = current_user
-    if @message.save
-      redirect_to chatroom_path(@chatroom)
-    else
-      render :new
+
+
+    unless @message.audio.file.nil?
+      if @message.save
+        render partial: "message", locals: { message: @message.reload }
+      else
+        render "problem"
+      end
     end
+
+    unless @message.content == ""
+      if @message.save
+        respond_to do |format|
+          format.html { render 'chatrooms/show' }
+          format.js  # <-- idem
+        end
+      end
+    end
+
   end
 
   private
