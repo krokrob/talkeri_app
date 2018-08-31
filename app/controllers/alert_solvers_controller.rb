@@ -13,7 +13,7 @@ class AlertSolversController < ApplicationController
       @chatroom = @alert.chatroom
       @message = Message.new()
       @message.chatroom = @chatroom
-      @message.user = current_user
+      @message.user = User.find_by(first_name: 'TalkeriBot')
       @message.content = 'Well done team 🎉'
       @message.save
       redirect_to chatroom_path(@chatroom)
