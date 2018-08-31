@@ -30,8 +30,9 @@ function audioMicRecorder(){
           } else {
             // sinon
               // et toggle footer
-              document.getElementById('talkie').classList.add('item-selected')
-              document.getElementById('talkie-btn').classList.remove('small-button')
+              document.getElementById('talkie').classList.toggle('item-selected')
+              document.getElementById('chat').classList.toggle('item-selected')
+              document.getElementById('talkie-btn').classList.toggle('small-button')
               // et enlever growbutton sur chat
               document.getElementById('chat-btn').classList.remove('grow-button')
           }
