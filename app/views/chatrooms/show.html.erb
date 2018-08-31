@@ -50,20 +50,24 @@
   </div>
 
   <% if @active_alert.present? %>
+
     <!-- Alert card non solved -->
-    <div class="flexbox flexbox-align-center flexbox-justify-center margin-top-small">
-      <div class="alert-card position-relative" data-toggle="modal" data-target="#myModal2">
-        <div class="position-absolute alert-creator">
-          <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute" %>
-          <%= image_tag 'alert-icon.png', width: 17, height: 15.89, class: "position-absolute icon-alert" %>
-        </div>
-        <div class="text-center">
-          <p class="white font-size-normal font-weight-light margin-none">
-            <%= @active_alert.content %>
-          </p>
-        </div>
-        <div class="position-absolute alert-time">
-          <p class="white font-size-small font-weight-light">1 min ago</p>
+
+    <div class="position-absolute" style=" width: 100%; z-index: 1;">
+      <div class="flexbox flexbox-align-center flexbox-justify-center margin-top-small">
+        <div class="alert-card position-relative" data-toggle="modal" data-target="#myModal2">
+          <div class="position-absolute alert-creator">
+            <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute" %>
+            <%= image_tag 'alert-icon.png', width: 17, height: 15.89, class: "position-absolute icon-alert" %>
+          </div>
+          <div class="text-center">
+            <p class="white font-size-normal font-weight-light margin-none">
+              <%= @active_alert.content %>
+            </p>
+          </div>
+          <div class="position-absolute alert-time">
+            <p class="white font-size-small font-weight-light">1 min ago</p>
+          </div>
         </div>
       </div>
     </div>
