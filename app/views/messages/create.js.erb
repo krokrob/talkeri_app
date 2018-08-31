@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+  const textarea = document.getElementById('message_content');
+  textarea.value = "";
+}
+
+function addMessage(messageHTML) {
+  const messages = document.getElementById('msg-list');
+  messages.insertAdjacentHTML('beforeend', messageHTML);
+}
+
+<% if @message.errors.any? %>
+refreshForm();
+<% else %>
+  addMessage('<%= j render "messages/message", message: @message %>');
+  refreshForm();
+<% end %>
