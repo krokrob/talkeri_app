@@ -11,16 +11,15 @@ function toggleFooter() {
       document.getElementById('chat-btn').classList.add("grow-button")
     }
   });
-  id2.addEventListener('click', (event) => {
-    const talkie = document.getElementById('talkie')
-    if (!talkie.classList.contains('item-selected')) {
-      talkie.classList.add("item-selected")
-      document.getElementById('chat').classList.remove("item-selected")
-      document.getElementById('chat-btn').classList.remove("grow-button")
-      document.getElementById('talkie-btn').classList.remove("small-button")
-      document.getElementById('talkie-btn').classList.add("button-purple-round")
-    }
-  });
+  // id2.addEventListener('click', (event) => {
+  //   const talkie = document.getElementById('talkie')
+  //   if (!talkie.classList.contains('item-selected')) {
+  //     talkie.classList.add("item-selected")
+  //     document.getElementById('chat').classList.remove("item-selected")
+  //     document.getElementById('talkie-btn').classList.remove("small-button")
+  //     document.getElementById('talkie-btn').classList.add("button-purple-round")
+  //   }
+  // });
 }
 
 export { toggleFooter };
