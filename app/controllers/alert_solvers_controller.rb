@@ -11,6 +11,11 @@ class AlertSolversController < ApplicationController
       @alert.status = true
       @alert.save
       @chatroom = @alert.chatroom
+      @message = Message.new()
+      @message.chatroom = @chatroom
+      @message.user = current_user
+      @message.content = 'Well done team 🎉'
+      @message.save
       redirect_to chatroom_path(@chatroom)
     else
       flash[:alert] = "The alert was not solved"
