@@ -55,6 +55,7 @@ function audioMicRecorder(){
           .then((messageHTML) => {
             const messages = document.getElementById('msg-list');
             messages.insertAdjacentHTML('beforeend', messageHTML);
+            scrollMessages();
           });
 
 
