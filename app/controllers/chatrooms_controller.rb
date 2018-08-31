@@ -20,7 +20,11 @@ class ChatroomsController < ApplicationController
       @chatroom.event = @event
       authorize @chatroom
       if @chatroom.save
+        #raise
         @chatroom.users << current_user
+        params[:users].each do |user|
+          UserChatroom.create(user:User.find(user), chatroom: @chatroom)
+        end
         redirect_to event_path(@event) and return
       else
         return render :new
@@ -34,8 +38,8 @@ class ChatroomsController < ApplicationController
       @chatroom.event = @event
       authorize @chatroom
       if @chatroom.save
-        @user_chatroom1 = UserChatroom.create(user: @user, chatroom: @chatroom)
         @user_chatroom1 = UserChatroom.create(user: current_user, chatroom: @chatroom)
+        @user_chatroom1 = UserChatroom.create(user: @user, chatroom: @chatroom)
       else
         redirect_to chatroom_path(params[:main_chatroom_id]) and return
       end
@@ -47,6 +51,18 @@ class ChatroomsController < ApplicationController
   def new
     @chatroom = Chatroom.new
     authorize @chatroom
+  end
+
+  def edit
+    @chatroom = Chatroom.find(params[:id])
+    authorize @chatroom
+  end
+
+  def update
+    @chatroom = chatroom.find(params[:id])
+    authorize @chatroom
+    @chatroom.update(chatroom_params)
+    redirect_to event_path(@chatroom.event)
   end
 
   private

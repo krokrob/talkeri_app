@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :user_events, only: :create
-    resources :chatrooms, only: [:create, :new]
+    resources :chatrooms, only: [:create, :new, :edit]
     resources :user_chatrooms, only: :create
   end
+  get '/users_chatroom', to: 'events#users_chatroom'
   resources :chatrooms, only: [:show] do
     resources :messages, only: [:create]
     resources :alerts, only: [:create]

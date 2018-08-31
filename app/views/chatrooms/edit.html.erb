@@ -1,17 +1,17 @@
 <div class="container">
-  <h3>Add a chatroom</h3>
-  <%= simple_form_for [@event, @chatroom] do |f| %>
+  <h3>Edit chatroom</h3>
+  <%= simple_form_for [@chatroom] do |f| %>
     <%= f.input :name %>
     <%= f.input :instructions %>
     <%#= f.association :users, collection: @event.users_chatroom %>
     <div class="labels-container">
       <select class="js-chatroom-form" name="users[]" multiple="multiple">
-        <% @event.users.each do |u| %>
+        <% (@chatroom.event.users - @chatroom.users).each do |u| %>
             <option value="<%= u.id %>"><%= u.full_name %></option>
         <% end %>
       </select>
     </div>
-    <%= f.submit "Add chatroom", class: "btn-primary" %>
+    <%= f.submit "Edit chatroom", class: "btn-primary" %>
   <% end %>
-  <%= link_to "Back to event", event_path(@event) %>
+  <%= link_to "Back to event", event_path(@chatroom.event) %>
 </div>

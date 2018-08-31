@@ -8,6 +8,8 @@
   margin-right: 0px;
   background-color: #9E9E9E;
   z-index: 30;
+  overflow-y: scroll;
+  overflow-x:hidden;
   &.absolute {
     position: absolute;
   }
