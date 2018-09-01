@@ -32,6 +32,7 @@ class ChatroomsController < ApplicationController
     if @chatroom.nil?
       @chatroom = Chatroom.new
       @chatroom.event = @event
+      @chatroom.name = @user.first_name
       authorize @chatroom
       if @chatroom.save
         @user_chatroom1 = UserChatroom.create(user: @user, chatroom: @chatroom)

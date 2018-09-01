@@ -6,7 +6,7 @@
       <%#= cl_image_tag message.user.photo, class: "avatar-very-small" %>
     </div>
     <div class="margin-top-small margin-right-small">
-      <% if message.content != "" %>
+      <% if message.content != "" && message.content != "Well done team 🎉"%>
         <div class="message-text flexbox flexbox-align-center flexbox-justify-center" style="margin-left: 1px">
           <p class="grey font-size-regular margin-auto"><%= message.content %></p>
         </div>
@@ -23,6 +23,7 @@
       <% end %>
 
       <% if message.content == 'Well done team 🎉' %>
+        <p class="font-size-normal">Well done team 🎉</p>
           <!-- Alert card solved -->
         <div class="alert-card-solved position-relative">
           <div class="position-absolute alert-creator">
@@ -31,7 +32,7 @@
             <%= image_tag 'solved-icon.png', width: 17, height: 11.77, class: "position-absolute icon-solved" %>
           </div>
           <div class="text-center">
-            <p class="white font-size-normal font-weight-light margin-none">C'est good!</p>
+            <p class="white font-size-normal font-weight-light">C'est good!</p>
           </div>
           <div class="position-absolute alert-time">
             <p class="white font-size-small font-weight-light">1 min ago</p>
