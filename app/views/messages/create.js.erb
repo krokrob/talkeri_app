@@ -13,5 +13,6 @@ refreshForm();
 <% else %>
   addMessage('<%= j render "messages/message", message: @message %>');
   refreshForm();
+  scrollMessages()
 <% end %>
 
