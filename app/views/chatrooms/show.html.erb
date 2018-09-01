@@ -1,7 +1,7 @@
 <div class="navbar-mobile-talkie-mode z-index-1">
   <div class="position-relative">
     <%= image_tag 'talkeri-icon.png', width: 30, height: 35, class:"margin-large position-absolute", id:"logo" %>
-    <p class="font-size-regular font-weight-medium position-absolute channel-title-position ">#<%= @chatroom.name %></p>
+    <p class="font-size-regular font-weight-medium position-absolute channel-title-position margin-none">#<%= @chatroom.name %></p>
     <div class="margin-large position-absolute create-alert-icon" data-toggle="modal" data-target="#myModal">
       <%= image_tag 'create-alert-icon.png',  width: 25, height: 28 %>
     </div>
@@ -41,12 +41,12 @@
 <div id="wrapper-grey-light">
   <!-- Instruction Card -->
 
-  <div class="dropdown flexbox flexbox-align-center flexbox-justify-center margin-top-small">
+  <div class="dropdown flexbox flexbox-align-center flexbox-justify-center margin-top-small margin-bottom-small">
     <button class="btn btn-default dropdown-toggle instruction-card" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       Instructions of the day
       <span class="caret"></span>
     </button>
-    <p class="dropdown-menu" aria-labelledby="dropdownMenu1"><%= @chatroom.instructions %></p>
+    <p class="dropdown-menu instruction" aria-labelledby="dropdownMenu1" ><%= @chatroom.instructions %></p>
   </div>
 
   <% if @active_alert.present? %>
