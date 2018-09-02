@@ -51,10 +51,11 @@
 
   <% if @active_alert.present? %>
 
+
     <!-- Alert card non solved -->
 
     <div class="position-absolute" style=" width: 100%; z-index: 1;">
-      <div class="flexbox flexbox-align-center flexbox-justify-center margin-top-small">
+      <div class="flexbox flexbox-align-center flexbox-justify-center">
         <div class="alert-card position-relative" data-toggle="modal" data-target="#myModal2">
           <div class="position-absolute alert-creator">
             <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute" %>
@@ -72,6 +73,8 @@
       </div>
     </div>
 
+    <div class="alert-mode-pulse">
+    </div>
     <!-- Modal Mark alert as solved-->
 
     <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -92,6 +95,7 @@
         </div>
       </div>
     </div>
+
   <% end %>
 
   <div class="messages-current-channel margin-top-small" style="height: calc(100vh - 72px - 44px - 130px);overflow: scroll;padding-bottom: 40px; width: 94%; margin: auto;">
