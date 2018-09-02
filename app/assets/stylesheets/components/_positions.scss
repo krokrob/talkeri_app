@@ -6,6 +6,10 @@
   position: absolute;
 }
 
+.position-fixed {
+  position: fixed !important;
+}
+
 .icon-voice-center {
   top: 26px;
   left: 31px;
@@ -66,11 +70,16 @@
 }
 
 .channel-title-position {
-  top: 24px;
+  top: 31px;
   left: 56px;
 }
 
 .create-alert-icon {
   right: -8px;
   top: 5px;
+}
+
+.icon-send-small-center {
+  top: 11px;
+  left: 10px;
 }

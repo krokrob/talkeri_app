@@ -4,15 +4,39 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
+    @message.audio = params[:blob]
     authorize @message
     @message.chatroom = @chatroom
     @message.user = current_user
-    @message.remote_audio_url = "https://res.cloudinary.com/bebskasse/video/upload/v1535532312/charlie-puth-attention-voice-note.mp3"
-    if @message.save
-      redirect_to chatroom_path(@chatroom)
-    else
-      render :new
+
+
+    unless @message.audio.file.nil?
+      if @message.save
+        return render partial: "message", locals: { message: @message.reload }
+      else
+        render "problem"
+      end
     end
+
+    unless @message.content == ""
+      if @message.save
+        respond_to do |format|
+          format.html { return render 'chatrooms/show' }
+          format.js  # <-- idem
+        end
+      end
+    end
+
+    unless @message.photo.file.nil?
+      if @message.save
+        @message = @message.reload
+        respond_to do |format|
+          format.html { render 'chatrooms/show' }
+          format.js  # <-- idem
+        end
+      end
+    end
+
   end
 
   private

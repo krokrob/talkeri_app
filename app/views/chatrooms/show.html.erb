@@ -1,7 +1,7 @@
 <div class="navbar-mobile-talkie-mode z-index-1">
   <div class="position-relative">
     <%= image_tag 'talkeri-icon.png', width: 30, height: 35, class:"margin-large position-absolute", id:"logo" %>
-    <p class="font-size-regular font-weight-medium position-absolute channel-title-position ">#<%= @chatroom.name %></p>
+    <p class="font-size-regular font-weight-medium position-absolute channel-title-position margin-none">#<%= @chatroom.name %></p>
     <div class="margin-large position-absolute create-alert-icon" data-toggle="modal" data-target="#myModal">
       <%= image_tag 'create-alert-icon.png',  width: 25, height: 28 %>
     </div>
@@ -41,29 +41,33 @@
 <div id="wrapper-grey-light">
   <!-- Instruction Card -->
 
-  <div class="dropdown flexbox flexbox-align-center flexbox-justify-center margin-top-small">
+  <div class="dropdown flexbox flexbox-align-center flexbox-justify-center margin-top-small margin-bottom-small">
     <button class="btn btn-default dropdown-toggle instruction-card" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       Instructions of the day
       <span class="caret"></span>
     </button>
-    <p class="dropdown-menu" aria-labelledby="dropdownMenu1"><%= @chatroom.instructions %></p>
+    <p class="dropdown-menu instruction" aria-labelledby="dropdownMenu1" ><%= @chatroom.instructions %></p>
   </div>
 
   <% if @active_alert.present? %>
+
     <!-- Alert card non solved -->
-    <div class="flexbox flexbox-align-center flexbox-justify-center margin-top-small">
-      <div class="alert-card position-relative" data-toggle="modal" data-target="#myModal2">
-        <div class="position-absolute alert-creator">
-          <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute" %>
-          <%= image_tag 'alert-icon.png', width: 17, height: 15.89, class: "position-absolute icon-alert" %>
-        </div>
-        <div class="text-center">
-          <p class="white font-size-normal font-weight-light margin-none">
-            <%= @active_alert.content %>
-          </p>
-        </div>
-        <div class="position-absolute alert-time">
-          <p class="white font-size-small font-weight-light">1 min ago</p>
+
+    <div class="position-absolute" style=" width: 100%; z-index: 1;">
+      <div class="flexbox flexbox-align-center flexbox-justify-center margin-top-small">
+        <div class="alert-card position-relative" data-toggle="modal" data-target="#myModal2">
+          <div class="position-absolute alert-creator">
+            <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute" %>
+            <%= image_tag 'alert-icon.png', width: 17, height: 15.89, class: "position-absolute icon-alert" %>
+          </div>
+          <div class="text-center">
+            <p class="white font-size-normal font-weight-light margin-none">
+              <%= @active_alert.content %>
+            </p>
+          </div>
+          <div class="position-absolute alert-time">
+            <p class="white font-size-small font-weight-light">1 min ago</p>
+          </div>
         </div>
       </div>
     </div>
@@ -90,8 +94,8 @@
     </div>
   <% end %>
 
-  <div class="messages-current-channel container margin-top-small" style="height: calc(100vh - 114px - 174px); overflow-x: hidden; overflow-y: scroll; ">
-    <div class="messages">
+  <div class="messages-current-channel margin-top-small" style="height: calc(100vh - 72px - 44px - 130px);overflow: scroll;padding-bottom: 40px; width: 94%; margin: auto;">
+    <div class="messages", id="msg-list">
       <% @messages.each do |message| %>
         <%= render 'messages/message', message: message %>
       <% end %>
@@ -109,7 +113,7 @@
       <div class="flexbox flexbox-align-center flexbox-space-around flexbox-justify-center">
 
         <!-- Button Upload Image note non clicked -->
-        <a class="btn padding-none margin-none border-round ">
+        <a class="btn padding-none margin-none border-round" id="photo-btn">
           <div class="position-relative" style="width: 40px; height: 40px;">
             <div class="button-purple-round-small position-absolute"></div>
             <%= image_tag 'image.png', width: 18, height: 14, class: 'position-absolute icon-image-small-center' %>
@@ -167,9 +171,23 @@
 
   <div id="chat">
     <div class="new-message flexbox flexbox-justify-center flexbox-space-around flexbox-align-center margin-auto-margin-top">
-      <%= simple_form_for [@chatroom, @message] do |f| %>
+      <%= simple_form_for [@chatroom, @message], remote: true do |f| %>
         <%= f.text_area :content, class: "form-control text-center message-input", placeholder: 'Type something here',data: {textarea: "message"} %>
-        <%= f.submit "send", class: "btn btn-primary", style: "display: true", data: {send: "message"}, id: "submit-text" %>
+        <%= f.input :audio, as: :hidden %>
+        <div class="display-none">
+          <%= f.input :photo,
+                      label: false %>
+          <%= f.input :photo_cache, as: :hidden %>
+        </div>
+
+          <!-- Button send -->
+        <div class="position-absolute display-none" style="top: -19px; right: -55px;" id="send-btn">
+          <div class="position-relative" style="width: 146px; height: 146px;">
+            <div class="button-purple-dark-round-small position-absolute"></div>
+            <%= image_tag 'send-icon.png', width: 18, height: 18, class: 'position-absolute icon-send-small-center' %>
+          </div>
+        </div>
+        <%= f.submit "send", class: "btn btn-primary", style: "display: none", data: {send: "message"}, id: "submit-text" %>
       <% end %>
     </div>
   </div>
