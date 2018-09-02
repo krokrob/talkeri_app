@@ -1,27 +1,27 @@
 <h1><%= @event.name %></h1>
-  <% @event.chatrooms.each do |chatroom| %>
-    <ul>
-    <%= link_to "Edit chatroom", edit_event_chatroom_path(@event, chatroom) %>
-      <li><h4><%= chatroom.name&.capitalize || "Private" %></h4>
-        <h5 style="font-weight: bold">Team Leaders</h5>
-        <!-- TODO  move this to eventscontroller-->
-        <% team_leaders = chatroom.users.map do |user|%>
-          <% user if UserEvent.find_by(user: user, event: chatroom.event)&.responsability == "Team leader" %>
-        <% end %>
-        <% team_leaders.compact.each do |staff| %>
-          <div><%= staff.full_name %></div>
-        <% end %>
-        <br>
-        <h5 style="font-weight: bold">Staff</h5>
-        <!-- TODO  move this to eventscontroller-->
-        <% staff = chatroom.users.map do |user|%>
-          <% user if UserEvent.find_by(user: user, event: chatroom.event)&.responsability == "Staff" %>
-        <% end %>
-        <% staff.compact.each do |staff| %>
-          <div><%= staff.full_name %></div>
-        <% end %>
-      </li>
-    </ul>
+<% @event.chatrooms.each do |chatroom| %>
+  <ul>
+  <%= link_to "Edit chatroom", edit_event_chatroom_path(@event, chatroom) %>
+    <li><h4><%= chatroom.name&.capitalize || "Private" %></h4>
+      <h5 style="font-weight: bold">Team Leaders</h5>
+      <!-- TODO  move this to eventscontroller-->
+      <% team_leaders = chatroom.users.map do |user|%>
+        <% user if UserEvent.find_by(user: user, event: chatroom.event)&.responsability == "Team leader" %>
+      <% end %>
+      <% team_leaders.compact.each do |staff| %>
+        <div><%= staff.full_name %></div>
+      <% end %>
+      <br>
+      <h5 style="font-weight: bold">Staff</h5>
+      <!-- TODO  move this to eventscontroller-->
+      <% staff = chatroom.users.map do |user|%>
+        <% user if UserEvent.find_by(user: user, event: chatroom.event)&.responsability == "Staff" %>
+      <% end %>
+      <% staff.compact.each do |staff| %>
+        <div><%= staff.full_name %></div>
+      <% end %>
+    </li>
+  </ul>
 <% end %>
 
 <h5>Members</h5>
@@ -49,7 +49,7 @@
   <%#= hidden_field_tag 'event', @event.id %>
   <%#= f.association :chatroom, collection: @event.chatrooms %>
   <%#= link_to 'users_chatroom', users_chatroom_path(foo: 'bar'), remote: :true %>
-  <!-- remplacer ar un event listener sur l'input de chatroom (charger id de chatroom dans les params) -->
+  <!-- remplacer par un event listener sur l'input de chatroom (charger id de chatroom dans les params) -->
   <!-- disable form submit + users input until chatroom selected -->
   <%#= render 'events/chatroom_user_input', f: f, chatroomusers: @event.users } %>
   <%#= f.submit "Add team member", class: "btn-primary" %>

@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  # include Pundit
   before_action :authenticate_user!
   after_action :verify_authorized, except: [:index, :users_chatroom]
 

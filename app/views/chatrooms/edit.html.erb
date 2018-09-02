@@ -3,7 +3,6 @@
   <%= simple_form_for [@chatroom] do |f| %>
     <%= f.input :name %>
     <%= f.input :instructions %>
-    <%#= f.association :users, collection: @event.users_chatroom %>
     <div class="labels-container">
       <select class="js-chatroom-form" name="users[]" multiple="multiple">
         <% (@chatroom.event.users - @chatroom.users).each do |u| %>

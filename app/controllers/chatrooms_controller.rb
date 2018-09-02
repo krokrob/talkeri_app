@@ -20,7 +20,6 @@ class ChatroomsController < ApplicationController
       @chatroom.event = @event
       authorize @chatroom
       if @chatroom.save
-        #raise
         @chatroom.users << current_user
         params[:users].each do |user|
           UserChatroom.create(user:User.find(user), chatroom: @chatroom)
@@ -36,10 +35,11 @@ class ChatroomsController < ApplicationController
     if @chatroom.nil?
       @chatroom = Chatroom.new
       @chatroom.event = @event
+      @chatroom.name = @user.full_name
       authorize @chatroom
       if @chatroom.save
-        @user_chatroom1 = UserChatroom.create(user: current_user, chatroom: @chatroom)
         @user_chatroom1 = UserChatroom.create(user: @user, chatroom: @chatroom)
+        @user_chatroom1 = UserChatroom.create(user: current_user, chatroom: @chatroom)
       else
         redirect_to chatroom_path(params[:main_chatroom_id]) and return
       end
