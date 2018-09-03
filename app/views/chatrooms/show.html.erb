@@ -121,14 +121,6 @@
     <div class="position-absolute" style=" width: 100%; top: -43px;">
       <div class="flexbox flexbox-align-center flexbox-space-around flexbox-justify-center">
 
-        <!-- Button Upload Image note non clicked -->
-<!--         <a class="btn padding-none margin-none border-round" id="photo-btn">
-          <div class="position-relative" style="width: 40px; height: 40px;">
-            <div class="button-purple-round-small position-absolute"></div> -->
-            <%#= image_tag 'image.png', width: 18, height: 14, class: 'position-absolute icon-image-small-center' %>
-<!--           </div>
-        </a> -->
-
         <%= simple_form_for [@chatroom, @message], remote: true, html: {id: "photo-form"} do |f| %>
           <%= f.label :photo, "." , label_html: {id: "photo-btn"}, class: "button-purple-round-small purple-very-light flexbox flexbox-align-center flexbox-justify-center" do %>
             <%= image_tag 'image.png', width: 18, height: 14 %>

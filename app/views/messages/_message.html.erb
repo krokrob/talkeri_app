@@ -6,20 +6,18 @@
       <%#= cl_image_tag message.user.photo, class: "avatar-very-small", :secure => true %>
     </div>
     <div class="margin-top-small margin-right-small">
-      <% if message.content != "" && message.content != "Well done team 🎉"%>
-        <div class="message-text flexbox flexbox-align-center flexbox-justify-center" style="margin-left: 1px">
-          <p class="grey font-size-regular margin-auto"><%= message.content %></p>
-        </div>
-      <% end %>
-      <% if message.audio.url != nil %>
-        <audio class="player" controls src="<%= cloudinary_url message.audio, resource_type: :video, secure: true %>">
-        </audio>
-      <% end %>
       <% if message.photo.url != nil %>
         <!-- <div class="message-photo"><%# cl_image_tag message.photo, class: "card-photo-msg" %></div> -->
         <%= link_to cl_image_path(message.photo), data: { lightbox: message.photo.file.public_id } do %>
           <%= cl_image_tag message.photo, width: 200, crop: :fit, class: "card-photo-msg", :secure => true %>
         <% end %>
+      <% elsif message.content != "" && message.content != "Well done team 🎉"%>
+        <div class="message-text flexbox flexbox-align-center flexbox-justify-center" style="margin-left: 1px">
+          <p class="grey font-size-regular margin-auto"><%= message.content %></p>
+        </div>
+      <% elsif message.audio.url != nil %>
+        <audio class="player" controls src="<%= cloudinary_url message.audio, resource_type: :video, secure: true %>">
+        </audio>
       <% end %>
 
       <% if message.content == 'Well done team 🎉' %>
