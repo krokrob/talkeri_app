@@ -15,7 +15,6 @@
       </div>
     </div>
   </div>
-
   <!-- Modal Create new alert button-->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog center-screen text-center" role="document">
@@ -44,11 +43,8 @@
       </div>
     </div>
   </div>
-
-
   <div id="wrapper-grey-light">
     <!-- Instruction Card -->
-
     <div class="dropdown flexbox flexbox-align-center flexbox-justify-center margin-top-small margin-bottom-small">
       <button class="btn btn-default dropdown-toggle instruction-card" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         Instructions of the day
@@ -56,12 +52,8 @@
       </button>
       <p class="dropdown-menu instruction" aria-labelledby="dropdownMenu1" ><%= @chatroom.instructions %></p>
     </div>
-
     <% if @active_alert.present? %>
-
-
       <!-- Alert card non solved -->
-
       <div class="position-absolute" style=" width: 100%; z-index: 1;">
         <div class="flexbox flexbox-align-center flexbox-justify-center">
           <div class="alert-card position-relative" data-toggle="modal" data-target="#myModal2">
@@ -80,11 +72,9 @@
           </div>
         </div>
       </div>
-
       <div class="alert-mode-pulse">
       </div>
       <!-- Modal Mark alert as solved-->
-
       <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog center-screen text-center" role="document">
           <div class="modal-content modal-alert-success flexbox flexbox-column flexbox-align-center flexbox-justify-center">
@@ -103,24 +93,16 @@
           </div>
         </div>
       </div>
-
     <% end %>
-
     <div class="messages messages-current-channel margin-top-small" id="msg-list" style="height: calc(100vh - 72px - 44px - 130px);overflow: scroll;padding-bottom: 40px; width: 94%; margin: auto;">
       <% @messages.each do |message| %>
         <%= render 'messages/message', message: message %>
       <% end %>
     </div>
-
   </div>
-
-
   <div class="footer-mobile-talkie-mode position-relative">
-
-
     <div class="position-absolute" style=" width: 100%; top: -43px;">
       <div class="flexbox flexbox-align-center flexbox-space-around flexbox-justify-center">
-
         <!-- Button Upload Image note non clicked -->
         <a class="btn padding-none margin-none border-round" id="photo-btn">
           <div class="position-relative" style="width: 40px; height: 40px;">
@@ -128,14 +110,12 @@
             <%= image_tag 'image.png', width: 18, height: 14, class: 'position-absolute icon-image-small-center' %>
           </div>
         </a>
-
         <!-- Button Voice Note not active -->
         <div class="btn padding-none margin-none border-round " id="open-talkie" style=" margin: 0px -47px;">
           <div class="flexbox flexbox-justify-center flexbox-align-center" id="talkie-btn" style="width: 83px; height: 83px">
             <%= image_tag 'voice-note.png', width: 21, height: 28.5 %>
           </div>
         </div>
-
         <!-- Button Chat non clicked -->
         <a class="btn padding-none margin-none border-round " id="open-chat">
           <div class="position-relative" style="width: 40px; height: 40px;" id="chat-btn">
@@ -143,15 +123,12 @@
             <%= image_tag 'chat.png', width: 17.46, height: 15, class: 'position-absolute icon-chat-small-center' %>
           </div>
         </a>
-
       </div>
     </div>
     <div id="talkie" class="item-selected">
       <div class="flexbox flexbox-align-center footer" style="padding-top: 40px;flex-wrap: nowrap;
     overflow-x: scroll; overflow-y: hidden; margin-left: 8px;">
-
         <!-- Button Channel clicked -->
-
   <!--
         <div class="flexbox flexbox-column flexbox-align-center" style="width: 70px; height: 90px; margin-right: 5px; margin-left: 1px;">
           <div class="button-channel-active flexbox flexbox-align-center flexbox-justify-center">
@@ -161,9 +138,7 @@
           </div>
            <p class="font-size-small grey-dark">Channel</p>
        </div> -->
-
         <!-- Avatar with name under -->
-
          <% @chatroom.users.select { |u| u != current_user }.each do |user| %>
             <%= link_to event_chatrooms_path(@chatroom.event, user_id: user.id, main_chatroom_id: @chatroom.id), method: :post do %>
               <div class="flexbox flexbox-column flexbox-align-center" style="width: 70px; height: 88px;  margin-right: 5px;">
@@ -175,7 +150,6 @@
         <% end %>
       </div>
     </div>
-
     <div id="chat">
       <div class="new-message flexbox flexbox-justify-center flexbox-space-around flexbox-align-center margin-auto-margin-top" id="chat-form">
         <%= render 'messages/form', message: @message, chatroom: @chatroom %>
@@ -183,8 +157,6 @@
     </div>
   </div>
 </div>
-
-
 <% content_for :after_js do %>
   <script>
     App['chatroom_<%= @chatroom.id %>'] = App.cable.subscriptions.create({
