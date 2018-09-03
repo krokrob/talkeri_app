@@ -3,7 +3,6 @@ class UserEventsController < ApplicationController
     # creer l'event user puis redirect to show de l'event
     @userevent = UserEvent.new(userevent_params)
     @event = Event.find(params[:event_id])
-    raise
     # .valid? ~ .errors.messages .save!
     @userevent.event = @event
     authorize @userevent
