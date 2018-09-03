@@ -1,3 +1,14 @@
+function scrollMessages() {
+  const messagesContainer = document.querySelectorAll('.message');
+  if (messagesContainer.length > 0) {
+    const messages = document.querySelectorAll('.message');
+    const lastMessage = messages[messages.length - 1];
+    if (lastMessage) {
+      lastMessage.scrollIntoView();
+    }
+  }
+}
+
 function refreshForm(innerHTML) {
   const textarea = document.getElementById('message_content');
   textarea.value = "";
@@ -13,6 +24,8 @@ refreshForm();
 <% else %>
   addMessage('<%= j render "messages/message", message: @message %>');
   refreshForm();
-  scrollMessages()
+  // window.setTimeout( () => {
+    scrollMessages();
+  // }, 100);
 <% end %>
 
