@@ -7,7 +7,7 @@
       </div>
       <br>
       <div class="col-xs-3" >
-        <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute"%>
+        <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute", :secure => true %>
         <div class="text-center">
           <%= current_user.full_name %>
         </div>

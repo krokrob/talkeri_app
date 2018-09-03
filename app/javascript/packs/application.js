@@ -5,8 +5,10 @@ import 'select2/dist/css/select2.css';  // optional if you have css loader
 
 import "bootstrap";
 window.scrollTo(0,1);
+
 import { audioPlayer } from '../components/audioplayer';
 audioPlayer();
+window.audioPlayer = audioPlayer
 
 import { toggleFooter } from '../components/togglefooter';
 toggleFooter();
@@ -26,9 +28,11 @@ audioMicRecorder();
 
 import { sendText } from '../components/sendbtn';
 sendText();
+window.sendText = sendText
 
 import { photoBtn } from '../components/photobtn';
 photoBtn();
+window.photoBtn = photoBtn
 
 
 // import {hideSidebar} from 'components/sidebar';

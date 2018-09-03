@@ -8,7 +8,7 @@
           <h4 style="font-weight: bold"><%= event.name %></h4>
           <p>Start date: <%= event.start_date %></p>
           <p>End date: <%= event.end_date %></p>
-          <p>Main organizers <%= cl_image_tag event.user.photo, class: "avatar-very-small position-absolute"%></p>
+          <p>Main organizers <%= cl_image_tag event.user.photo, class: "avatar-very-small position-absolute", :secure => true%></p>
           <p><%= event.user_events.where(responsability: "Team leader").count
  %> team leaders - <%= event.user_events.where(responsability: "Staff").count
  %> staff members</p>
