@@ -130,7 +130,9 @@
         </a> -->
 
         <%= simple_form_for [@chatroom, @message], remote: true, html: {id: "photo-form"} do |f| %>
-          <%= f.label :photo, label_html: {id: "photo-btn", class: "btn padding-none margin-none border-round"} %>
+          <%= f.label :photo, "." , label_html: {id: "photo-btn"}, class: "button-purple-round-small purple-very-light flexbox flexbox-align-center flexbox-justify-center" do %>
+            <%= image_tag 'image.png', width: 18, height: 14 %>
+          <% end %>
           <div class="display-none">
             <%= f.input :photo, label_html: {id: "photo-btn"} %>
           </div>
