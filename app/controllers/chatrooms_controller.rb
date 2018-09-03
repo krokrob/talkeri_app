@@ -7,7 +7,7 @@ class ChatroomsController < ApplicationController
     authorize @chatroom
     @message = Message.new
     @chatroom_users = @chatroom.users
-    @messages = @chatroom.messages
+    @messages = @chatroom.messages.order(created_at: :asc)
     @current_user_chatrooms = current_user.chatrooms
     @alert = Alert.new
     @alert_solver = AlertSolver.new
