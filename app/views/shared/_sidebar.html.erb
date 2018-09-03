@@ -14,22 +14,13 @@
       </div>
     </div>
 
-    <button class="dropdown-btn">Dropdown
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-container">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-
     <h3>EVENTS</h3>
     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle link-text-decoration-none">My Events</a>
       <ul class="collapse list-unstyled link-text-decoration-none" id="homeSubmenu">
         <% current_user.events.each do |event| %>
           <li>
-            <a href="#homeSubSubmenuEvent_<%= event.id %>" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle link-text-decoration-none"><%= event.name %></a>
-              <ul class="collapse list-unstyled link-text-decoration-none" id="homeSubSubmenuEvent_<%= event.id %>">
+            <a href="#homeSubSubmenuEvent_<%= event.id %>" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><%= event.name %></a>
+              <ul class="collapse list-unstyled" id="homeSubSubmenuEvent_<%= event.id %>">
                 <% event.chatrooms.each do |chatroom| %>
                   <% if chatroom.users.include?(current_user) %>
                     <li>
