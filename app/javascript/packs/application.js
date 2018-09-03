@@ -19,6 +19,7 @@ scrollMessages();
 
 import {hideSidebar} from '../components/sidebar';
 hideSidebar();
+
 import {displayChannel} from '../components/sidebar';
 displayChannel();
 
@@ -32,9 +33,6 @@ import { photoBtn } from '../components/photobtn';
 photoBtn();
 
 window.scrollMessages = scrollMessages
-
-// import {hideSidebar} from 'components/sidebar';
-// hideSidebar();
 
 
 // $(() => {
