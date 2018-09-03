@@ -169,6 +169,14 @@
       received: (data) => {
         const messages = document.getElementById('msg-list');
         messages.insertAdjacentHTML('beforeend', data.message_partial);
+
+        let htmlObject = document.createElement('div');
+        htmlObject.innerHTML = String(data.message_partial);
+        if (htmlObject.getElementsByTagName('audio').length === 1) {
+          console.log("true");
+          messages.replaceWith('<div>hello</div>')
+        };
+
         document.getElementById('chat-form').innerHTML = "<%= j render 'messages/form', message: Message.new, chatroom: @chatroom %>"
         window.sendText();
         window.photoBtn();
