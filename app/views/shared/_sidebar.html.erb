@@ -13,7 +13,7 @@
 
       <div>
       <% current_user.events.each do |event| %>
-      <h4 class="text-center" style="margin-top: 15px; margin-bottom: 25px; color: #724cf9;"><i class="far fa-calendar-alt"></i><%= event.name.upcase %></a></h4>
+      <h4 class="text-center" style="margin-top: 15px; margin-bottom: 25px; color: #724cf9;"><i class="far fa-calendar-alt"></i><%= event.name.upcase %></h4>
       </div>
 
       <div class="content-sidebar">
@@ -34,11 +34,13 @@
         <% event.chatrooms.each do |chatroom| %>
           <% if chatroom.name.nil? %>
             <div class="chatrooms-toggle">
-              <h5><%= link_to "##{chatroom.users.select { |user| user.id != current_user.id }.first.first_name}", chatroom_path(chatroom) %></h5>
+              <h5>
+                <%= link_to "##{chatroom.users.select { |user| user.id != current_user.id }.first.first_name}", chatroom_path(chatroom) %>
+              </h5>
             </div>
           <% end %>
         <% end %>
-        <% end %>
+      <% end %>
       </div>
     </div>
   </div>
