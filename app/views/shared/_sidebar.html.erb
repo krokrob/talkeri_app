@@ -22,10 +22,11 @@
       <h5><i class="fas fa-wrench"></i> Settings</h5>
       </div>
       <h4 style="margin-top: 25px;">CHANNELS</h4>
+
         <% event.chatrooms.each do |chatroom| %>
           <% unless chatroom.name.nil? %>
             <div class="chatrooms-toggle">
-              <h5><%= link_to "##{chatroom.name}", chatroom_path(chatroom) %></h5>
+              <h5><%= link_to "##{chatroom.name}", chatroom_path(chatroom) %> - <%= Message.unread_by(current_user).where(chatroom: chatroom).count %></h5>
             </div>
           <% end %>
         <% end %>
@@ -34,12 +35,14 @@
           <% if chatroom.name.nil? %>
             <div class="chatrooms-toggle">
               <h5>
-                <%= link_to "##{chatroom.users.select { |user| user.id != current_user.id }.first.first_name}", chatroom_path(chatroom) %>
+                <%= link_to "##{chatroom.users.select { |user| user.id != current_user.id }.first.first_name}", chatroom_path(chatroom) %> -
+                <%= Message.unread_by(current_user).where(chatroom: chatroom).count %>
               </h5>
             </div>
           <% end %>
         <% end %>
       <% end %>
+
       </div>
     </div>
   </div>

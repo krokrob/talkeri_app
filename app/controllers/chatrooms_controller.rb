@@ -12,6 +12,7 @@ class ChatroomsController < ApplicationController
     @alert = Alert.new
     @alert_solver = AlertSolver.new
     @active_alert = @chatroom.alerts.find_by(status: false)
+    mark_msgs_as_read(@messages)
   end
 
   def create
@@ -73,4 +74,11 @@ class ChatroomsController < ApplicationController
   def set_event
     @event = Event.find(params[:event_id])
   end
+
+  def mark_msgs_as_read(messages)
+    messages.each do |message|
+      message.mark_as_read! for: current_user
+    end
+  end
+
 end
