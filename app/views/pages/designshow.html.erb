@@ -120,7 +120,7 @@
       <!-- Avatar with name under -->
 
       <div class="flexbox flexbox-column flexbox-align-center" style="width: 70px; height: 88px;  margin-right: 5px;">
-        <%= cl_image_tag current_user.photo, class: "avatar-normal" %>
+        <%= cl_image_tag current_user.photo, class: "avatar-normal", :secure => true %>
         <p class="font-size-small grey-dark">Marc</p>
       </div>
     </div>

@@ -1,14 +1,14 @@
 <div class="flexbox flexbox-column flexbox-space-between flexbox-align-center" style="height: 4500px; max-width: 375px;">
 
-  <%= cl_image_tag current_user.photo, class: "avatar-very-small" %>
-  <%= cl_image_tag current_user.photo, class: "avatar-small" %>
-  <%= cl_image_tag current_user.photo, class: "avatar-normal" %>
+  <%= cl_image_tag current_user.photo, class: "avatar-very-small", :secure => true %>
+  <%= cl_image_tag current_user.photo, class: "avatar-small", :secure => true %>
+  <%= cl_image_tag current_user.photo, class: "avatar-normal", :secure => true %>
 
 
   <!-- Avatar channel clicked -->
 
   <div class="button-channel-active flexbox flexbox-align-center flexbox-justify-center">
-    <%= cl_image_tag current_user.photo, class: "avatar-normal-clicked" %>
+    <%= cl_image_tag current_user.photo, class: "avatar-normal-clicked", :secure => true %>
   </div>
 
   <!-- Avatar notification -->
@@ -19,13 +19,13 @@
         <p class="title-small-1 white position-absolute">3</p>
       </div>
     </div>
-    <%= cl_image_tag current_user.photo, class: "avatar-normal position-absolute" %>
+    <%= cl_image_tag current_user.photo, class: "avatar-normal position-absolute", :secure => true %>
   </div>
 
   <!-- Avatar with name under -->
 
   <div class="flexbox flexbox-column flexbox-align-center" style="width: 70px; height: 88px; margin-right: 5px;">
-    <%= cl_image_tag current_user.photo, class: "avatar-normal" %>
+    <%= cl_image_tag current_user.photo, class: "avatar-normal", :secure => true %>
     <p class="font-size-small grey-dark">Marc</p>
   </div>
 
@@ -33,7 +33,7 @@
 
   <div class="position-relative" style="width: 146px; height: 146px;">
     <div class="position-absolute pulse "></div>
-    <%= cl_image_tag current_user.photo_url(:thumnail), class: "avatar-big position-absolute z-index-1" %>
+    <%= cl_image_tag current_user.photo_url(:thumnail), class: "avatar-big position-absolute z-index-1", :secure => true %>
   </div>
 
   <!-- User Avatar speaking with name -->
@@ -41,7 +41,7 @@
   <div class="text-center" style="width: 146px; height: 146px;">
     <div class="position-relative" style="width: 146px; height: 146px;">
       <div class="position-absolute pulse"></div>
-      <%= cl_image_tag current_user.photo_url(:thumnail), class: "avatar-big position-absolute z-index-1" %>
+      <%= cl_image_tag current_user.photo_url(:thumnail), class: "avatar-big position-absolute z-index-1", :secure => true %>
     </div>
     <p class="title-small grey-dark margin-top-small">Marc D.</p>
   </div>
@@ -163,7 +163,7 @@
 
   <div class="alert-card position-relative" data-toggle="modal" data-target="#myModal2">
     <div class="position-absolute alert-creator">
-      <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute" %>
+      <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute", :secure => true %>
       <%= image_tag 'alert-icon.png', width: 17, height: 15.89, class: "position-absolute icon-alert" %>
     </div>
     <div class="text-center">
@@ -199,8 +199,8 @@
 
   <div class="alert-card-solved position-relative">
     <div class="position-absolute alert-creator">
-      <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute" %>
-      <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute solver-avatar" %>
+      <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute", :secure => true %>
+      <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute solver-avatar", :secure => true %>
       <%= image_tag 'solved-icon.png', width: 17, height: 11.77, class: "position-absolute icon-solved" %>
     </div>
     <div class="text-center">

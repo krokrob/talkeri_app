@@ -10,6 +10,7 @@ function sendText() {
         sendbtn.classList.remove('display-none')
         sendbtn.addEventListener('click', (event) => {
           submitSimpleForm.click();
+          sendbtn.classList.add('display-none')
         });
       };
     });
