@@ -10,50 +10,38 @@
           </div>
         </div>
       </div>
-
-
-      <h4 style="margin-top: 25px;">SERVICES</h4>
-      <div class="container font-size-regular">
       <div>
-      <h5><a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-   link-text-decoration-none"><i class="far fa-calendar-alt"></i> My Events</a></h5>
-      </div>
-      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <ul class="collapse list-unstyled link-text-decoration-none" id="homeSubmenu">
-          <% current_user.events.each do |event| %>
-            <li>
-             <p class="event-title"><%= event.name %></p>
-            </li>
-          <% end %>
-        </ul>
+      <% current_user.events.each do |event| %>
+      <h4 class="text-center" style="margin-top: 15px; margin-bottom: 25px; color: #724cf9;"><i class="far fa-calendar-alt"></i><%= event.name.upcase %></h4>
       </div>
 
+      <div class="content-sidebar">
+      <h4 style="margin-top: 15px; margin-bottom: 20px;">SERVICES</h4>
+      <div style="padding-left: 16px;">
       <h5><i class="far fa-user"></i> My staff</h5>
       <h5><i class="fas fa-wrench"></i> Settings</h5>
-
+      </div>
       <h4 style="margin-top: 25px;">CHANNELS</h4>
-      <div class="tab-content" id="v-pills-tabContent">
-        <% current_user.events.each do |event| %>
-          <div class="chatrooms-<%= event.name %>">
-            <% event.chatrooms.each do |chatroom| %>
-              <div class=chatrooms-toggle>
-                <%= link_to "#{chatroom.name}", chatroom_path(chatroom) %>
-              </div>
-              <%# unless chatroom.name == user.full_name %>
-            <% end %>
 
-
-          </div>
+        <% event.chatrooms.each do |chatroom| %>
+          <% unless chatroom.name.nil? %>
+            <div class="chatrooms-toggle">
+              <h5><%= link_to "##{chatroom.name}", chatroom_path(chatroom) %> - <%= Message.unread_by(current_user).where(chatroom: chatroom).count %></h5>
+            </div>
+          <% end %>
         <% end %>
-      </div>
-
-      <h4 style="margin-top: 25px;">CHANNELS WITH NOTIFICATIONS</h4>
-      <div class="tab-content" id="v-pills-tabContent">
-        <% current_user.chatrooms.each do |chatroom| %>
-          <%= link_to "#{chatroom.name}", chatroom_path(chatroom) %> - <%= Message.unread_by(current_user).where(chatroom: chatroom).count %>
-          <br>
+      <h4 style="margin-top: 25px;">PRIVATE CHANNELS</h4>
+        <% event.chatrooms.each do |chatroom| %>
+          <% if chatroom.name.nil? %>
+            <div class="chatrooms-toggle">
+              <h5>
+                <%= link_to "##{chatroom.users.select { |user| user.id != current_user.id }.first.first_name}", chatroom_path(chatroom) %> -
+                <%= Message.unread_by(current_user).where(chatroom: chatroom).count %>
+              </h5>
+            </div>
+          <% end %>
         <% end %>
-
-      </div>
+      <% end %>
 
       </div>
     </div>

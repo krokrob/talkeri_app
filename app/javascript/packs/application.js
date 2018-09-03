@@ -38,9 +38,6 @@ photoBtn();
 window.photoBtn = photoBtn
 
 
-// import {hideSidebar} from 'components/sidebar';
-// hideSidebar();
-
 
 // $(() => {
 //   $('.js-chatroom-form').select2();
