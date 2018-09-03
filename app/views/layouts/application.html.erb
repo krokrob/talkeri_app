@@ -34,13 +34,8 @@
 
   </head>
   <body>
-    <div id="box">
-      <%= render 'shared/sidebar' %>
-      <div class="page-container">
-        <%= render 'shared/flashes' %>
-        <%= yield %>
-      </div>
-    </div>
+    <%= render 'shared/flashes' %>
+    <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
 

@@ -1,3 +1,4 @@
+
 function hideSidebar() {
   const sidebar = document.getElementById("sidebar");
   const logo = document.getElementById("logo");
