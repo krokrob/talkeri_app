@@ -16,6 +16,7 @@ toggleFooter();
 
 import { scrollMessages } from '../components/messagescrolldown';
 scrollMessages();
+window.scrollMessages = scrollMessages;
 
 import {hideSidebar} from '../components/sidebar';
 hideSidebar();
@@ -29,7 +30,6 @@ sendText();
 import { photoBtn } from '../components/photobtn';
 photoBtn();
 
-window.scrollMessages = scrollMessages
 
 // import {hideSidebar} from 'components/sidebar';
 // hideSidebar();
