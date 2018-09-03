@@ -32,7 +32,7 @@ window.sendText = sendText
 
 import { photoBtn } from '../components/photobtn';
 photoBtn();
-window.photoBtn = photobtn
+window.photoBtn = photoBtn
 
 
 // import {hideSidebar} from 'components/sidebar';
