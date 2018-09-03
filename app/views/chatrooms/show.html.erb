@@ -122,12 +122,21 @@
       <div class="flexbox flexbox-align-center flexbox-space-around flexbox-justify-center">
 
         <!-- Button Upload Image note non clicked -->
-        <a class="btn padding-none margin-none border-round" id="photo-btn">
+<!--         <a class="btn padding-none margin-none border-round" id="photo-btn">
           <div class="position-relative" style="width: 40px; height: 40px;">
-            <div class="button-purple-round-small position-absolute"></div>
-            <%= image_tag 'image.png', width: 18, height: 14, class: 'position-absolute icon-image-small-center' %>
+            <div class="button-purple-round-small position-absolute"></div> -->
+            <%#= image_tag 'image.png', width: 18, height: 14, class: 'position-absolute icon-image-small-center' %>
+<!--           </div>
+        </a> -->
+
+        <%= simple_form_for [@chatroom, @message], remote: true, html: {id: "photo-form"} do |f| %>
+          <%= f.label :photo, label_html: {id: "photo-btn", class: "btn padding-none margin-none border-round"} %>
+          <div class="display-none">
+            <%= f.input :photo, label_html: {id: "photo-btn"} %>
           </div>
-        </a>
+          <%= f.input :photo_cache, as: :hidden %>
+          <%= f.submit "send", class: "btn btn-primary", style: "display: none", data: {send: "message"}, id: "submit-photo" %>
+        <% end %>
 
         <!-- Button Voice Note not active -->
         <div class="btn padding-none margin-none border-round " id="open-talkie" style=" margin: 0px -47px;">
