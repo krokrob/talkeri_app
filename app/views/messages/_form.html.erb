@@ -1,12 +1,7 @@
-<%= simple_form_for [@chatroom, @message], remote: true do |f| %>
+<%= simple_form_for [chatroom, message], remote: true do |f| %>
   <%= f.text_area :content, class: "form-control text-center message-input", placeholder: 'Type something here',data: {textarea: "message"} %>
   <%= f.input :audio, as: :hidden %>
   <%= f.input :audio_cache, as: :hidden %>
-  <div class="display-none">
-    <%= f.input :photo,
-                label: false %>
-    <%= f.input :photo_cache, as: :hidden %>
-  </div>
 
   <!-- Button send -->
   <div class="position-absolute display-none" style="top: -19px; right: -55px;" id="send-btn">
