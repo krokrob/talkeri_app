@@ -195,8 +195,8 @@
         messages.insertAdjacentHTML('beforeend', data.message_partial);
         document.getElementById('chat-form').innerHTML = "<%= j render 'messages/form', message: @message, chatroom: @chatroom %>"
         window.sendText();
-        window.scrollMessages();
         window.photoBtn();
+        window.scrollMessages();
         window.audioPlayer();
       }
     })
