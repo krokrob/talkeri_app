@@ -23,6 +23,9 @@ window.scrollMessages = scrollMessages;
 import {hideSidebar} from '../components/sidebar';
 hideSidebar();
 
+// import {displayChannel} from '../components/sidebar';
+// displayChannel();
+
 import { audioMicRecorder } from 'components/recorder';
 audioMicRecorder();
 
@@ -34,9 +37,6 @@ import { photoBtn } from '../components/photobtn';
 photoBtn();
 window.photoBtn = photoBtn
 
-
-// import {hideSidebar} from 'components/sidebar';
-// hideSidebar();
 
 
 // $(() => {
