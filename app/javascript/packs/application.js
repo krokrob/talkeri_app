@@ -26,6 +26,7 @@ audioMicRecorder();
 
 import { sendText } from '../components/sendbtn';
 sendText();
+window.sendText = sendText
 
 import { photoBtn } from '../components/photobtn';
 photoBtn();

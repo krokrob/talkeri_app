@@ -176,26 +176,8 @@
     </div>
 
     <div id="chat">
-      <div class="new-message flexbox flexbox-justify-center flexbox-space-around flexbox-align-center margin-auto-margin-top">
-        <%= simple_form_for [@chatroom, @message], remote: true do |f| %>
-          <%= f.text_area :content, class: "form-control text-center message-input", placeholder: 'Type something here',data: {textarea: "message"} %>
-          <%= f.input :audio, as: :hidden %>
-          <%= f.input :audio_cache, as: :hidden %>
-          <div class="display-none">
-            <%= f.input :photo,
-                        label: false %>
-            <%= f.input :photo_cache, as: :hidden %>
-          </div>
-
-            <!-- Button send -->
-          <div class="position-absolute display-none" style="top: -19px; right: -55px;" id="send-btn">
-            <div class="position-relative" style="width: 146px; height: 146px;">
-              <div class="button-purple-dark-round-small position-absolute"></div>
-              <%= image_tag 'send-icon.png', width: 18, height: 18, class: 'position-absolute icon-send-small-center' %>
-            </div>
-          </div>
-          <%= f.submit "send", class: "btn btn-primary", style: "display: none", data: {send: "message"}, id: "submit-text" %>
-        <% end %>
+      <div class="new-message flexbox flexbox-justify-center flexbox-space-around flexbox-align-center margin-auto-margin-top" id="chat-form">
+        <%= render 'messages/form', message: @message, chatroom: @chatroom %>
       </div>
     </div>
   </div>
@@ -211,7 +193,8 @@
       received: (data) => {
         const messages = document.getElementById('msg-list');
         messages.insertAdjacentHTML('beforeend', data.message_partial);
-        document.getElementById('message_content').value = "";
+        document.getElementById('chat-form').innerHTML = "<%= j render 'messages/form', message: @message, chatroom: @chatroom %>"
+        window.sendText();
         window.scrollMessages();
       }
     })
