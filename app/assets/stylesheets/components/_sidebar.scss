@@ -8,6 +8,8 @@
   margin-right: 0px;
   background-color: #9E9E9E;
   z-index: 30;
+  overflow-y: scroll;
+  overflow-x:hidden;
   &.absolute {
     position: absolute;
   }
@@ -32,3 +34,18 @@ p {
   font-size: 14px;
 }
 
+.page-container {
+  width: 100vw;
+}
+
+li {
+    margin: 0;
+    padding-left: 10px;
+}
+
+a {
+    color: #5b585f;
+}
+a:hover {
+    color: #5b585f;
+}

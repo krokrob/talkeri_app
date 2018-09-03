@@ -1,3 +1,8 @@
+import $ from 'jquery';
+import 'select2';                       // globally assign select2 fn to $ element
+import 'select2/dist/css/select2.css';  // optional if you have css loader
+
+
 import "bootstrap";
 window.scrollTo(0,1);
 import { audioPlayer } from '../components/audioplayer';
@@ -25,4 +30,14 @@ import { photoBtn } from '../components/photobtn';
 photoBtn();
 
 window.scrollMessages = scrollMessages
+
+// import {hideSidebar} from 'components/sidebar';
+// hideSidebar();
+
+
+// $(() => {
+//   $('.js-chatroom-form').select2();
+// });
+
+// window.$ = $
 

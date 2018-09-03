@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  include Pundit
   before_action :authenticate_user!
+  after_action :verify_authorized, except: [:index, :users_chatroom]
 
   def index
     skip_policy_scope
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
     @event.user = current_user
     authorize @event
     if @event.save
-      UserEvent.create(user: current_user, event: @event, responsability: "Organizer")
+      @user_event1 = UserEvent.create(user: current_user, event: @event, responsability: "Organizer")
       redirect_to event_path(@event)
     else
       render :new
@@ -43,6 +43,14 @@ class EventsController < ApplicationController
     authorize @event
     @event.update(event_params)
     redirect_to event_path(@event)
+  end
+
+  def users_chatroom
+    @chatroomusers = @event.users - @chatroom.users
+    # redefinir la liste des users en fonction de la chatroom selectionnee qui doit se trouver dans les params
+    respond_to do |format|
+      format.js # execute toto.js.erb
+    end
   end
 
   private
