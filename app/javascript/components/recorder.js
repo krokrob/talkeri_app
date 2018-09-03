@@ -48,7 +48,8 @@ function audioMicRecorder(){
           fetch(form.action, {
             'Content-Type': 'text/html',
             method: 'post',
-            body: formData
+            body: formData,
+            credentials: 'same-origin'
           })
           .then(response => response.text())
           .catch(error => console.error('Error:', error))

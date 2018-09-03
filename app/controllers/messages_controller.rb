@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:audio, :content, :photo)
+    params.require(:message).permit(:audio, :audio_cache, :content, :photo, :photo_cache)
   end
 
 end
