@@ -66,7 +66,7 @@
         <div class="flexbox flexbox-align-center flexbox-justify-center">
           <div class="alert-card position-relative" data-toggle="modal" data-target="#myModal2">
             <div class="position-absolute alert-creator">
-              <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute" %>
+              <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute", :secure => true %>
               <%= image_tag 'alert-icon.png', width: 17, height: 15.89, class: "position-absolute icon-alert" %>
             </div>
             <div class="text-center">
@@ -167,7 +167,7 @@
          <% @chatroom.users.select { |u| u != current_user }.each do |user| %>
             <%= link_to event_chatrooms_path(@chatroom.event, user_id: user.id, main_chatroom_id: @chatroom.id), method: :post do %>
               <div class="flexbox flexbox-column flexbox-align-center" style="width: 70px; height: 88px;  margin-right: 5px;">
-                <%= cl_image_tag user.photo, class: "avatar-normal" %>
+                <%= cl_image_tag user.photo, class: "avatar-normal", :secure => true %>
                 <p class="font-size-small grey-dark"><%= user.first_name %></p>
               </div>
             <% end %>
