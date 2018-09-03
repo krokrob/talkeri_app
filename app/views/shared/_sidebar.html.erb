@@ -1,45 +1,49 @@
 <% if user_signed_in? %>
   <div class="sidebar-collapse" id="sidebar">
-  <div class="container">
-    <div class="row">
-      <div class="text-center">
-         <%= image_tag 'talkeri-icon.png', width: 30, height: 35, class:"margin-large position-absolute", id:"logo-closing" %>
-      </div>
-      <br>
-      <div class="col-xs-3" >
-        <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute"%>
-        <div class="text-center">
-          <%= current_user.full_name %>
+    <div class="container">
+      <div class="row">
+        <br>
+        <div class="col-xs-12" style="border-bottom: 0.5px solid lightgrey" >
+          <%= cl_image_tag current_user.photo, class: "avatar-small position-absolute"%>
+          <div class="text-center" style='margin-left: 26px;  margin-top: 6px; margin-bottom: 17px; color: black;'>
+            <%= current_user.full_name %>
+          </div>
         </div>
       </div>
-    </div>
 
-    <h3>EVENTS</h3>
-    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle link-text-decoration-none">My Events</a>
-      <ul class="collapse list-unstyled link-text-decoration-none" id="homeSubmenu">
-        <% current_user.events.each do |event| %>
-          <li>
-            <a href="#homeSubSubmenuEvent_<%= event.id %>" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><%= event.name %></a>
-              <ul class="collapse list-unstyled" id="homeSubSubmenuEvent_<%= event.id %>">
-                <% event.chatrooms.each do |chatroom| %>
-                  <% if chatroom.users.include?(current_user) %>
-                    <li>
-                      <%= link_to "#{chatroom.name}", chatroom_path(chatroom) %>
-                    </li>
-                  <% end %>
-                <% end %>
-              </ul>
-          </li>
-        <% end %>
-      </ul>
-
-    <h3>SERVICES</h3>
-    <div class="container font-size-regular font-weight-medium">
-      <p>My staff</p>
-      <p>My setting</p>
-    </div>
-
-    <h3>DIRECT CHANNELS</h3>
+      <h4 style="margin-top: 25px;">SERVICES</h4>
+      <div class="container font-size-regular">
+      <div>
+      <h5><a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-   link-text-decoration-none"><i class="far fa-calendar-alt"></i> My Events</a></h5>
       </div>
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <ul class="collapse list-unstyled link-text-decoration-none" id="homeSubmenu">
+          <% current_user.events.each do |event| %>
+            <li>
+             <p class="event-title"><%= event.name %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <h5><i class="far fa-user"></i> My staff</h5>
+      <h5><i class="fas fa-wrench"></i> Settings</h5>
+
+      <h4 style="margin-top: 25px;">CHANNELS</h4>
+      <div class="tab-content" id="v-pills-tabContent">
+        <% current_user.events.each do |event| %>
+          <div class="chatrooms-<%= event.name %>">
+            <% event.chatrooms.each do |chatroom| %>
+              <div class=chatrooms-toggle>
+                <%= link_to "#{chatroom.name}", chatroom_path(chatroom) %>
+              </div>
+              <%# unless chatroom.name == user.full_name %>
+            <% end %>
+
+          </div>
+        <% end %>
+      </div>
+      </div>
+    </div>
   </div>
 <% end %>

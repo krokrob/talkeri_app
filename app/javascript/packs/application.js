@@ -19,6 +19,8 @@ scrollMessages();
 
 import {hideSidebar} from '../components/sidebar';
 hideSidebar();
+import {displayChannel} from '../components/sidebar';
+displayChannel();
 
 import { audioMicRecorder } from 'components/recorder';
 audioMicRecorder();
