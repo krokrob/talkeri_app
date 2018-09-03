@@ -194,7 +194,7 @@
       received: (data) => {
         const messages = document.getElementById('msg-list');
         messages.insertAdjacentHTML('beforeend', data.message_partial);
-        document.getElementById('chat-form').innerHTML = "<%= j render 'messages/form', message: @message, chatroom: @chatroom %>"
+        document.getElementById('chat-form').innerHTML = "<%= j render 'messages/form', message: Message.new, chatroom: @chatroom %>"
         window.sendText();
         window.photoBtn();
         window.scrollMessages();

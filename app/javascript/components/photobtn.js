@@ -3,11 +3,12 @@ function photoBtn() {
   const cloudinaryInput = document.getElementById('message_photo');
   const submitSimpleForm = document.getElementById("submit-text");
   if (photoButton) {
-    photoButton.addEventListener( 'click', (event) => {
-      cloudinaryInput.click();
+    // photoButton.addEventListener( 'click', (event) => {
+      // cloudinaryInput.click();
       cloudinaryInput.addEventListener( 'change', (event) => {
-        submitSimpleForm.click();
-      });
+        // submitSimpleForm.click();
+        document.getElementById('new_message').submit();
+      // });
     });
   }
 }

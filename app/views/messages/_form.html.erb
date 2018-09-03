@@ -1,10 +1,9 @@
-<%= simple_form_for [@chatroom, @message], remote: true do |f| %>
+<%= simple_form_for [chatroom, message], remote: true do |f| %>
   <%= f.text_area :content, class: "form-control text-center message-input", placeholder: 'Type something here',data: {textarea: "message"} %>
   <%= f.input :audio, as: :hidden %>
   <%= f.input :audio_cache, as: :hidden %>
-  <div class="display-none">
-    <%= f.input :photo,
-                label: false %>
+  <div class="">
+    <%= f.input :photo, label: "hey" %>
     <%= f.input :photo_cache, as: :hidden %>
   </div>
 
@@ -15,6 +14,6 @@
       <%= image_tag 'send-icon.png', width: 18, height: 18, class: 'position-absolute icon-send-small-center' %>
     </div>
   </div>
-  <%= f.submit "send", class: "btn btn-primary", style: "display: none", data: {send: "message"}, id: "submit-text" %>
+  <%= f.submit "send", class: "btn btn-primary", style: "display: true", data: {send: "message"}, id: "submit-text" %>
 <% end %>
 
