@@ -169,8 +169,8 @@
               <div class="flexbox flexbox-column flexbox-align-center" style="width: 70px; height: 88px;  margin-right: 5px;">
                 <%= cl_image_tag user.photo, class: "avatar-normal" %>
                 <p class="font-size-small grey-dark"><%= user.first_name %></p>
-                <p class="font-size-small grey-dark"><%= Message.where(chatroom_id: 22).unread_by(current_user).count %></p>
-              </div>
+<!--                 <p class="font-size-small grey-dark"><%#= Message.where(chatroom_id: 22).unread_by(current_user).count %></p>
+ -->              </div>
             <% end %>
         <% end %>
       </div>
