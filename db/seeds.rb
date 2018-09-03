@@ -88,6 +88,11 @@ url = "https://avatars3.githubusercontent.com/u/37242839?v=4"
 noemie.remote_photo_url = url
 noemie.save
 
+talkeri = User.create!(
+    first_name: 'TalkeriBot',
+    email: 'hello@talkeri.io',
+    password: '123456'
+  )
 
 puts 'Creating Events'
 
@@ -191,17 +196,3 @@ user_chatroom12 = UserChatroom.create!(
   chatroom: catering_chat
   )
 
-puts 'Creating Alerts'
-
-alert1 = Alert.create!(
-  chatroom: secu_chat,
-  user: sami,
-  content: "fight at main entrance",
-  status: false
-  )
-alert2 = Alert.create!(
-  chatroom: catering_chat,
-  user: arthur,
-  content: "Guest arriving",
-  status: false
-  )

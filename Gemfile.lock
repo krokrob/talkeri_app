@@ -210,6 +210,8 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
+    unread (0.10.1)
+      activerecord (>= 3)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.6.2)
@@ -252,6 +254,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier
+  unread
   web-console (>= 3.3.0)
   webpacker
 
