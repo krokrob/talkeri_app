@@ -8,10 +8,13 @@ class ChatroomsController < ApplicationController
     @message = Message.new
     @chatroom_users = @chatroom.users
     @messages = @chatroom.messages.order(created_at: :asc)
+    # @message_to_find = Message.find(params[:id])
     @current_user_chatrooms = current_user.chatrooms
     @alert = Alert.new
+    @alerts = Alert.where(chatroom: @chatroom)
     @alert_solver = AlertSolver.new
     @active_alert = @chatroom.alerts.find_by(status: false)
+
     mark_msgs_as_read(@messages)
   end
 
