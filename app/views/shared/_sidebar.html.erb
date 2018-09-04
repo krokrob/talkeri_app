@@ -13,18 +13,6 @@
       <div>
         <% current_user.events_as_participant.each do |event| %>
           <h4 class="name-h4 text-center" style="margin-top: 15px; margin-bottom: 25px; color: #724cf9;"><i class="far fa-calendar-alt"></i> <%= event.name.upcase %></h4>
-          <!-- <div class="search-bar">
-            <%#= form_tag chatroom_path, method: :get do %>
-              <%#= text_field_tag :query,
-                params[:query],
-                class: "form-control",
-                placeholder: "Find a chatroom"
-              %>
-              chercher dans:
-              - event.current_user.chatrooms.users
-              - event.chatrooms
-            <%# end %>
-          </div> -->
           <div class="content-sidebar">
             <h4 class="name-h4" style="margin-top: 15px; margin-bottom: 20px;">SERVICES</h4>
             <div style="padding-left: 16px;">

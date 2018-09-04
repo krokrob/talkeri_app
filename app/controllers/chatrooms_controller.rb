@@ -2,13 +2,6 @@ class ChatroomsController < ApplicationController
   include Pundit
   before_action :set_event, only: [:new, :create]
 
-  include PgSearch
-  pg_search_scope :search_by_name,
-    against: [ :name ],
-    using: {
-      tsearch: { prefix: true }
-    }
-
   def show
     @chatroom = Chatroom.find(params[:id])
     authorize @chatroom
@@ -87,5 +80,4 @@ class ChatroomsController < ApplicationController
       message.mark_as_read! for: current_user
     end
   end
-
 end
