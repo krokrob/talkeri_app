@@ -38,10 +38,7 @@ photoBtn();
 window.photoBtn = photoBtn
 
 
+import { speaker } from 'components/speaker'
+window.speaker = speaker
 
-// $(() => {
-//   $('.js-chatroom-form').select2();
-// });
-
-// window.$ = $
 
