@@ -19,21 +19,24 @@
       <% end %>
 
       <% if message.content == 'Well done team 🎉' %>
-        <p class="font-size-normal">Well done team 🎉</p>
-          <!-- Alert card solved -->
-        <div class="alert-card-solved position-relative">
-          <div class="position-absolute alert-creator">
-            <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute", :secure => true %>
-            <%= cl_image_tag current_user.photo, class: "avatar-very-small position-absolute solver-avatar", :secure => true %>
-            <%= image_tag 'solved-icon.png', width: 17, height: 11.77, class: "position-absolute icon-solved" %>
+
+        <% message.chatroom.alerts.where(status: true).each do |alert|%>
+          <p class="font-size-normal">Well done team 🎉</p>
+            <!-- Alert card solved -->
+          <div class="alert-card-solved position-relative flexbox flexbox-align-center flexbox-justify-center">
+            <div class="position-absolute alert-creator">
+              <%= cl_image_tag alert.user.photo, class: "avatar-very-small position-absolute", :secure => true %>
+              <%= cl_image_tag alert.alert_solvers.first.user.photo, class: "avatar-very-small position-absolute solver-avatar", :secure => true %>
+              <%= image_tag 'solved-icon.png', width: 17, height: 11.77, class: "position-absolute icon-solved" %>
+            </div>
+            <div class="text-center">
+              <p class="white font-size-normal font-weight-light margin-none"><%= alert.content %></p>
+            </div>
+            <div class="position-absolute alert-time">
+              <p class="white font-size-small font-weight-light"><%= message.created_at.strftime('%H:%M') %></p>
+            </div>
           </div>
-          <div class="text-center">
-            <p class="white font-size-normal font-weight-light">C'est good!</p>
-          </div>
-          <div class="position-absolute alert-time">
-            <p class="white font-size-small font-weight-light">1 min ago</p>
-          </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>

@@ -37,8 +37,6 @@ import { photoBtn } from '../components/photobtn';
 photoBtn();
 window.photoBtn = photoBtn
 
-
 import { speaker } from 'components/speaker'
 window.speaker = speaker
-
 
