@@ -1,5 +1,5 @@
 class AlertSolversController < ApplicationController
-  include Pundit
+
 
   def create
     @alert = Alert.find(params[:alert_id])
@@ -14,6 +14,7 @@ class AlertSolversController < ApplicationController
       @message = Message.new()
       @message.chatroom = @chatroom
       @message.user = User.find_by(first_name: 'TalkeriBot')
+      @message.alert_solver = @alert_solver
       @message.content = 'Well done team 🎉'
       @message.save
       redirect_to chatroom_path(@chatroom)

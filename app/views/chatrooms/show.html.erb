@@ -116,11 +116,11 @@
         </div>
       <% end %>
 
-
       <div class="messages messages-current-channel margin-top-small" id="msg-list" style="height: calc(100vh - 72px - 44px - 130px);overflow: scroll;padding-bottom: 40px; width: 94%; margin: auto;">
         <% @messages.each do |message| %>
           <%= render 'messages/message', message: message %>
         <% end %>
+
         <% if @messages.empty? %>
           <% if @chatroom.name.nil? %>
             <div class="position-absolute" style="bottom: 40px;" id="history">
@@ -143,6 +143,10 @@
           <% end %>
         <% end %>
       </div>
+
+      <%# @alerts.where(status: true).each do |alert| %>
+        <%#= render 'alerts/alert', alert: alert %>
+      <%# end %>
     </div>
 
     <div class="footer-mobile-talkie-mode position-relative">

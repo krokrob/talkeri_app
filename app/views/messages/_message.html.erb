@@ -5,7 +5,23 @@
       <div class="font-size-normal font-weight-light grey-light margin-left-small"><%= message.created_at.strftime("%H:%M") %></div>
     </div>
     <div class="margin-top-small margin-right-small">
-      <% if message.photo.url != nil %>
+      <% if  message.content == 'Well done team 🎉' %>
+        <p class="font-size-normal">Well done team 🎉</p>
+          <!-- Alert card solved -->
+        <div class="alert-card-solved position-relative flexbox flexbox-align-center flexbox-justify-center">
+          <div class="position-absolute alert-creator">
+            <%= cl_image_tag message.alert_solver.alert.user.photo, class: "avatar-very-small position-absolute", :secure => true %>
+            <%= cl_image_tag message.alert_solver.user.photo, class: "avatar-very-small position-absolute solver-avatar", :secure => true %>
+            <%= image_tag 'solved-icon.png', width: 17, height: 11.77, class: "position-absolute icon-solved" %>
+          </div>
+          <div class="text-center">
+            <p class="white font-size-normal font-weight-light margin-none"><%= message.alert_solver.alert.content %></p>
+          </div>
+          <div class="position-absolute alert-time">
+            <p class="white font-size-small font-weight-light"><%= message.alert_solver.created_at.strftime('%H:%M') %></p>
+          </div>
+        </div>
+      <% elsif message.photo.url != nil %>
         <%= link_to cl_image_path(message.photo), data: { lightbox: message.photo.file.public_id } do %>
           <%= cl_image_tag message.photo, width: 200, crop: :fit, class: "card-photo-msg", :secure => true %>
         <% end %>
@@ -16,27 +32,6 @@
       <% elsif message.audio.url != nil %>
         <audio class="player" controls src="<%= cloudinary_url message.audio, resource_type: :video, secure: true %>">
         </audio>
-      <% end %>
-
-      <% if message.content == 'Well done team 🎉' %>
-
-        <% message.chatroom.alerts.where(status: true).each do |alert|%>
-          <p class="font-size-normal">Well done team 🎉</p>
-            <!-- Alert card solved -->
-          <div class="alert-card-solved position-relative flexbox flexbox-align-center flexbox-justify-center">
-            <div class="position-absolute alert-creator">
-              <%= cl_image_tag alert.user.photo, class: "avatar-very-small position-absolute", :secure => true %>
-              <%= cl_image_tag alert.alert_solvers.first.user.photo, class: "avatar-very-small position-absolute solver-avatar", :secure => true %>
-              <%= image_tag 'solved-icon.png', width: 17, height: 11.77, class: "position-absolute icon-solved" %>
-            </div>
-            <div class="text-center">
-              <p class="white font-size-normal font-weight-light margin-none"><%= alert.content %></p>
-            </div>
-            <div class="position-absolute alert-time">
-              <p class="white font-size-small font-weight-light"><%= message.created_at.strftime('%H:%M') %></p>
-            </div>
-          </div>
-        <% end %>
       <% end %>
     </div>
   </div>
