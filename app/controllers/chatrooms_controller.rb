@@ -11,8 +11,10 @@ class ChatroomsController < ApplicationController
     @unread_messages = @messages.unread_by(current_user)
     @current_user_chatrooms = current_user.chatrooms
     @alert = Alert.new
+    @alerts = Alert.where(chatroom: @chatroom)
     @alert_solver = AlertSolver.new
     @active_alert = @chatroom.alerts.find_by(status: false)
+
     mark_msgs_as_read(@messages)
   end
 
