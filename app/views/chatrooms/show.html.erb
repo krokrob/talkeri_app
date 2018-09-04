@@ -12,6 +12,11 @@
   <div class="navbar-mobile-talkie-mode z-index-1">
     <div class="position-relative">
       <%= image_tag 'talkeri-icon.png', width: 30, height: 35, class:"margin-large position-absolute", id:"logo" %>
+      <%# if Message.unread_by(current_user).where(chatroom: chatroom).count > 0%>
+        <div class="notification position-relative">
+          <p class="font-size-small white position-absolute"><%#= Message.unread_by(current_user).where(chatroom: chatroom).count %>5</p>
+        </div>
+      <%# end  %>
       <p class="font-size-regular font-weight-medium position-absolute channel-title-position margin-none">#
         <% if @chatroom.name.nil? %>
           <%= @chatroom.users.select { |user| user.id != current_user.id }.first.first_name %>
