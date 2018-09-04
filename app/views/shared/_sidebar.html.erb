@@ -11,7 +11,7 @@
         </div>
       </div>
       <div>
-      <% current_user.events.each do |event| %>
+      <% current_user.events_as_participant.each do |event| %>
       <h4 class="text-center" style="margin-top: 15px; margin-bottom: 25px; color: #724cf9;"><i class="far fa-calendar-alt"></i><%= event.name.upcase %></h4>
       </div>
 
@@ -30,7 +30,7 @@
                 <%= link_to "##{chatroom.name}", chatroom_path(chatroom) %>
                 <% if Message.unread_by(current_user).where(chatroom: chatroom).count > 0%>
                   <div class="notification position-relative">
-                    <p class="font-size-small white position-absolute">2</p>
+                    <p class="font-size-small white position-absolute"><%= Message.unread_by(current_user).where(chatroom: chatroom).count %></p>
                   </div>
                 <% end  %>
               </h5>
@@ -45,7 +45,7 @@
                 <%= link_to "##{chatroom.users.select { |user| user.id != current_user.id }.first.first_name}", chatroom_path(chatroom) %>
                 <% if Message.unread_by(current_user).where(chatroom: chatroom).count > 0%>
                   <div class="notification position-relative">
-                    <p class="font-size-small white position-absolute">Message.unread_by(current_user).where(chatroom: chatroom).count</p>
+                    <p class="font-size-small white position-absolute"><%= Message.unread_by(current_user).where(chatroom: chatroom).count %>t</p>
                   </div>
                 <% end  %>
               </h5>
@@ -53,7 +53,6 @@
           <% end %>
         <% end %>
       <% end %>
-
       </div>
     </div>
   </div>

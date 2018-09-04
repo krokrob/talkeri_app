@@ -6,9 +6,9 @@ import 'select2/dist/css/select2.css';  // optional if you have css loader
 import "bootstrap";
 window.scrollTo(0,1);
 
-import { audioPlayer } from '../components/audioplayer';
-audioPlayer();
-window.audioPlayer = audioPlayer
+// import { audioPlayer } from '../components/audioplayer';
+// audioPlayer();
+// window.audioPlayer = audioPlayer
 
 import { toggleFooter } from '../components/togglefooter';
 toggleFooter();
