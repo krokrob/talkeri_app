@@ -3,11 +3,9 @@
     <div class="sender-info flexbox flexbox-align-center">
       <div class="font-size-regular font-weight-bold grey-dark"><%= message.user.first_name %></div>
       <div class="font-size-normal font-weight-light grey-light margin-left-small"><%= message.created_at.strftime("%H:%M") %></div>
-      <%#= cl_image_tag message.user.photo, class: "avatar-very-small", :secure => true %>
     </div>
     <div class="margin-top-small margin-right-small">
       <% if message.photo.url != nil %>
-        <!-- <div class="message-photo"><%# cl_image_tag message.photo, class: "card-photo-msg" %></div> -->
         <%= link_to cl_image_path(message.photo), data: { lightbox: message.photo.file.public_id } do %>
           <%= cl_image_tag message.photo, width: 200, crop: :fit, class: "card-photo-msg", :secure => true %>
         <% end %>
