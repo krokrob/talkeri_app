@@ -1,3 +1,12 @@
+<!-- User Avatar speaking with name -->
+<div class="text-center display-none" style="width: 146px; height: 146px; z-index: 100; position: fixed; top: 32%; left: 30%;" id="speaker">
+  <div class="position-relative" style="width: 146px; height: 146px;">
+    <div class="position-absolute pulse"></div>
+    <%= cl_image_tag current_user.photo_url(:thumnail), class: "avatar-big position-absolute z-index-1", :secure => true %>
+  </div>
+  <p class="title-small grey-dark margin-top-small">Marc D.</p>
+</div>
+
 <div id="box">
   <%= render 'shared/sidebar' %>
   <div class="navbar-mobile-talkie-mode z-index-1">
@@ -101,15 +110,6 @@
         </div>
       <% end %>
 
-      <!-- User Avatar speaking with name -->
-      <div class="text-center display-none" style="width: 146px; height: 146px; z-index: 100; position: fixed; top: 32%; left: 30%;" id="speaker">
-        <div class="position-relative" style="width: 146px; height: 146px;">
-          <div class="position-absolute pulse"></div>
-          <%= cl_image_tag current_user.photo_url(:thumnail), class: "avatar-big position-absolute z-index-1", :secure => true %>
-        </div>
-        <p class="title-small grey-dark margin-top-small">Marc D.</p>
-      </div>
-
       <div class="messages messages-current-channel margin-top-small" id="msg-list" style="height: calc(100vh - 72px - 44px - 130px);overflow: scroll;padding-bottom: 40px; width: 94%; margin: auto;">
 
 
@@ -182,27 +182,13 @@
         messages.insertAdjacentHTML('beforeend', data.message_partial);
 
         // Speaker avatar in DOM
-
         let newEntrant = document.createElement('div');
         newEntrant.innerHTML = String(data.message_partial);
         const audio = newEntrant.getElementsByTagName('audio');
+        console.log(audio);
         if (audio.length === 1) {
-
-
-          audio[0].addEventListener("playing", (event) => {
-            console.log('playing')
-            messages.classList.add('display-none');
-            const speaker = document.getElementById("speaker")
-            speaker.classList.remove("display-none");
-          });
-          audio[0].addEventListener("ended", (event) => {
-            console.log('ended')
-            messages.classList.remove('display-none');
-            const speaker = document.getElementById("speaker")
-            speaker.classList.add("display-none");
-          });
-          audio[0].play();
-        };
+          window.speaker(audio, messages);
+        }
 
         document.getElementById('chat-form').innerHTML = "<%= j render 'messages/form', message: Message.new, chatroom: @chatroom %>"
         window.sendText();
