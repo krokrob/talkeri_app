@@ -26,12 +26,14 @@
         <% event.chatrooms.each do |chatroom| %>
           <% unless chatroom.name.nil? %>
             <div class="chatrooms-toggle">
-              <h5><%= link_to "##{chatroom.name}", chatroom_path(chatroom) %>
+              <h5 class="flexbox flexbox-align-center">
+                <%= link_to "##{chatroom.name}", chatroom_path(chatroom) %>
                 <% if Message.unread_by(current_user).where(chatroom: chatroom).count > 0%>
-                  <span class="fas fa-flag"></span>
+                  <div class="notification position-relative">
+                    <p class="font-size-small white position-absolute">2</p>
+                  </div>
                 <% end  %>
               </h5>
-
             </div>
           <% end %>
         <% end %>
@@ -39,10 +41,12 @@
         <% event.chatrooms.each do |chatroom| %>
           <% if chatroom.name.nil? %>
             <div class="chatrooms-toggle">
-              <h5>
+              <h5 class="flexbox flexbox-align-center">
                 <%= link_to "##{chatroom.users.select { |user| user.id != current_user.id }.first.first_name}", chatroom_path(chatroom) %>
                 <% if Message.unread_by(current_user).where(chatroom: chatroom).count > 0%>
-                  <span class="fas fa-flag"></span>
+                  <div class="notification position-relative">
+                    <p class="font-size-small white position-absolute">Message.unread_by(current_user).where(chatroom: chatroom).count</p>
+                  </div>
                 <% end  %>
               </h5>
             </div>
