@@ -167,6 +167,9 @@
       chatroom_id: <%= @chatroom.id  %>
     }, {
       received: (data) => {
+        console.log(data)
+        // userdata = document.getElementById('datasetdiv')
+        // console.log(userdata.dataset.image-url);
         const messages = document.getElementById('msg-list');
         messages.insertAdjacentHTML('beforeend', data.message_partial);
         document.getElementById('chat-form').innerHTML = "<%= j render 'messages/form', message: Message.new, chatroom: @chatroom %>"
