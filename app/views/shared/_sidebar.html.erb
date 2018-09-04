@@ -30,7 +30,7 @@
                 <%= link_to "##{chatroom.name}", chatroom_path(chatroom) %>
                 <% if Message.unread_by(current_user).where(chatroom: chatroom).count > 0%>
                   <div class="notification position-relative">
-                    <p class="font-size-small white position-absolute">2</p>
+                    <p class="font-size-small white position-absolute"><%= Message.unread_by(current_user).where(chatroom: chatroom).count %></p>
                   </div>
                 <% end  %>
               </h5>
@@ -45,7 +45,7 @@
                 <%= link_to "##{chatroom.users.select { |user| user.id != current_user.id }.first.first_name}", chatroom_path(chatroom) %>
                 <% if Message.unread_by(current_user).where(chatroom: chatroom).count > 0%>
                   <div class="notification position-relative">
-                    <p class="font-size-small white position-absolute">Message.unread_by(current_user).where(chatroom: chatroom).count</p>
+                    <p class="font-size-small white position-absolute"><%= Message.unread_by(current_user).where(chatroom: chatroom).count %>t</p>
                   </div>
                 <% end  %>
               </h5>
@@ -53,7 +53,6 @@
           <% end %>
         <% end %>
       <% end %>
-
       </div>
     </div>
   </div>

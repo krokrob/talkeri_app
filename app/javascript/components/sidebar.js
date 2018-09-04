@@ -11,16 +11,4 @@ function hideSidebar() {
     });
   }
 }
-
 export {hideSidebar};
-
-// function displayChannel () {
-//   const events = document.querySelectorAll(".event-title");
-//   const channels = document.querySelectorAll(".chatrooms-#{item.name}");
-//   events.forEach((item) => {
-//   if (item) { item.addEventListener('click', (event) => {
-//     channels.classList.toggle('.chatrooms-toggle');
-//      });
-// }
-
-//   export{displayChannel};
