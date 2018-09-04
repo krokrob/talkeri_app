@@ -2,6 +2,13 @@ class ChatroomsController < ApplicationController
   include Pundit
   before_action :set_event, only: [:new, :create]
 
+  include PgSearch
+  pg_search_scope :search_by_name,
+    against: [ :name ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
   def show
     @chatroom = Chatroom.find(params[:id])
     authorize @chatroom
