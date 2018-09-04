@@ -87,8 +87,6 @@
             </div>
           </div>
         </div>
-        <div class="alert-mode-pulse">
-        </div>
         <!-- Modal Mark alert as solved-->
         <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog center-screen text-center" role="document">
@@ -111,10 +109,29 @@
       <% end %>
 
       <div class="messages messages-current-channel margin-top-small" id="msg-list" style="height: calc(100vh - 72px - 44px - 130px);overflow: scroll;padding-bottom: 40px; width: 94%; margin: auto;">
-
-
         <% @messages.each do |message| %>
           <%= render 'messages/message', message: message %>
+        <% end %>
+        <% if @messages.empty? %>
+          <% if @chatroom.name.nil? %>
+            <div class="position-absolute" style="bottom: 40px;" id="history">
+              <div class="flexbox flexbox-align-center">
+                <%= cl_image_tag @chatroom.users.select { |user| user.id != current_user.id }.first.photo, class: "avatar-normal margin-right-small", :secure => true %>
+                <ul class="padding-none margin-none">
+                  <li class="padding-none">
+                    <%= @chatroom.users.select { |user| user.id != current_user.id }.first.first_name %>
+                  </li>
+                  <li class="padding-none font-size-normal grey-light"><%= @chatroom.users.select { |user| user.id != current_user.id }.first.full_name %></li>
+                </ul>
+              </div>
+              <p class="grey margin-top-small">
+                This is the very beginning of your direct message history with
+                <strong>
+                  @<%= @chatroom.users.select { |user| user.id != current_user.id }.first.first_name %>
+                </strong>
+              </p>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -149,7 +166,7 @@
         </div>
       </div>
       <div id="talkie" class="item-selected">
-        <div class="flexbox flexbox-align-center footer" style="padding-top: 40px;flex-wrap: nowrap;
+        <div class="flexbox flexbox-align-center footer" style="padding-top: 46px;flex-wrap: nowrap;
       overflow-x: scroll; overflow-y: hidden; margin-left: 8px;">
            <% @chatroom.users.select { |u| u != current_user }.each do |user| %>
               <%= link_to event_chatrooms_path(@chatroom.event, user_id: user.id, main_chatroom_id: @chatroom.id), method: :post do %>
@@ -178,6 +195,11 @@
       chatroom_id: <%= @chatroom.id  %>
     }, {
       received: (data) => {
+        const history = document.getElementById('history');
+        if (history) {
+          history.remove()
+        }
+
         const messages = document.getElementById('msg-list');
         messages.insertAdjacentHTML('beforeend', data.message_partial);
 
