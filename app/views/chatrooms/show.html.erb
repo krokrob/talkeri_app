@@ -170,11 +170,14 @@
         const messages = document.getElementById('msg-list');
         messages.insertAdjacentHTML('beforeend', data.message_partial);
 
-        let htmlObject = document.createElement('div');
-        htmlObject.innerHTML = String(data.message_partial);
-        if (htmlObject.getElementsByTagName('audio').length === 1) {
-          console.log("true");
-          messages.replaceWith('<div>hello</div>')
+        let newEntrant = document.createElement('div');
+        newEntrant.innerHTML = String(data.message_partial);
+        if (newEntrant.getElementsByTagName('audio').length === 1) {
+          newEntrant.getElementsByTagName('audio')[0].play();
+
+          // newEntrant.getElementsByTagName('audio')[0].addEventListener("playing", (event) => {
+          //   messages.replaceWith('hey')
+          // });
         };
 
         document.getElementById('chat-form').innerHTML = "<%= j render 'messages/form', message: Message.new, chatroom: @chatroom %>"
