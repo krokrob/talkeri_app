@@ -30,7 +30,10 @@ class Message < ApplicationRecord
       unless u == user
         ActionCable.server.broadcast("notifications:notifications_for_#{u.id}", {
           channels_partial: ApplicationController.renderer.render(partial: "chatrooms/channel_list", locals: { event: chatroom.event, user: u }),
-          private_partial: ApplicationController.renderer.render(partial: "chatrooms/private_list", locals: { event: chatroom.event, user: u })
+          private_partial: ApplicationController.renderer.render(partial: "chatrooms/private_list", locals: { event: chatroom.event, user: u }),
+          logo_partial: ApplicationController.renderer.render(partial: "chatrooms/logo_notifications", locals: { user: u }),
+          message_id: self.id,
+          chatroom_id: self.chatroom.id
         })
       end
     end

@@ -14,7 +14,6 @@ class ChatroomsController < ApplicationController
     @alerts = Alert.where(chatroom: @chatroom)
     @alert_solver = AlertSolver.new
     @active_alert = @chatroom.alerts.find_by(status: false)
-
     mark_msgs_as_read(@messages)
   end
 

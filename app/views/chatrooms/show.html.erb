@@ -12,13 +12,11 @@
   <div class="navbar-mobile-talkie-mode z-index-1">
     <div class="position-relative">
       <%= image_tag 'talkeri-icon.png', width: 30, height: 35, class:"margin-large position-absolute", id:"logo" %>
-      <% if Message.unread_by(current_user).count > 0%>
-        <div class="position-absolute" style="top: 18px; left: 34px;">
-          <div class="notification position-relative">
-            <p class="font-size-small white position-absolute"><%= Message.unread_by(current_user).count %></p>
-          </div>
-        </div>
-      <% end  %>
+
+      <div class="logo-notif">
+        <%= render 'chatrooms/logo_notifications', user: current_user %>
+      </div>
+
       <p class="font-size-regular font-weight-medium position-absolute channel-title-position margin-none">#
         <% if @chatroom.name.nil? %>
           <%= @chatroom.users.select { |user| user.id != current_user.id }.first.first_name %>
@@ -241,10 +239,6 @@
 
         console.log(data.message_id)
 
-        fetch(`/messages/${data.message_id}/mark_messsage_as_read`, {
-          'Content-Type': 'text/html',
-          method: 'get'
-        })
 
 
       }
@@ -253,9 +247,18 @@
       channel: 'NotificationsChannel',
       current_user_id: <%= current_user.id %>
     }, { received: function(data) {
-      document.querySelector('.main-channels').innerHTML = data.channels_partial;
-      // console.log(data.private_partial);
-      document.querySelector('.private-channels').innerHTML = data.private_partial;
+        fetch(`/messages/${data.message_id}/mark_messsage_as_read`, {
+          'Content-Type': 'text/html',
+          method: 'get'
+        }).then(() => {
+          if( !window.location.pathname.includes(data.chatroom_id)) {
+            document.querySelector('.main-channels').innerHTML = data.channels_partial;
+            // console.log(data.private_partial);
+            document.querySelector('.private-channels').innerHTML = data.private_partial;
+            document.querySelector('.logo-notif').innerHTML = data.logo_partial;
+          }
+        })
+
     } });
   </script>
 <% end %>
