@@ -9,8 +9,6 @@ function audioMicRecorder(){
       }
       const mediaRecorder = new MediaRecorder(stream, options);
       const recbutton = document.getElementById('open-talkie');
-      // console.log(mediaRecorder.mimeType)
-      // const stop = document.getElementById('talkie-btn');
       if (recbutton) {
         recbutton.addEventListener('click', (event) => {
           const onChatBtn = document.getElementById('chat-btn').classList.contains('grow-button');

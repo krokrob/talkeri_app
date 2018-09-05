@@ -58,9 +58,11 @@ $color-2: #E8A1A1;
 $color-3: #F0D3D4;
 
 @keyframes pulse2 {
-  0% { box-shadow: 0 0 0 48px #E47F7F;}
-  25% { box-shadow: 0 0 0 192px #E8A1A1; }
-  50% { box-shadow: 0 0 0 384px #F0D3D4; }
-  75% { box-shadow: 0 0 0 192px #E8A1A1; }
-  100% { box-shadow: 0 0 0 48px #E47F7F;}
+  0% { box-shadow: 0 0 0 2px #E47F7F;}
+  25% { box-shadow: 0 0 0 4px #E8A1A1; }
+  50% { box-shadow: 0 0 0 8px #F0D3D4; }
+  75% { box-shadow: 0 0 0 4px #E8A1A1; }
+  100% { box-shadow: 0 0 0 2px #E47F7F;}
 }
+
+
