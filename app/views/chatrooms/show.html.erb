@@ -225,7 +225,10 @@
           }
         }
 
-        document.getElementById('chat-form').innerHTML = "<%= j render 'messages/form', message: Message.new, chatroom: @chatroom %>"
+        if (messages.dataset.user == data.sender_id) {
+          document.getElementById('chat-form').innerHTML = "<%= j render 'messages/form', message: Message.new, chatroom: @chatroom %>"
+        }
+
         window.sendText();
         window.photoBtn();
         if (data.photo_message !== null) {
