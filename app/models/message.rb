@@ -19,7 +19,8 @@ class Message < ApplicationRecord
       message_partial: ApplicationController.renderer.render(partial: "messages/message", locals: { message: self.reload }),
       photo_url: self.user.photo.url,
       first_name_sender: self.user.first_name,
-      photo_message: self.photo.url
+      photo_message: self.photo.url,
+      sender_id: self.user.id
     })
   end
 
