@@ -228,7 +228,13 @@
         document.getElementById('chat-form').innerHTML = "<%= j render 'messages/form', message: Message.new, chatroom: @chatroom %>"
         window.sendText();
         window.photoBtn();
-        window.scrollMessages();
+        if (data.photo_message !== null) {
+          setTimeout(function(){
+            window.scrollMessages();
+          }, 400);
+        } else {
+          window.scrollMessages();
+        }
         // window.audioPlayer();
       }
     });
