@@ -23,16 +23,12 @@ class Message < ApplicationRecord
   end
 
   def broadcast_notification
-      # self.chatroom.users.each do |u|
-      #   if u != self.user
-      #     ActionCable.server.broadcast("notifications:notifications_for_#{u.id}", {
-      #       # message: self.count_unread.to_json
-      #   end
-      # end
+    chatroom.users.each do |u|
+      unless u == user
+        ActionCable.server.broadcast("notifications:notifications_for_#{u.id}", {
+          channels_partial: ApplicationController.renderer.render(partial: "chatrooms/channel_list", locals: { event: chatroom.event, user: u })
+        })
+      end
+    end
   end
-
-  # def count_unread
-  #   binding.pry
-
-  # end
 end

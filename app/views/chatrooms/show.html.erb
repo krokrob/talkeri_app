@@ -231,6 +231,13 @@
         window.scrollMessages();
         // window.audioPlayer();
       }
-    })
+    });
+    App['notifications:notifications_for_<%= current_user.id %>'] = App.cable.subscriptions.create({
+      channel: 'NotificationsChannel',
+      current_user_id: <%= current_user.id %>
+    }, { received: function(data) {
+      document.querySelector('.main-channels').innerHTML = data.channels_partial;
+    } });
   </script>
+
 <% end %>

@@ -1,0 +1,12 @@
+<% event.chatrooms.where.not(name: nil).each do |chatroom| %>
+  <div class="chatrooms-toggle">
+    <h5 class="inside-content flexbox flexbox-align-center">
+      <%= link_to "##{chatroom.name}", chatroom_path(chatroom), { :class=>"chat-link" } %>
+      <% if Message.unread_by(user).where(chatroom: chatroom).any? %>
+        <div class="notification position-relative">
+          <p class="notif font-size-small white position-absolute"><%= Message.unread_by(user).where(chatroom: chatroom).count %></p>
+        </div>
+      <% end  %>
+    </h5>
+  </div>
+<% end %>
