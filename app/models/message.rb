@@ -20,7 +20,8 @@ class Message < ApplicationRecord
       photo_url: self.user.photo.url,
       first_name_sender: self.user.first_name,
       photo_message: self.photo.url,
-      sender_id: self.user.id
+      sender_id: self.user.id,
+      message_id: self.id
     })
   end
 

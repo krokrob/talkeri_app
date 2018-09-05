@@ -6,6 +6,11 @@ class MessagePolicy < ApplicationPolicy
   def create?
     new?
   end
+
+  def mark_messsage_as_read?
+    true
+  end
+
   class Scope < Scope
     def resolve
       scope.all

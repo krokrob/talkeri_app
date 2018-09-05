@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_chatroom
+  before_action :set_chatroom, except: :mark_messsage_as_read
   include Pundit
 
   def create
@@ -9,6 +9,12 @@ class MessagesController < ApplicationController
     @message.chatroom = @chatroom
     @message.user = current_user
     @message.save
+  end
+
+  def mark_messsage_as_read
+    @message = Message.find(params[:id])
+    authorize @message
+    @message.mark_as_read! for: current_user
   end
 
   private
