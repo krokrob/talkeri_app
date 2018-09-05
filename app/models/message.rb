@@ -18,7 +18,8 @@ class Message < ApplicationRecord
     ActionCable.server.broadcast("chatroom_#{chatroom_id}", {
       message_partial: ApplicationController.renderer.render(partial: "messages/message", locals: { message: self.reload }),
       photo_url: self.user.photo.url,
-      first_name_sender: self.user.first_name
+      first_name_sender: self.user.first_name,
+      photo_message: self.photo.url
     })
   end
 

@@ -68,28 +68,6 @@ ActiveRecord::Schema.define(version: 2018_09_04_160642) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "notifications", id: :serial, force: :cascade do |t|
-    t.string "target_type", null: false
-    t.integer "target_id", null: false
-    t.string "notifiable_type", null: false
-    t.integer "notifiable_id", null: false
-    t.string "key", null: false
-    t.string "group_type"
-    t.integer "group_id"
-    t.integer "group_owner_id"
-    t.string "notifier_type"
-    t.integer "notifier_id"
-    t.text "parameters"
-    t.datetime "opened_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["group_owner_id"], name: "index_notifications_on_group_owner_id"
-    t.index ["group_type", "group_id"], name: "index_notifications_on_group_type_and_group_id"
-    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
-    t.index ["notifier_type", "notifier_id"], name: "index_notifications_on_notifier_type_and_notifier_id"
-    t.index ["target_type", "target_id"], name: "index_notifications_on_target_type_and_target_id"
-  end
-
   create_table "read_marks", id: :serial, force: :cascade do |t|
     t.string "readable_type", null: false
     t.integer "readable_id"
@@ -99,24 +77,6 @@ ActiveRecord::Schema.define(version: 2018_09_04_160642) do
     t.index ["readable_type", "readable_id"], name: "index_read_marks_on_readable_type_and_readable_id"
     t.index ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index", unique: true
     t.index ["reader_type", "reader_id"], name: "index_read_marks_on_reader_type_and_reader_id"
-  end
-
-  create_table "subscriptions", id: :serial, force: :cascade do |t|
-    t.string "target_type", null: false
-    t.integer "target_id", null: false
-    t.string "key", null: false
-    t.boolean "subscribing", default: true, null: false
-    t.boolean "subscribing_to_email", default: true, null: false
-    t.datetime "subscribed_at"
-    t.datetime "unsubscribed_at"
-    t.datetime "subscribed_to_email_at"
-    t.datetime "unsubscribed_to_email_at"
-    t.text "optional_targets"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["key"], name: "index_subscriptions_on_key"
-    t.index ["target_type", "target_id", "key"], name: "index_subscriptions_on_target_type_and_target_id_and_key", unique: true
-    t.index ["target_type", "target_id"], name: "index_subscriptions_on_target_type_and_target_id"
   end
 
   create_table "user_chatrooms", force: :cascade do |t|
