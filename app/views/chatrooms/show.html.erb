@@ -26,9 +26,11 @@
           <%= @chatroom.name %>
         <% end %>
         </p>
-        <div class="margin-large position-absolute create-alert-icon" data-toggle="modal" data-target="#myModal">
-          <%= image_tag 'create-alert-icon.png',  width: 25, height: 28 %>
-        </div>
+        <% if @chatroom.alerts.empty? || @chatroom.alerts.last&.status == true %>
+          <div class="alert-modal margin-large position-absolute create-alert-icon" data-toggle="modal" data-target="#myModal">
+            <%= image_tag 'create-alert-icon.png',  width: 25, height: 28 %>
+          </div>
+        <% end %>
       </div>
     </div>
 
