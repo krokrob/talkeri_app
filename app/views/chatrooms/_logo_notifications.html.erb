@@ -1,0 +1,7 @@
+<% if Message.unread_by(user).count > 0%>
+  <div class="position-absolute" style="top: 18px; left: 34px;">
+    <div class="notification position-relative">
+      <p class="font-size-small white position-absolute"><%= Message.unread_by(user).count %></p>
+    </div>
+  </div>
+<% end  %>
