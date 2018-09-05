@@ -236,10 +236,6 @@
 
         console.log(data.message_id)
 
-        fetch(`/messages/${data.message_id}/mark_messsage_as_read`, {
-          'Content-Type': 'text/html',
-          method: 'get'
-        })
 
 
       }
@@ -248,10 +244,17 @@
       channel: 'NotificationsChannel',
       current_user_id: <%= current_user.id %>
     }, { received: function(data) {
-      document.querySelector('.main-channels').innerHTML = data.channels_partial;
-      // console.log(data.private_partial);
-      document.querySelector('.private-channels').innerHTML = data.private_partial;
-      document.querySelector('.logo-notif').innerHTML = data.logo_partial;
+        fetch(`/messages/${data.message_id}/mark_messsage_as_read`, {
+          'Content-Type': 'text/html',
+          method: 'get'
+        }).then(() => {
+          if( !window.location.pathname.includes(data.chatroom_id)) {
+            document.querySelector('.main-channels').innerHTML = data.channels_partial;
+            // console.log(data.private_partial);
+            document.querySelector('.private-channels').innerHTML = data.private_partial;
+            document.querySelector('.logo-notif').innerHTML = data.logo_partial;
+          }
+        })
 
     } });
   </script>

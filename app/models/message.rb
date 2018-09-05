@@ -20,8 +20,7 @@ class Message < ApplicationRecord
       photo_url: self.user.photo.url,
       first_name_sender: self.user.first_name,
       photo_message: self.photo.url,
-      sender_id: self.user.id,
-      message_id: self.id
+      sender_id: self.user.id
     })
   end
 
@@ -31,7 +30,9 @@ class Message < ApplicationRecord
         ActionCable.server.broadcast("notifications:notifications_for_#{u.id}", {
           channels_partial: ApplicationController.renderer.render(partial: "chatrooms/channel_list", locals: { event: chatroom.event, user: u }),
           private_partial: ApplicationController.renderer.render(partial: "chatrooms/private_list", locals: { event: chatroom.event, user: u }),
-          logo_partial: ApplicationController.renderer.render(partial: "chatrooms/logo_notifications", locals: { user: u })
+          logo_partial: ApplicationController.renderer.render(partial: "chatrooms/logo_notifications", locals: { user: u }),
+          message_id: self.id,
+          chatroom_id: self.chatroom.id
         })
       end
     end
