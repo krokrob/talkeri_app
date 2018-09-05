@@ -15,15 +15,17 @@ function audioMicRecorder(){
           // si je suis pas sur le chat
           if (!onChatBtn) {
             // si je suis en train d'enregistrer
-            if (event.currentTarget.classList.contains('record')) {
-              // je veux arreter l'enregistrement
-              mediaRecorder.stop();
-              event.currentTarget.classList.remove('record');
-            } else {
-              // sinon
-                // je veux record et ajouter la class record
-              mediaRecorder.start();
-              event.currentTarget.classList.add('record');
+            if (!recbutton.classList.contains('speaker-playing')) {
+              if (event.currentTarget.classList.contains('record')) {
+                // je veux arreter l'enregistrement
+                mediaRecorder.stop();
+                event.currentTarget.classList.remove('record');
+              } else {
+                // sinon
+                  // je veux record et ajouter la class record
+                mediaRecorder.start();
+                event.currentTarget.classList.add('record');
+              }
             }
           } else {
             // sinon
