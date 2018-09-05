@@ -115,7 +115,8 @@
         </div>
       <% end %>
 
-      <div class="messages messages-current-channel margin-top-small" id="msg-list" style="height: calc(100vh - 72px - 44px - 130px);overflow: scroll;padding-bottom: 40px; width: 94%; margin: auto;">
+      <div class="messages messages-current-channel margin-top-small" id="msg-list" data-user="<%= current_user.id %>" style="height: calc(100vh - 72px - 44px - 130px);overflow: scroll;padding-bottom: 40px; width: 94%; margin: auto;">
+
         <% @messages.each do |message| %>
           <%= render 'messages/message', message: message %>
         <% end %>
@@ -217,7 +218,9 @@
         const audio = newEntrant.getElementsByTagName('audio');
 
         if (audio.length === 1) {
-          window.speaker(audio, messages, data);
+          if (messages.dataset.user != data.sender_id) {
+            window.speaker(audio, messages, data);
+          }
         }
 
         document.getElementById('chat-form').innerHTML = "<%= j render 'messages/form', message: Message.new, chatroom: @chatroom %>"
@@ -230,7 +233,6 @@
         } else {
           window.scrollMessages();
         }
-        // window.audioPlayer();
       }
     });
     App['notifications:notifications_for_<%= current_user.id %>'] = App.cable.subscriptions.create({
