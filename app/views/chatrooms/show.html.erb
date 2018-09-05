@@ -1,12 +1,11 @@
-      <!-- User Avatar speaking with name -->
-      <div class="text-center display-none" style="width: 146px; height: 146px; z-index: 100; position: fixed; top: 32%; left: 30%;" id="speaker">
-        <div class="position-relative" style="width: 146px; height: 146px;">
-          <div class="position-absolute pulse"></div>
-          <%= cl_image_tag current_user.photo_url(:thumnail), id: "speaker-avatar-photo", class: "avatar-big position-absolute z-index-1", :secure => true %>
-        </div>
-        <p class="title-small grey-dark margin-top-small" id="speaker-avatar-name">Marc D.</p>
-      </div>
-
+<!-- User Avatar speaking with name -->
+<div class="text-center display-none" style="width: 146px; height: 146px; z-index: 100; position: fixed; top: 32%; left: 30%;" id="speaker">
+  <div class="position-relative" style="width: 146px; height: 146px;">
+    <div class="position-absolute pulse"></div>
+    <%= cl_image_tag current_user.photo_url(:thumnail), id: "speaker-avatar-photo", class: "avatar-big position-absolute z-index-1", :secure => true %>
+  </div>
+  <p class="title-small grey-dark margin-top-small" id="speaker-avatar-name">Marc D.</p>
+</div>
 
 <div id="box">
   <%= render 'shared/sidebar' %>
@@ -123,7 +122,7 @@
 
         <% if @messages.empty? %>
           <% if @chatroom.name.nil? %>
-            <div class="position-absolute" style="bottom: 40px;" id="history">
+            <div class="position-absolute" style="bottom: 50px;" id="history">
               <div class="flexbox flexbox-align-center">
                 <%= cl_image_tag @chatroom.users.select { |user| user.id != current_user.id }.first.photo, class: "avatar-normal margin-right-small", :secure => true %>
                 <ul class="padding-none margin-none">
@@ -133,7 +132,7 @@
                   <li class="padding-none font-size-normal grey-light"><%= @chatroom.users.select { |user| user.id != current_user.id }.first.full_name %></li>
                 </ul>
               </div>
-              <p class="grey margin-top-small">
+              <p class="grey-light margin-top-small font-size-regular line-height-25">
                 This is the very beginning of your direct message history with
                 <strong>
                   @<%= @chatroom.users.select { |user| user.id != current_user.id }.first.first_name %>
@@ -143,10 +142,6 @@
           <% end %>
         <% end %>
       </div>
-
-      <%# @alerts.where(status: true).each do |alert| %>
-        <%#= render 'alerts/alert', alert: alert %>
-      <%# end %>
     </div>
 
     <div class="footer-mobile-talkie-mode position-relative">
@@ -239,5 +234,4 @@
       document.querySelector('.main-channels').innerHTML = data.channels_partial;
     } });
   </script>
-
 <% end %>
