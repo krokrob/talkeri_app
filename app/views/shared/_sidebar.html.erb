@@ -4,7 +4,7 @@
       <div class="row">
         <br>
         <div class="col-xs-12" style="border-bottom: 0.5px solid lightgrey" >
-          <%= cl_image_tag current_user.photo, class: "avatar-small position-absolute"%>
+          <%= cl_image_tag current_user.photo, class: "avatar-small position-absolute", :secure => true%>
           <div class="text-center" style='margin-left: 26px;  margin-top: 6px; margin-bottom: 17px; color: black;'>
             <%= current_user.full_name %>
           </div>
