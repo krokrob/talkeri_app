@@ -134,6 +134,10 @@
   animation: pulse2 2s infinite;
 }
 
+.speaker-playing #talkie-btn{
+  background: #A48AFF;
+}
+
 #open-talkie {
   width: 91px;
   height: 91px;
@@ -144,3 +148,4 @@
   right: 25px;
   bottom: 41px;
 }
+
